@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Baseball Pitch Trajectory Simulator</title>
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Core Styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js and OrbitControls CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Main 3D Viewport Area -->
+        <main class="viewport-container">
+            <div id="canvas-container"></div>
+
+            <!-- Quick Floating Camera Selector -->
+            <div class="camera-bar glass">
+                <button class="cam-btn active" data-camera="pitcher">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+                            fill="currentColor" />
+                    </svg>
+                    Pitcher
+                </button>
+                <button class="cam-btn" data-camera="batter">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"
+                            fill="currentColor" />
+                    </svg>
+                    Batter
+                </button>
+                <button class="cam-btn" data-camera="catcher">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                            fill="currentColor" />
+                    </svg>
+                    Catcher
+                </button>
+                <button class="cam-btn" data-camera="side">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path
+                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10zM4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8-8-3.59-8-8z"
+                            fill="currentColor" />
+                    </svg>
+                    Side View
+                </button>
+                <button class="cam-btn" data-camera="interactive">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93h2c0 2.76 2.24 5 5 5 2.76 0 5-2.24 5-5h2c0 4.08-3.05 7.44-7 7.93z"
+                            fill="currentColor" />
+                    </svg>
+                    3D Orbit
+                </button>
+            </div>
+
+            <!-- Floating Legends -->
+            <div class="legend-box glass">
+                <div class="legend-item"><span class="legend-dot path-actual"></span> Actual Trajectory</div>
+                <div class="legend-item" id="legend-spinless"><span class="legend-dot path-spinless"></span> Spinless
+                    Path</div>
+            </div>
+        </main>
+
+        <!-- Sidebar Control Panel -->
+        <aside class="sidebar-container glass">
+            <header class="sidebar-header">
+                <h1>PITCH LAB 3D</h1>
+                <p>Trajectory & Aerodynamics Simulator</p>
+            </header>
+
+            <!-- Section: Pitch Presets -->
+            <section class="control-section">
+                <h2>Pitch Selection</h2>
+                <div class="preset-grid">
+                    <button class="preset-btn active" data-preset="fastball">4-Seam Fast</button>
+                    <button class="preset-btn" data-preset="sinker">Sinker</button>
+                    <button class="preset-btn" data-preset="cutter">Cutter</button>
+                    <button class="preset-btn" data-preset="curveball">Curveball</button>
+                    <button class="preset-btn" data-preset="slider">Slider</button>
+                    <button class="preset-btn" data-preset="changeup">Changeup</button>
+                </div>
+            </section>
+
+            <!-- Section: Physics Sliders -->
+            <section class="control-section">
+                <h2>Release Parameters</h2>
+
+                <div class="slider-group">
+                    <div class="slider-label-row">
+                        <span>Velocity</span>
+                        <span class="value-display"><strong id="val-speed">95</strong> <span
+                                class="unit">mph</span></span>
+                    </div>
+                    <input type="range" id="input-speed" min="50" max="105" step="1" value="95">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label-row">
+                        <span>Spin Rate</span>
+                        <span class="value-display"><strong id="val-spinRate">2400</strong> <span
+                                class="unit">rpm</span></span>
+                    </div>
+                    <input type="range" id="input-spinRate" min="0" max="3500" step="50" value="2400">
+                </div>
+
+                <!-- Spin Tilt Radial UI & Slider -->
+                <div class="slider-group">
+                    <div class="slider-label-row">
+                        <span>Spin Tilt (Axis)</span>
+                        <span class="value-display">
+                            <strong id="val-spinClock">12:30</strong>
+                            <span class="unit" id="val-spinTilt">15°</span>
+                        </span>
+                    </div>
+                    <div class="spin-tilt-ui-container">
+                        <!-- Clock Dial SVG Visualizer -->
+                        <div class="clock-dial-container">
+                            <svg id="clock-dial" width="80" height="80" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" class="dial-bg" />
+                                <circle cx="50" cy="50" r="45" class="dial-border" />
+                                <!-- Clock markings -->
+                                <line x1="50" y1="5" x2="50" y2="12" class="dial-tick" />
+                                <line x1="95" y1="50" x2="88" y2="50" class="dial-tick" />
+                                <line x1="50" y1="95" x2="50" y2="88" class="dial-tick" />
+                                <line x1="5" y1="50" x2="12" y2="50" class="dial-tick" />
+                                <!-- Vector Indicator -->
+                                <line x1="50" y1="50" x2="50" y2="10" id="dial-hand" class="dial-hand" />
+                                <circle cx="50" cy="50" r="4" class="dial-center" />
+                            </svg>
+                        </div>
+                        <div class="spin-tilt-slider-col">
+                            <input type="range" id="input-spinTilt" min="-179" max="180" step="1" value="15">
+                            <p class="tilt-description">Drag slider or watch clock dial. 12:00 is pure backspin; 6:00 is
+                                topspin.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label-row">
+                        <span>Gyro Efficiency (Active Spin)</span>
+                        <span class="value-display"><strong id="val-gyroEfficiency">95</strong> <span
+                                class="unit">%</span></span>
+                    </div>
+                    <input type="range" id="input-gyroEfficiency" min="0" max="100" step="5" value="95">
+                </div>
+            </section>
+
+            <!-- Section: Launch Metrics -->
+            <section class="control-section">
+                <h2>Release Geometry & Angles</h2>
+
+                <div class="accordion-header" id="release-geometry-toggle">
+                    <span>Fine Adjustments</span>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="accordion-content" id="release-geometry-content">
+                    <div class="slider-group">
+                        <div class="slider-label-row">
+                            <span>Release Height</span>
+                            <span class="value-display"><strong id="val-releaseHeight">6.0</strong> <span
+                                    class="unit">ft</span></span>
+                        </div>
+                        <input type="range" id="input-releaseHeight" min="4.0" max="7.5" step="0.1" value="6.0">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-label-row">
+                            <span>Release Side (L/R)</span>
+                            <span class="value-display"><strong id="val-releaseX">-2.0</strong> <span
+                                    class="unit">ft</span></span>
+                        </div>
+                        <input type="range" id="input-releaseX" min="-4.0" max="4.0" step="0.1" value="-2.0">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-label-row">
+                            <span>Release Extension</span>
+                            <span class="value-display"><strong id="val-releaseExtension">5.5</strong> <span
+                                    class="unit">ft</span></span>
+                        </div>
+                        <input type="range" id="input-releaseExtension" min="4.0" max="7.5" step="0.1" value="5.5">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-label-row">
+                            <span>Launch Angle Vert.</span>
+                            <span class="value-display"><strong id="val-launchAngleZ">-1.8</strong> <span
+                                    class="unit">°</span></span>
+                        </div>
+                        <input type="range" id="input-launchAngleZ" min="-6.0" max="4.0" step="0.1" value="-1.8">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-label-row">
+                            <span>Launch Angle Horiz.</span>
+                            <span class="value-display"><strong id="val-launchAngleX">-0.8</strong> <span
+                                    class="unit">°</span></span>
+                        </div>
+                        <input type="range" id="input-launchAngleX" min="-4.0" max="4.0" step="0.1" value="-0.8">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: View Settings -->
+            <section class="control-section">
+                <h2>Visualization Options</h2>
+                <div class="toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-spinless" checked>
+                        <span class="slider"></span>
+                        Show Spinless Reference Path
+                    </label>
+                </div>
+            </section>
+
+            <!-- Section: Live Dashboard & Strike Zone Canvas -->
+            <section class="analytics-section">
+                <h2>Live Analytics</h2>
+
+                <div class="dashboard-grid">
+                    <!-- Left: 2D Strike Zone Plot -->
+                    <div class="strike-zone-box">
+                        <canvas id="strike-zone-canvas" width="160" height="200"></canvas>
+                        <span class="sz-caption">Plate Cross Section</span>
+                    </div>
+
+                    <!-- Right: Break Metrics -->
+                    <div class="metrics-list">
+                        <div class="metric-card">
+                            <span class="metric-title">Induced Vert Break</span>
+                            <span class="metric-val" id="metric-ivb">+18.2"</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Horizontal Break</span>
+                            <span class="metric-val" id="metric-hb">-4.5"</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Plate Speed</span>
+                            <span class="metric-val" id="metric-plateSpeed">87.4 mph</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Flight Time</span>
+                            <span class="metric-val" id="metric-flightTime">0.435 s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plate Cross Result Banner -->
+                <div class="result-banner strike" id="result-banner">STRIKE</div>
+            </section>
+        </aside>
+    </div>
+
+    <!-- Application Javascript files -->
+    <script src="physics.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

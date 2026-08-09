@@ -1,58 +1,55 @@
-let horizontalBar = document.getElementById("horizontal-underline");
-let horizontalMenus = document.querySelectorAll("nav a");
+/**
+ * Personal Portfolio Portal Hub - Interactive Script
+ * Handles Category Filtering & Micro-interactions
+ */
 
-function horizontalIndicator(e) {
-    horizontalBar.style.left = e.offsetLeft + "px";
-    horizontalBar.style.width = e.offsetWidth + "px";
-    horizontalBar.style.top = e.offsetTop + e.offsetHeight + "px";
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Category Filtering Logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-horizontalMenus.forEach((menu) =>
-    menu.addEventListener("mouseover", (e) => horizontalIndicator(e.currentTarget))
-);
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Toggle Active Button State
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-let x = document.getElementById("section1");
-let y = document.getElementById("section2");
-let z = document.getElementById("section3");
-y.style.display = "none";
-z.style.display = "none";
+      const filterValue = btn.getAttribute('data-filter');
 
-function SelSec1() {
-    x.style.display = "block";
-    y.style.display = "none";
-    z.style.display = "none";
-}
+      // Filter Project Cards
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
 
-function SelSec2() {
-    y.style.display = "block";
-    z.style.display = "none";
-    x.style.display = "none";
-}
+        if (filterValue === 'all' || category === filterValue) {
+          card.classList.remove('is-hidden');
+          // Add smooth re-entrance effect
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0) scale(1)';
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    });
+  });
 
-function SelSec3() {
-    z.style.display = "block";
-    x.style.display = "none";
-    y.style.display = "none";
-}
+  // 2. Mouse Tracking Subtle Dynamic Tilt & Glow Effect on Project Cards
+  projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; // Mouse X relative to card
+      const y = e.clientY - rect.top;  // Mouse Y relative to card
 
-/* for Section 1 */
-let airplane = document.querySelector("div.airplane");
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-window.addEventListener("scroll", () => {
-    let value = scrollY;
-    console.log(value);
+      const rotateX = ((y - centerY) / centerY) * -4; // Subtle tilt limit 4 deg
+      const rotateY = ((x - centerX) / centerX) * 4;
 
-    if (value > 1500) {
-        airplane.style.animation = "plane 5s forwards";
-    } else {
-        airplane.style.animation = "plane-revert 3s";
-    }
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
 });
-
-/* for Section 2
-let code1 = document.querySelector("p.typing-l1");
-let code2 = document.querySelector("p.typing-l2");
-
-code1.style.animation = "typing 2s steps(31), step-end alternate";
-code2.style.animation = "typing 2s 0.5s steps(18), blink 0.5s step-end infinite alternate";
-*/

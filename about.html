@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
+    <style>
+        body {
+            /* max-width: 750px; */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            padding-top: 50px;
+            padding-left: 20px;
+        }
+        p {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .container {
+            position: relative;
+        }
+        .introtext {
+            position: absolute;
+            top: 15%;
+            left: 30px;
+            font-size: 2em;
+            color: white;
+        }
+        .introtrip {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            color: white;
+        }
+        .intromuse {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 2em;
+            color: white;
+        }
+        .airplane {
+            position: absolute;
+            top: 10%;
+            left: 50px;
+            width: 200px;
+            height: 100px;
+            /* animation: plane 5s; */
+        }
+        @keyframes plane {
+            0% {
+                top: 10%;
+                left: 50px;
+            }
+            100% {
+                top: 30%;
+                left: 70%;
+            }
+        }
+        @keyframes plane-revert {
+            0% {
+                top: 30%;
+                left: 70%;
+            }
+            50% {
+                top: 40%;
+                left: 80%;
+                visibility: hidden;
+            }
+            90% {
+                top: 10%;
+                left: 10px;
+                visibility: hidden;
+            }
+            100% {
+                top: 10%;
+                left: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Abount me</h2>
+        <div class="container">
+            <img src="./img/img11.jpg" width=100%>
+            <div class="introtext">나는 코딩과 여행을 좋아하는<br> 평범한 직장인입니다.</div>
+        </div>
+        <div class="container">
+            <img src="./img/img13.jpg" width=100%>
+        </div>
+        <div class="container">
+            <img src="./img/img14.jpg" width=100%>
+        </div>
+            <p>
+                I was born in 1978. I grew up in rural area of South Korea.
+                I studied at school in my young ages but also engaged in agriculural activities after school.
+                When I became a high school student, I lived in dormitory where study was everything.
+                But, it made me a great luck to enter the best university in Korea.
+            </p>
+            <p>
+                I majored in Materials Science. I mainly studied the abnormal grain growth of ceramics.
+                It is one of topics of Sintering.
+                In general, the relationship between the microstructures and materials properties is the main interest.
+                I am researching materials at my current job, which is also the reason I was able to get a job here.
+            </p>
+            <p>
+                I also interested in Mathematics. If I had a lot of money enough to live without earning any money,
+                I would delve into Mathematical theories. Unfortunately, it is a definitely impossible thing.
+                So instead, I code as a hobby. I'm studying C++, Python, JavaScript, etc. It is really a great fun!
+            </p>
+            <p>
+                I like to find and learn new things. In that sense, travel is my favorite.
+                It's nice to take a break, but it's a great joy to experience a new world.
+                I have been to many countries. USA, Japan, China, Belgium, Spain, Czech, Hungary, Poland, Germany, etc.
+                In particular, living in the United States for a year on sabbatical leave was an unforgettable experience in
+                my life.
+            </p>
+        <div class="container">
+            <img src="./img/img12.jpg" width=100%>
+            <div class="airplane"><img src="./img/boeing767.png" width=150px></div>
+            <div class="introtrip">旅行はいつも楽しいんだぞ！</div>
+        </div>
+            <p>
+                そして、音楽は欠かせない！ 楽器を扱うのはわかりません。 ただ音楽を聴くのが好きです。
+                好きな歌手はIU(아이유)さんとテイラースウィフト、ZARDの坂井泉水さんです。
+                大衆歌謡もよく、ポップ、ロック、アイドル、クラシックまで全て好きです。 ただし、ジャズは難しいです。
+                でも、年をとって静かな歌に惹かれますね。
+            </p>
+        <div class="container">
+            <img src="./img/IU.jpg" width=100%>
+            <div class="introtext">Music is Essential.</div>
+            <div class="intromuse">
+                <audio controls><source src="./img/IU.mp3" type="audio/mpeg"></audio>
+            </div>
+        </div>
+
+    <script>
+        let airplane = document.querySelector("div.airplane");
+
+        window.addEventListener("scroll", () => {
+            let value = scrollY;
+            console.log(value);
+
+            if (value > 1500) {
+                airplane.style.animation = "plane 5s forwards";
+            } else {
+                airplane.style.animation = "plane-revert 3s";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,182 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e99ward showcase</title>
+  <meta name="description" content="e99ward showcase">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <nav>
-        <div id="horizontal-underline"></div>
-        <a href="#section1" onclick="SelSec1()">About me</a>
-        <a href="#section2" onclick="SelSec2()">Code</a>
-        <a href="#section3" onclick="SelSec3()">Research</a>
-        <a href="./lotto/lotto.html">Lotto 645</a>
-        <a href="./w3/w3.html">Project W3</a>
-    </nav>
 
-    <section id="section1">
-        <h2>Abount me</h2>
-        <div class="container">
-            <img src="./img/img11.jpg" width=100%>
-            <div class="introtext">나는 코딩과 여행을 좋아하는<br> 평범한 직장인입니다.</div>
-        </div>
-        <div class="container">
-            <img src="./img/img13.jpg" width=100%>
-        </div>
-        <div class="container">
-            <img src="./img/img14.jpg" width=100%>
-        </div>
-        <p>
-            I was born in 1978. I grew up in rural area of South Korea.
-            I studied at school in my young ages but also engaged in agriculural activities after school.
-            When I became a high school student, I lived in dormitory where study was everything.
-            But, it made me a great luck to enter the best university in Korea.
-        </p>
-        <p>
-            I majored in Materials Science. I mainly studied the abnormal grain growth of ceramics.
-            It is one of topics of Sintering.
-            In general, the relationship between the microstructures and materials properties is the main interest.
-            I am researching materials at my current job, which is also the reason I was able to get a job here.
-        </p>
-        <p>
-            I also interested in Mathematics. If I had a lot of money enough to live without earning any money,
-            I would delve into Mathematical theories. Unfortunately, it is a definitely impossible thing.
-            So instead, I code as a hobby. I'm studying C++, Python, JavaScript, etc. It is really a great fun!
-        </p>
-        <p>
-            I like to find and learn new things. In that sense, travel is my favorite.
-            It's nice to take a break, but it's a great joy to experience a new world.
-            I have been to many countries. USA, Japan, China, Belgium, Spain, Czech, Hungary, Poland, Germany, etc.
-            In particular, living in the United States for a year on sabbatical leave was an unforgettable experience in
-            my life.
-        </p>
-        <div class="container">
-            <img src="./img/img12.jpg" width=100%>
-            <div class="airplane"><img src="./img/boeing767.png" width=150px></div>
-            <div class="introtrip">旅行はいつも楽しいんだぞ！</div>
-        </div>
-        <p>
-            そして、音楽は欠かせない！ 楽器を扱うのはわかりません。 ただ音楽を聴くのが好きです。
-            好きな歌手はIU(아이유)さんとテイラースウィフト、ZARDの坂井泉水さんです。
-            大衆歌謡もよく、ポップ、ロック、アイドル、クラシックまで全て好きです。 ただし、ジャズは難しいです。
-            でも、年をとって静かな歌に惹かれますね。
-        </p>
-        <div class="container">
-            <img src="./img/IU.jpg" width=100%>
-            <div class="introtext">Music is Essential.</div>
-            <div class="intromuse">
-                <audio controls><source src="./img/IU.mp3" type="audio/mpeg"></audio>
-            </div>
-        </div>
+  <!-- Dynamic Background Glow Orbs -->
+  <div class="bg-glow-container">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- Hero Intro Section -->
+  <main class="container">
+    <section class="hero-section">
+      <div class="hero-badge">✨ Creative Showcase</div>
+      <h1 class="hero-title">아이디어를 현실로 만든 <span>프로젝트 아카이브</span></h1>
+      <p class="hero-subtitle">
+        다양한 웹 애플리케이션, 데이터 분석 툴 디지털 아트 프로젝트를 한곳에서 탐색해 보세요.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">
+          <span class="dot"></span> 전체 보기
+        </button>
+        <button class="filter-btn" data-filter="web">
+          <span class="dot" style="background: var(--cat-web-primary)"></span> 웹 서비스 / 도감
+        </button>
+        <button class="filter-btn" data-filter="engineering">
+          <span class="dot" style="background: var(--cat-engineering-primary)"></span> 공학 / 데이터 분석
+        </button>
+        <button class="filter-btn" data-filter="media">
+          <span class="dot" style="background: var(--cat-media-primary)"></span> 엔터테인먼트 / 스포츠
+        </button>
+        <button class="filter-btn" data-filter="art">
+          <span class="dot" style="background: var(--cat-art-primary)"></span> 디지털 아트 / 디자인
+        </button>
+      </div>
     </section>
 
-    <section id="section2">
-        <h2>Code</h2>
-        <div class="laptop">
-            <div class="monitor">
-                <div class="screen">
-                    <div class="wrapper">
-                        <div class="intro">
-                            <h1 id="en">Hello!</h1>
-                            <h1 id="cn">你好~</h1>
-                            <h1 id="jp">こんにちは。</h1>
-                            <h1 id="kr">안녕하세요</h1>
-                        </div>
-                        <p class="typing-l1">
-                            I like learning a new language.
-                        </p>
-                        <p class="typing-l2">
-                            Show off something?
-                        </p>
-                    </div>
-                </div>
-                <div class="stand">
-                    <div class="base"> </div>
-                </div>
-            </div>
+    <!-- Project Cards Grid -->
+    <section class="projects-grid">
+
+      <!-- Project 1: 포켓몬 도감 (Web / Cyan Theme) -->
+      <a href="group1/pokemon/pokemon.html" class="project-card" data-category="web" id="card-project-1">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">⚡</div>
+            <span class="card-group-tag">GROUP 1</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              포켓몬 도감
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              PokéAPI 및 실시간 검색을 활용하여 출시된 1,000종 이상의 포켓몬 다국어 명칭, 고화질 렌더링 이미지를 검색하는 인터랙티브 웹 도감입니다.
+            </p>
+          </div>
         </div>
-        <div class="laptop">
-        <p>
-            a <br> b <br> c <br> d1 <br> e2 <br> f34 <br> g56 <br> h789 <br> i1012 <br> j34567 <br>
-            k890123 <br> l45678901 <br> m23456789 <br> n012345678 <br> o901234567 <br> p89012345 <br>
-            q6789012 <br> r345678 <br> s90123 <br> t4567 <br> u890 <br> v12 <br> w3 <br> x4 <br> y <br> z <br>
-        </p>
-        <p>
-            <img src="./img/code-c.png" width="100px">
-            <img src="./img/code-cpp.png" width="100px">
-            <img src="./img/code-python.png" width="100px">
-            <img src="./img/code-tensorflow.png" width="100px">
-            <img src="./img/code-matlab.png" width="100px">
-            <img src="./img/code-html.png" width="100px">
-            <img src="./img/code-css.png" width="100px">
-            <img src="./img/code-javascript.png" width="100px">&nbsp;
-            <img src="./img/code-swift.png" width="100px">&nbsp;
-            <img src="./img/code-latex.png" width="100px">
-        </p>
-        <p>
-            Experiences are on <a href="https://e99ward.blogspot.com/">e99ward's Blog</a>.
-        </p>
+        <div class="card-footer">
+          <span class="card-link-text">group1/pokemon</span>
+          <div class="card-tags">
+            <span class="tag">Web App</span>
+            <span class="tag">API</span>
+          </div>
         </div>
+      </a>
+
+      <!-- Project 2: Autoclave (engineering & Data / Emerald Theme) -->
+      <a href="group2/autoclave.html" class="project-card" data-category="engineering" id="card-project-2">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">💧</div>
+            <span class="card-group-tag">GROUP 2</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              오토클레이브 계산
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              오토클레이브(autoclave) 운전을 위한 열역학 상태를 계산하는 툴입니다. 초기 장입 물의 양에 따른 온도별 오토클레이브의 수위를 예측할 수 있습니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group2/autoclave.html</span>
+          <div class="card-tags">
+            <span class="tag">Calc</span>
+            <span class="tag">Web App</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 3: 피칭랩 (engineering & Data / Emerald Theme) -->
+      <a href="group3/pitching/pitching.html" class="project-card" data-category="media" id="card-project-3">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">⚾</div>
+            <span class="card-group-tag">GROUP 3</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              피칭랩 (Pitching Lab)
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              야구 투수의 구속, 분당 회전수(RPM), 무브먼트 궤적 데이터를 시각화하고 세이버메트릭스 기반 피칭 메커니즘을 시뮬레이션하는 스포츠 분석 툴입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group3/pitching</span>
+          <div class="card-tags">
+            <span class="tag">Sports Tech</span>
+            <span class="tag">Analytics</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 4: 걸그룹 (Media / Pink Theme) -->
+      <a href="group3/gg/gg-chrono.html" class="project-card" data-category="media" id="card-project-4">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">🎤</div>
+            <span class="card-group-tag">GROUP 3</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              걸그룹 연대기
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              K-POP 걸그룹의 역사를 시간순으로 정리한 웹 페이지. 마지막 작업 2023년. (업데이트 필요)
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group3/gg</span>
+          <div class="card-tags">
+            <span class="tag">Java Script</span>
+            <span class="tag">JSON</span>
+          </div>
+        </div>
+      </a>
+
+
+      <!-- Project 1: 포켓몬 도감 (Web / Cyan Theme) -->
+      <a href="group1/project1.html" class="project-card" data-category="web" id="card-project-1">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">⚡</div>
+            <span class="card-group-tag">GROUP 1</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              Project 1: 포켓몬도감
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              PokéAPI 및 실시간 검색을 활용하여 1,000종 이상의 포켓몬 상세 능력치와 다국어 명칭, 고화질 렌더링 이미지를 검색하는 인터랙티브 웹 도감입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group1/project1.html</span>
+          <div class="card-tags">
+            <span class="tag">Web App</span>
+            <span class="tag">API</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 2: 걸그룹 (Media / Pink Theme) -->
+      <a href="group1/project2.html" class="project-card" data-category="media" id="card-project-2">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">🎤</div>
+            <span class="card-group-tag">GROUP 3</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              Project 2: 걸그룹 트래커
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              K-POP 걸그룹 멤버 프로필, 앨범 디스코그래피, 뮤직비디오 통합 스트리밍 정보 및 랭킹 트렌드를 한눈에 확인할 수 있는 미디어 대시보드입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group1/project2.html</span>
+          <div class="card-tags">
+            <span class="tag">K-Pop</span>
+            <span class="tag">Media</span>
+          </div>
+        </div>
+      </a>
+
+
+      <!-- Project 4: 아트워크 1 (Design & Art / Violet Theme) -->
+      <a href="group3/project4.html" class="project-card" data-category="art" id="card-project-4">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">🎨</div>
+            <span class="card-group-tag">GROUP 4</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              Project 4: 아트워크 1 (Generative Art)
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              수학적 알고리즘과 파티클 엔진을 기반으로 실시간으로 변형되는 다이나믹 캔버스 아트 컬렉션 1집입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group3/project4.html</span>
+          <div class="card-tags">
+            <span class="tag">Digital Art</span>
+            <span class="tag">Canvas</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 5: 아트워크 2 (Design & Art / Purple Pink Theme) -->
+      <a href="group3/project5.html" class="project-card" data-category="art" id="card-project-5">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">🔮</div>
+            <span class="card-group-tag">GROUP 4</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              Project 5: 아트워크 2 (3D Kinetic Sculpture)
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              WebGL 3D 그래픽 기술과 조명 셰이더 효과를 접목한 모던 입체 조형 아트워크 2집 쇼케이스입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group3/project5.html</span>
+          <div class="card-tags">
+            <span class="tag">3D Graphic</span>
+            <span class="tag">WebGL</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 6: AI 캔버스 Lab (Tech / Amber Theme) -->
+      <a href="group4/project6.html" class="project-card" data-category="tech" id="card-project-6">
+        <div>
+          <div class="card-header">
+            <div class="card-icon">🤖</div>
+            <span class="card-group-tag">GROUP 5</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              Project 6: AI 캔버스 랩
+              <span class="arrow">→</span>
+            </h3>
+            <p class="card-description">
+              생성형 AI 모델 인터페이스와 연동하여 텍스트 프롬프트를 창의적인 비주얼로 즉시 드로잉해주는 실험적 웹 랩입니다.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-link-text">group4/project6.html</span>
+          <div class="card-tags">
+            <span class="tag">AI Engine</span>
+            <span class="tag">Experimental</span>
+          </div>
+        </div>
+      </a>
+
     </section>
+  </main>
 
-    <section id="section3">
-        <h2>Research Field</h2>
-        <div class="slider"><figure>
-            <img src="./img/research1.png" width=100%>
-            <img src="./img/research2.png" width=100%>
-            <img src="./img/research3.png" width=100%>
-            <img src="./img/research4.png" width=100%>
-        </figure></div>
-        <h3>『 맞춤형 다기능 구조 소재 개발 』</h3>
-        <p>
-            구조소재는 기본적으로 높은 강도와 인성이 요구되며, 사용환경에 따라 내부식성, 내산화성, 내열강도, 내방사화 특성이
-            부가적으로 필요하기도 하다. 신소재의 개발은 새로운 조성의 합금원소를 사용하는 것으로 가능한데, 개별 첨가원소의 특징과
-            효과를 알더라도 실제 합금화 되었을 경우에 발현되는 물성은 예측을 벗어나는 경우가 흔하여 새로운 합금조성의 구조소재를
-            개발하는 것은 매우 어려운 일이다. 반면 내부식성, 내산화성에 특화된 신소재를 개발하는 것은 보다 쉬우며 성공 가능성이 크다.
-            이러한 신소재는 강도와 인성을 염두에 두지 않고 개발되므로 구조소재로서 활용이 제한될 수 있다. 따라서 구조소재의 뼈대는
-            기존 소재를 유지하고 사용환경에 요구되는 부가기능을 코팅이나 클래딩을 통하여 구조소재에 부여함으로써 맞춤형 다기능
-            구조 소재를 개발할 수 있다. 최근 적층제조의 제조 유연성을 기반으로 설계의 자유도를 높여 물성을 극대화하는 설계기술
-            DfAM(Design for Additive Manufacturing)도 비중있게 연구되고 있다. 나아가 적층제조는 단일 조성 또는 단일 합금 소재의
-            제조에 국한되지 않고, 복수의 공급장치를 이용하여 두 종 이상의 복합조성 소재의 제조가 가능한 장점이 있다.
-        </p>
-        <p>● 구조소재에 부가기능(내부식, 내마모, 내방사화 등)을 부여할 수 있는 코팅/클래딩용 신합금 개발</p>
-        <p>● 적층제조 기반 코팅/클래딩 공정 개발 및 이를 통한 맞춤형 다기능 구조소재 부품 제조</p>
-        <p>● 적층제조 기술을 접목한 하이엔트로피(HEA; High-Entropy Alloy) 합금 제조</p>
-        <p>&nbsp;</p>
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 Creative Lab. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About Me (소개)</a>
+        <a href="index.html">Projects Hub</a>
+      </div>
+    </div>
+  </footer>
 
-        <h3>『 적층제조 첨단 세라믹스 제조기술 개발 』</h3>
-        <p>
-            신개념의 에너지 소재는 적층제조 공정을 활용할 수 있는 최적의 분야이다. 이차전지용 음극소재, 연료전지용 금속 분리막,
-            화합물 반도체 기반 열전소재 등은 구조 형상의 개발과 소재 구성의 변화를 통하여 성능을 개선하고 있다. 복잡한 구조 형상은
-            기존의 통상적인 제조방법으로는 제작이 불가하거나 어려운 단점이 있으나 적층제조 공정은 복잡 형상에 대한 제조성이 우수한
-            장점이 있다.
-        </p>
-        <p>● 이차전지용 실리콘계 음극소재 구조건전성 및 성능 개선</p>
-        <p>● 열전소재, 베타전지 등의 화합물반도체 소재 개발</p>
-        <p>● 혁신구조 다기능 세라믹스 적층제조(에너지 직조사, 바인더 젯) 공정기술 개발</p>
-        <p>&nbsp;</p>
-
-        <img src="./img/research20.png" width=100%>
-        <h3>『 계면구조에 따른 입자성장 및 치밀화 거동의 이해 』</h3>
-        <p>
-            소재는 고유한 결정구조를 갖듯이 온도와 환경조건에 따라 고유한 평형 입자모양(equilibrium crystal shape)을 갖는다.
-            평형 입자모양은 고상-액상, 고상-기상 계면에서는 뚜렷이 확인되나, 고상-고상 계면에서는 인접 grain과의 결정학적 방향에
-            따라 flat interface, hill-and-valley, rough interface 등으로 다양하게 관찰된다. 입계구조의 특징은 소재의 입자성장과
-            치밀화 거동에 큰 영향을 미치는 것으로 보고되고 있다. 특히, rough interface를 형성하는 소재에서는 정상입자성장이 주로
-            나타나고, flat interface를 형성하는 소재에서는 비정상입자성장이 주로 나타난다. 이러한 입자성장 거동의 차이는 입자성장을
-            위한 핵생성 구동력의 차이에서 비롯되는 것으로 제안되었고, 현재 많은 다양한 소재에서 나타나는 소결(입자성장, 치밀화) 현상을
-            잘 설명해 준다.
-        </p>
-        <p>● 계면 구조에 따른 핵생성 및 입자성장, 치밀화 양상의 이론적 이해</p>
-        <p>● 평형입계 모양 도출을 위한 전산 해석 모델 개발 및 시뮬레이션</p>
-    </section>
-
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoclave Water Level Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .header {
+            background-color: #47995a;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .panel {
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        #control-panel {
+            width: 250px;
+            background-color: #ffffff;
+            border-right: 1px solid #ddd;
+        }
+        #visualization-panel {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        #report-panel {
+            width: 300px;
+            background-color: #ffffff;
+            border-left: 1px solid #ddd;
+        }
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="number"], input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .vessel-lid {
+            width: 200px;
+            height: 10px;
+            position: relative;
+            background-color: #8e8e8e;
+            overflow: hidden;
+        }
+        .vessel-container {
+            width: 150px;
+            height: 400px;
+            border: 4px solid #444;
+            border-radius: 0px 0px 20px 20px;
+            position: relative;
+            background-color: #e9ecef;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to right, #007bff, #0056b3);
+            transition: height 0.1s ease-out;
+        }
+        .steam {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: #ffb6c1b5;
+            transition: height 0.1s ease-out;
+        }
+        .temp-slider-container {
+            width: 80%;
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .tick-labels {
+            position: relative;
+            width: 100%;
+            height: 25px;
+            margin-top: 5px;
+        }
+        .tick-labels span {
+            position: absolute;
+            top: -8px;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #666;
+            white-space: nowrap;
+        }
+        /* .tick-labels span::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            width: 1px;
+            height: 6px;
+            background-color: #ccc;
+        } */
+        #temp-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 0;
+            color: #333;
+            padding-bottom: 5px;
+        }
+        .report-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        .report-label {
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+        }
+        .report-value {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .unit {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: 4px;
+        }
+        .event-msg {
+            font-size: 0.9rem;
+            color: #d9534f;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Autoclave Water Level Visualization</h1>
+</div>
+
+<div class="main-container">
+    <div id="control-panel" class="panel">
+        <h2>Control Parameters</h2>
+        <div class="input-group">
+            <label for="vessel-h">Vessel Height [cm]</label>
+            <input type="number" id="vessel-h" value="173" step="1">
+        </div>
+        <div class="input-group">
+            <label for="initial-h">Initial Water Level [cm]</label>
+            <input type="number" id="initial-h" value="86" step="1">
+        </div>
+    </div>
+
+    <div id="visualization-panel" class="panel">
+        <div id="vessel-lid" class="vessel-lid">
+        </div>
+        <div id="vessel" class="vessel-container">
+            <div id="steam-layer" class="steam"></div>
+            <div id="water-layer" class="water"></div>
+        </div>
+        <div class="temp-slider-container">
+            <div id="temp-display">20 °C</div>
+            <input type="range" id="temp-slider" min="20" max="500" value="20" step="1" list="temp-markers">
+            <datalist id="temp-markers">
+                <option value="100"></option>
+                <option value="200"></option>
+                <option value="300"></option>
+                <option value="400"></option>
+                <option value="500"></option>
+            </datalist>
+            <div class="tick-labels">
+                <span style="left: 0%">20</span>
+                <span style="left: 16.67%">100</span>
+                <span style="left: 37.5%">200</span>
+                <span style="left: 58.33%">300</span>
+                <span style="left: 79.17%">400</span>
+                <span style="left: 100%">500</span>
+            </div>
+            <h3>System Temperature</h3>
+        </div>
+    </div>
+
+    <div id="report-panel" class="panel">
+        <h2>Report</h2>
+        <div class="report-item">
+            <div class="report-label">System Pressure</div>
+            <div id="res-pressure" class="report-value">0.00</div>
+            <span class="unit">atm</span>
+        </div>
+        <div class="report-item">
+            <div class="report-label">Density of Water</div>
+            <div id="res-rho-w" class="report-value">0.00</div>
+            <span class="unit">kg/m³</span>
+        </div>
+        <div class="report-item">
+            <div class="report-label">Density of Steam</div>
+            <div id="res-rho-s" class="report-value">0.00</div>
+            <span class="unit">kg/m³</span>
+        </div>
+        <div class="report-item">
+            <div class="report-label">Water Height</div>
+            <div id="res-h" class="report-value">0.00</div>
+            <span class="unit">cm</span>
+        </div>
+        <div id="event-box" class="event-msg"></div>
+    </div>
+</div>
+
+<script>
+    // --- Data and Constants ---
+    
+    // Helmholtz Coefficients (from helmholtz.csv)
+    // idx 1-56. Structure: [c, d, t, n, alpha, beta, gamma, epsilon]
+    // Note: JS arrays are 0-indexed, we'll use 1-indexed for clarity with the formula
+    const hA = [
+        null, // 0
+        {c: null, d: 1, t: -0.5, n: 0.12533547935523e-1, a: null, b: null, g: null, e: null}, // 1
+        {c: null, d: 1, t: 0.875, n: 7.8957634722828, a: null, b: null, g: null, e: null}, // 2
+        {c: null, d: 1, t: 1, n: -8.7803203303561, a: null, b: null, g: null, e: null}, // 3
+        {c: null, d: 2, t: 0.5, n: 0.31802509345418, a: null, b: null, g: null, e: null}, // 4
+        {c: null, d: 2, t: 0.75, n: -0.26145533859358, a: null, b: null, g: null, e: null}, // 5
+        {c: null, d: 3, t: 0.375, n: -0.78199751687981e-2, a: null, b: null, g: null, e: null}, // 6
+        {c: null, d: 4, t: 1, n: 0.88089493102134e-2, a: null, b: null, g: null, e: null}, // 7
+        {c: 1, d: 1, t: 4, n: -0.66856572307965, a: null, b: null, g: null, e: null}, // 8
+        {c: 1, d: 1, t: 6, n: 0.20433810950965, a: null, b: null, g: null, e: null}, // 9
+        {c: 1, d: 1, t: 12, n: -0.66212605039687e-4, a: null, b: null, g: null, e: null}, // 10
+        {c: 1, d: 2, t: 1, n: -0.19232721156002, a: null, b: null, g: null, e: null}, // 11
+        {c: 1, d: 2, t: 5, n: -0.25709043003438, a: null, b: null, g: null, e: null}, // 12
+        {c: 1, d: 3, t: 4, n: 0.16074868486251, a: null, b: null, g: null, e: null}, // 13
+        {c: 1, d: 4, t: 2, n: -0.40092828925807e-1, a: null, b: null, g: null, e: null}, // 14
+        {c: 1, d: 4, t: 13, n: 0.39343422603254e-6, a: null, b: null, g: null, e: null}, // 15
+        {c: 1, d: 5, t: 9, n: -0.75941377088144e-5, a: null, b: null, g: null, e: null}, // 16
+        {c: 1, d: 7, t: 3, n: 0.56250979351888e-3, a: null, b: null, g: null, e: null}, // 17
+        {c: 1, d: 9, t: 4, n: -0.15608652257135e-4, a: null, b: null, g: null, e: null}, // 18
+        {c: 1, d: 10, t: 11, n: 0.11537996422951e-8, a: null, b: null, g: null, e: null}, // 19
+        {c: 1, d: 11, t: 4, n: 0.36582165144204e-6, a: null, b: null, g: null, e: null}, // 20
+        {c: 1, d: 13, t: 13, n: -0.13251180074668e-11, a: null, b: null, g: null, e: null}, // 21
+        {c: 1, d: 15, t: 1, n: -0.62639586912454e-9, a: null, b: null, g: null, e: null}, // 22
+        {c: 2, d: 1, t: 7, n: -0.10793600908932, a: null, b: null, g: null, e: null}, // 23
+        {c: 2, d: 2, t: 1, n: 0.17611491008752e-1, a: null, b: null, g: null, e: null}, // 24
+        {c: 2, d: 2, t: 9, n: 0.22132295167546, a: null, b: null, g: null, e: null}, // 25
+        {c: 2, d: 2, t: 10, n: -0.40247669763528, a: null, b: null, g: null, e: null}, // 26
+        {c: 2, d: 3, t: 10, n: 0.58083399985759, a: null, b: null, g: null, e: null}, // 27
+        {c: 2, d: 4, t: 3, n: 0.49969146990806e-2, a: null, b: null, g: null, e: null}, // 28
+        {c: 2, d: 4, t: 7, n: -0.31358700712549e-1, a: null, b: null, g: null, e: null}, // 29
+        {c: 2, d: 4, t: 10, n: -0.74315929710341, a: null, b: null, g: null, e: null}, // 30
+        {c: 2, d: 5, t: 10, n: 0.47807329915480, a: null, b: null, g: null, e: null}, // 31
+        {c: 2, d: 6, t: 6, n: 0.20527940895948e-1, a: null, b: null, g: null, e: null}, // 32
+        {c: 2, d: 6, t: 10, n: -0.13636435110343, a: null, b: null, g: null, e: null}, // 33
+        {c: 2, d: 7, t: 10, n: 0.14180634400617e-1, a: null, b: null, g: null, e: null}, // 34
+        {c: 2, d: 9, t: 1, n: 0.83326504880713e-2, a: null, b: null, g: null, e: null}, // 35
+        {c: 2, d: 9, t: 2, n: -0.29052336009585e-1, a: null, b: null, g: null, e: null}, // 36
+        {c: 2, d: 9, t: 3, n: 0.38615085574206e-1, a: null, b: null, g: null, e: null}, // 37
+        {c: 2, d: 9, t: 4, n: -0.20393486513704e-1, a: null, b: null, g: null, e: null}, // 38
+        {c: 2, d: 9, t: 8, n: -0.16554050063734e-2, a: null, b: null, g: null, e: null}, // 39
+        {c: 2, d: 10, t: 6, n: 0.19955571979541e-2, a: null, b: null, g: null, e: null}, // 40
+        {c: 2, d: 10, t: 9, n: 0.15870308324157e-3, a: null, b: null, g: null, e: null}, // 41
+        {c: 2, d: 12, t: 8, n: -0.16388568342530e-4, a: null, b: null, g: null, e: null}, // 42
+        {c: 3, d: 3, t: 16, n: 0.43613615723811e-1, a: null, b: null, g: null, e: null}, // 43
+        {c: 3, d: 4, t: 22, n: 0.34994005463765e-1, a: null, b: null, g: null, e: null}, // 44
+        {c: 3, d: 4, t: 23, n: -0.76788197844621e-1, a: null, b: null, g: null, e: null}, // 45
+        {c: 3, d: 5, t: 23, n: 0.22446277332006e-1, a: null, b: null, g: null, e: null}, // 46
+        {c: 4, d: 14, t: 10, n: -0.62689710414685e-4, a: null, b: null, g: null, e: null}, // 47
+        {c: 6, d: 3, t: 50, n: -0.55711118565645e-9, a: null, b: null, g: null, e: null}, // 48
+        {c: 6, d: 6, t: 44, n: -0.19905718354408, a: null, b: null, g: null, e: null}, // 49
+        {c: 6, d: 6, t: 46, n: 0.31777497330738, a: null, b: null, g: null, e: null}, // 50
+        {c: 6, d: 6, t: 50, n: -0.11841182425981, a: null, b: null, g: null, e: null}, // 51
+        {c: null, d: 3, t: 0, n: -0.31306260323435e2, a: 20, b: 150, g: 1.21, e: 1}, // 52
+        {c: null, d: 3, t: 1, n: 0.31546140237781e2, a: 20, b: 150, g: 1.21, e: 1}, // 53
+        {c: null, d: 3, t: 4, n: -0.25213154341695e4, a: 20, b: 250, g: 1.25, e: 1}, // 54
+        {c: 3.5, d: 0.85, t: 0.2, n: -0.14874640856724, a: 28, b: 700, g: 0.32, e: 0.3}, // 55
+        {c: 3.5, d: 0.95, t: 0.2, n: 0.31806110878444, a: 32, b: 800, g: 0.32, e: 0.3}  // 56
+    ];
+
+    const T_c = 647.096;
+    const rho_c = 322.0;
+    const R_water = 461.51805;
+    const rho0 = 0.9982
+
+    // Equilibrium Table (T, P, rho_w, rho_s) - abbreviated for brevity or include full
+    // I'll include the full table as requested.
+    const equiTableRaw = `
+20,0.02309,0.99816,0.000017312
+21,0.02456,0.99795,0.000018353
+22,0.02611,0.99772,0.000019447
+23,0.02774,0.99749,0.000020597
+24,0.02947,0.99725,0.000021805
+25,0.03128,0.99700,0.000023074
+26,0.03320,0.99674,0.000024405
+27,0.03521,0.99647,0.000025803
+28,0.03733,0.99619,0.000027268
+29,0.03957,0.99590,0.000028805
+30,0.04191,0.99560,0.000030415
+31,0.04438,0.99530,0.000032102
+32,0.04697,0.99498,0.000033868
+33,0.04969,0.99466,0.000035717
+34,0.05255,0.99433,0.000037651
+35,0.05555,0.99399,0.000039675
+36,0.05870,0.99364,0.000041790
+37,0.06200,0.99328,0.000044002
+38,0.06546,0.99292,0.000046312
+39,0.06909,0.99255,0.000048725
+40,0.07288,0.99217,0.000051244
+41,0.07686,0.99178,0.000053873
+42,0.08102,0.99139,0.000056616
+43,0.08538,0.99099,0.000059477
+44,0.08993,0.99058,0.000062459
+45,0.09470,0.99017,0.000065568
+46,0.09968,0.98975,0.000068806
+47,0.10488,0.98932,0.000072179
+48,0.11031,0.98888,0.000075691
+49,0.11598,0.98844,0.000079347
+50,0.12191,0.98799,0.000083151
+51,0.12809,0.98754,0.000087107
+52,0.13453,0.98707,0.000091221
+53,0.14125,0.98661,0.000095498
+54,0.14826,0.98613,0.000099942
+55,0.15556,0.98565,0.000104560
+56,0.16317,0.98516,0.000109355
+57,0.17109,0.98467,0.000114334
+58,0.17934,0.98417,0.000119502
+59,0.18793,0.98367,0.000124865
+60,0.19686,0.98315,0.000130429
+61,0.20615,0.98264,0.000136198
+62,0.21582,0.98211,0.000142180
+63,0.22586,0.98159,0.000148380
+64,0.23630,0.98105,0.000154804
+65,0.24715,0.98051,0.000161460
+66,0.25841,0.97997,0.000168352
+67,0.27011,0.97941,0.000175489
+68,0.28226,0.97886,0.000182876
+69,0.29486,0.97830,0.000190520
+70,0.30793,0.97773,0.000198428
+71,0.32150,0.97715,0.000206608
+72,0.33556,0.97658,0.000215066
+73,0.35014,0.97599,0.000223810
+74,0.36525,0.97540,0.000232847
+75,0.38091,0.97481,0.000242185
+76,0.39713,0.97421,0.000251831
+77,0.41393,0.97361,0.000261793
+78,0.43132,0.97300,0.000272079
+79,0.44932,0.97238,0.000282697
+80,0.46795,0.97176,0.000293656
+81,0.48722,0.97114,0.000304963
+82,0.50715,0.97051,0.000316628
+83,0.52776,0.96987,0.000328658
+84,0.54907,0.96923,0.000341063
+85,0.57110,0.96859,0.000353851
+86,0.59386,0.96794,0.000367031
+87,0.61737,0.96728,0.000380613
+88,0.64166,0.96662,0.000394605
+89,0.66674,0.96596,0.000409017
+90,0.69263,0.96529,0.000423859
+91,0.71936,0.96462,0.000439140
+92,0.74694,0.96394,0.000454870
+93,0.77539,0.96326,0.000471059
+94,0.80474,0.96257,0.000487717
+95,0.83501,0.96188,0.000504855
+96,0.86621,0.96118,0.000522482
+97,0.89838,0.96048,0.000540609
+98,0.93154,0.95977,0.000559247
+99,0.96570,0.95906,0.000578407
+100,1.00089,0.95835,0.000598099
+101,1.03714,0.95763,0.000618335
+102,1.07447,0.95690,0.000639126
+103,1.11291,0.95617,0.000660483
+104,1.15247,0.95544,0.000682418
+105,1.19319,0.95470,0.000704942
+106,1.23508,0.95396,0.000728067
+107,1.27819,0.95321,0.000751806
+108,1.32252,0.95246,0.000776170
+109,1.36811,0.95171,0.000801171
+110,1.41499,0.95095,0.000826823
+111,1.46318,0.95018,0.000853136
+112,1.51271,0.94941,0.000880126
+113,1.56362,0.94864,0.000907803
+114,1.61591,0.94786,0.000936181
+115,1.66964,0.94708,0.000965274
+116,1.72482,0.94630,0.000995095
+117,1.78148,0.94551,0.001025656
+118,1.83966,0.94471,0.001056972
+119,1.89939,0.94391,0.001089057
+120,1.96069,0.94311,0.001121925
+121,2.02360,0.94230,0.001155589
+122,2.08814,0.94149,0.001190064
+123,2.15435,0.94067,0.001225364
+124,2.22227,0.93985,0.001261504
+125,2.29192,0.93903,0.001298500
+126,2.36334,0.93820,0.001336364
+127,2.43656,0.93736,0.001375114
+128,2.51161,0.93652,0.001414764
+129,2.58853,0.93568,0.001455329
+130,2.66735,0.93484,0.001496826
+131,2.74811,0.93399,0.001539269
+132,2.83084,0.93313,0.001582675
+133,2.91557,0.93227,0.001627060
+134,3.00235,0.93141,0.001672441
+135,3.09121,0.93054,0.001718833
+136,3.18218,0.92967,0.001766254
+137,3.27531,0.92879,0.001814720
+138,3.37063,0.92791,0.001864249
+139,3.46817,0.92703,0.001914856
+140,3.56797,0.92614,0.001966561
+141,3.67008,0.92524,0.002019380
+142,3.77454,0.92435,0.002073332
+143,3.88137,0.92344,0.002128433
+144,3.99062,0.92254,0.002184703
+145,4.10233,0.92163,0.002242160
+146,4.21655,0.92071,0.002300822
+147,4.33330,0.91979,0.002360708
+148,4.45263,0.91887,0.002421836
+149,4.57459,0.91794,0.002484227
+150,4.69921,0.91701,0.002547898
+151,4.82654,0.91607,0.002612871
+152,4.95661,0.91513,0.002679164
+153,5.08947,0.91419,0.002746798
+154,5.22517,0.91324,0.002815792
+155,5.36375,0.91228,0.002886167
+156,5.50524,0.91133,0.002957945
+157,5.64970,0.91036,0.003031144
+158,5.79717,0.90940,0.003105787
+159,5.94769,0.90843,0.003181895
+160,6.10131,0.90745,0.003259489
+161,6.25807,0.90647,0.003338592
+162,6.41803,0.90549,0.003419224
+163,6.58121,0.90450,0.003501408
+164,6.74768,0.90351,0.003585167
+165,6.91748,0.90251,0.003670524
+166,7.09066,0.90151,0.003757500
+167,7.26725,0.90050,0.003846120
+168,7.44732,0.89949,0.003936407
+169,7.63091,0.89847,0.004028385
+170,7.81807,0.89745,0.004122077
+171,8.00884,0.89643,0.004217508
+172,8.20328,0.89540,0.004314702
+173,8.40143,0.89437,0.004413684
+174,8.60335,0.89333,0.004514480
+175,8.80908,0.89228,0.004617113
+176,9.01868,0.89124,0.004721611
+177,9.23219,0.89019,0.004827999
+178,9.44967,0.88913,0.004936303
+179,9.67117,0.88807,0.005046550
+180,9.89675,0.88700,0.005158766
+181,10.12644,0.88593,0.005272979
+182,10.36031,0.88486,0.005389216
+183,10.59841,0.88378,0.005507505
+184,10.84079,0.88269,0.005627874
+185,11.08750,0.88160,0.005750352
+186,11.33860,0.88051,0.005874967
+187,11.59415,0.87941,0.006001748
+188,11.85419,0.87830,0.006130725
+189,12.11878,0.87720,0.006261928
+190,12.38798,0.87608,0.006395386
+191,12.66184,0.87496,0.006531132
+192,12.94042,0.87384,0.006669194
+193,13.22378,0.87271,0.006809606
+194,13.51196,0.87158,0.006952398
+195,13.80503,0.87044,0.007097603
+196,14.10305,0.86930,0.007245253
+197,14.40606,0.86815,0.007395381
+198,14.71414,0.86699,0.007548021
+199,15.02733,0.86583,0.007703207
+200,15.34570,0.86467,0.007860972
+201,15.66929,0.86350,0.008021353
+202,15.99819,0.86233,0.008184382
+203,16.33243,0.86115,0.008350098
+204,16.67209,0.85996,0.008518535
+205,17.01721,0.85877,0.008689731
+206,17.36787,0.85758,0.008863722
+207,17.72412,0.85637,0.009040546
+208,18.08602,0.85517,0.009220242
+209,18.45363,0.85396,0.009402848
+210,18.82702,0.85274,0.009588404
+211,19.20624,0.85152,0.009776949
+212,19.59136,0.85029,0.009968525
+213,19.98245,0.84905,0.010163171
+214,20.37955,0.84781,0.010360930
+215,20.78275,0.84657,0.010561843
+216,21.19209,0.84532,0.010765955
+217,21.60764,0.84406,0.010973308
+218,22.02947,0.84280,0.011183947
+219,22.45765,0.84153,0.011397916
+220,22.89223,0.84025,0.011615261
+221,23.33328,0.83897,0.011836029
+222,23.78086,0.83768,0.012060267
+223,24.23505,0.83639,0.012288022
+224,24.69590,0.83509,0.012519343
+225,25.16348,0.83379,0.012754279
+226,25.63787,0.83248,0.012992880
+227,26.11912,0.83116,0.013235199
+228,26.60730,0.82984,0.013481285
+229,27.10248,0.82850,0.013731193
+230,27.60473,0.82717,0.013984975
+231,28.11412,0.82583,0.014242686
+232,28.63071,0.82448,0.014504382
+233,29.15458,0.82312,0.014770119
+234,29.68578,0.82176,0.015039955
+235,30.22440,0.82039,0.015313948
+236,30.77050,0.81901,0.015592157
+237,31.32415,0.81763,0.015874644
+238,31.88542,0.81624,0.016161469
+239,32.45438,0.81484,0.016452696
+240,33.03111,0.81343,0.016748389
+241,33.61566,0.81202,0.017048613
+242,34.20813,0.81060,0.017353434
+243,34.80857,0.80918,0.017662921
+244,35.41706,0.80774,0.017977141
+245,36.03368,0.80630,0.018296166
+246,36.65849,0.80486,0.018620067
+247,37.29157,0.80340,0.018948918
+248,37.93299,0.80194,0.019282793
+249,38.58283,0.80046,0.019621769
+250,39.24116,0.79899,0.019965922
+251,39.90806,0.79750,0.020315333
+252,40.58360,0.79600,0.020670083
+253,41.26785,0.79450,0.021030254
+254,41.96090,0.79299,0.021395931
+255,42.66282,0.79147,0.021767200
+256,43.37368,0.78994,0.022144149
+257,44.09357,0.78840,0.022526868
+258,44.82256,0.78686,0.022915450
+259,45.56073,0.78530,0.023309989
+260,46.30815,0.78374,0.023710581
+261,47.06491,0.78217,0.024117325
+262,47.83109,0.78059,0.024530320
+263,48.60676,0.77900,0.024949672
+264,49.39201,0.77740,0.025375484
+265,50.18691,0.77579,0.025807866
+266,50.99154,0.77417,0.026246928
+267,51.80600,0.77254,0.026692782
+268,52.63035,0.77091,0.027145547
+269,53.46469,0.76926,0.027605339
+270,54.30909,0.76760,0.028072282
+271,55.16364,0.76593,0.028546501
+272,56.02842,0.76425,0.029028123
+273,56.90351,0.76257,0.029517281
+274,57.78901,0.76087,0.030014109
+275,58.68499,0.75916,0.030518747
+276,59.59154,0.75744,0.031031335
+277,60.50876,0.75570,0.031552022
+278,61.43671,0.75396,0.032080955
+279,62.37550,0.75220,0.032618291
+280,63.32521,0.75044,0.033164187
+281,64.28592,0.74866,0.033718807
+282,65.25774,0.74687,0.034282318
+283,66.24074,0.74507,0.034854893
+284,67.23502,0.74325,0.035436709
+285,68.24067,0.74142,0.036027948
+286,69.25778,0.73958,0.036628801
+287,70.28644,0.73773,0.037239459
+288,71.32675,0.73586,0.037860123
+289,72.37880,0.73398,0.038490999
+290,73.44268,0.73209,0.039132299
+291,74.51849,0.73018,0.039784243
+292,75.60633,0.72826,0.040447056
+293,76.70628,0.72632,0.041120972
+294,77.81846,0.72437,0.041806233
+295,78.94295,0.72240,0.042503087
+296,80.07986,0.72042,0.043211792
+297,81.22928,0.71842,0.043932614
+298,82.39133,0.71641,0.044665830
+299,83.56608,0.71438,0.045411723
+300,84.75366,0.71233,0.046170589
+301,85.95417,0.71027,0.046942735
+302,87.16770,0.70818,0.047728476
+303,88.39436,0.70609,0.048528143
+304,89.63427,0.70397,0.049342076
+305,90.88752,0.70183,0.050170629
+306,92.15423,0.69968,0.051014169
+307,93.43450,0.69751,0.051873080
+308,94.72845,0.69531,0.052747757
+309,96.03618,0.69310,0.053638615
+310,97.35782,0.69087,0.054546083
+311,98.69347,0.68861,0.055470610
+312,100.04325,0.68633,0.056412662
+313,101.40728,0.68403,0.057372726
+314,102.78568,0.68171,0.058351311
+315,104.17856,0.67937,0.059348947
+316,105.58605,0.67700,0.060366190
+317,107.00827,0.67460,0.061403618
+318,108.44534,0.67218,0.062461840
+319,109.89739,0.66974,0.063541491
+320,111.36454,0.66726,0.064643237
+321,112.84694,0.66476,0.065767780
+322,114.34470,0.66224,0.066915853
+323,115.85796,0.65968,0.068088228
+324,117.38685,0.65709,0.069285719
+325,118.93152,0.65447,0.070509181
+326,120.49209,0.65182,0.071759517
+327,122.06872,0.64914,0.073037678
+328,123.66155,0.64642,0.074344672
+329,125.27071,0.64366,0.075681563
+330,126.89637,0.64087,0.077049479
+331,128.53866,0.63804,0.078449616
+332,130.19775,0.63518,0.079883243
+333,131.87379,0.63227,0.081351712
+334,133.56694,0.62932,0.082856461
+335,135.27735,0.62632,0.084399025
+336,137.00521,0.62328,0.085981043
+337,138.75067,0.62019,0.087604271
+338,140.51391,0.61705,0.089270589
+339,142.29510,0.61386,0.090982020
+340,144.09443,0.61061,0.092740738
+341,145.91208,0.60731,0.094549091
+342,147.74823,0.60395,0.096409616
+343,149.60309,0.60052,0.098325062
+344,151.47684,0.59703,0.100298418
+345,153.36970,0.59347,0.102332937
+346,155.28186,0.58984,0.104432177
+347,157.21356,0.58612,0.106600034
+348,159.16500,0.58233,0.108840794
+349,161.13642,0.57845,0.111159186
+350,163.12806,0.57447,0.113560448
+351,165.14014,0.57040,0.116050409
+352,167.17294,0.56621,0.118635579
+353,169.22671,0.56192,0.121323271
+354,171.30172,0.55750,0.124121739
+355,173.39826,0.55295,0.127040354
+356,175.51662,0.54825,0.130089828
+357,177.65711,0.54339,0.133282490
+358,179.82007,0.53837,0.136632644
+359,182.00582,0.53315,0.140157031
+360,184.21473,0.52771,0.143875447
+361,186.44720,0.52204,0.147811559
+362,188.70362,0.51611,0.151994039
+363,190.98445,0.50987,0.156458147
+364,193.29017,0.50327,0.161248008
+365,195.62129,0.49627,0.166420015
+366,197.97841,0.48877,0.172048067
+367,200.36217,0.48069,0.178232058
+368,202.77332,0.47187,0.185112404
+369,205.21274,0.46209,0.192896817
+370,207.68148,0.45101,0.201914691
+371,210.18092,0.43805,0.212743893
+372,212.71293,0.42199,0.226576647
+373,215.28059,0.39938,0.246789024
+    `;
+
+    const equiTable = equiTableRaw.trim().split('\n').map(line => {
+        const parts = line.split(',').map(Number);
+        return {T: parts[0], P: parts[1], rho_w: parts[2], rho_s: parts[3]};
+    });
+
+    // --- Core Physics Logic ---
+
+    function getEquiData(T) {
+        // Interpolate from equiTable
+        if (T < equiTable[0].T) return equiTable[0];
+        if (T > equiTable[equiTable.length - 1].T) return equiTable[equiTable.length - 1];
+        
+        for (let i = 0; i < equiTable.length - 1; i++) {
+            if (T >= equiTable[i].T && T <= equiTable[i+1].T) {
+                const t0 = equiTable[i].T;
+                const t1 = equiTable[i+1].T;
+                const ratio = (T - t0) / (t1 - t0);
+                return {
+                    P: equiTable[i].P + ratio * (equiTable[i+1].P - equiTable[i].P),
+                    rho_w: equiTable[i].rho_w + ratio * (equiTable[i+1].rho_w - equiTable[i].rho_w),
+                    rho_s: equiTable[i].rho_s + ratio * (equiTable[i+1].rho_s - equiTable[i].rho_s)
+                };
+            }
+        }
+    }
+
+    function getPressurePa(rho, T_C) {
+        const T_K = T_C + 273.15;
+        const dt = rho / rho_c;
+        const tt = T_c / T_K;
+        let sum = 0.0;
+
+        // Terms 1-7
+        for (let i = 1; i <= 7; i++) {
+            const A = hA[i];
+            sum += A.n * A.d * Math.pow(dt, A.d - 1) * Math.pow(tt, A.t);
+        }
+
+        // Terms 8-51
+        for (let i = 8; i <= 51; i++) {
+            const A = hA[i];
+            sum += A.n * Math.exp(-Math.pow(dt, A.c)) * Math.pow(dt, A.d - 1) * Math.pow(tt, A.t) * (A.d - A.c * Math.pow(dt, A.c));
+        }
+
+        // Terms 52-54
+        for (let i = 52; i <= 54; i++) {
+            const A = hA[i];
+            sum += A.n * Math.pow(dt, A.d) * Math.pow(tt, A.t) * Math.exp(-A.a * (dt - A.e) * (dt - A.e) - A.b * (tt - A.g) * (tt - A.g)) * (A.d / dt - 2.0 * A.a * (dt - A.e));
+        }
+
+        // Terms 55-56
+        for (let i = 55; i <= 56; i++) {
+            const A = hA[i];
+            const ddt = (dt - 1.0) * (dt - 1.0);
+            const Theta = (1.0 - tt) + A.g * Math.pow(ddt, 0.5 / A.e);
+            const Delta = Theta * Theta + A.t * Math.pow(ddt, A.c);
+            const Phi = Math.exp(-A.a * (dt - 1.0) * (dt - 1.0) - A.b * (tt - 1.0) * (tt - 1.0));
+            const dPhi = -2.0 * A.a * (dt - 1.0) * Phi;
+            const dDelta = A.d * Math.pow(Delta, A.d - 1) * (dt - 1.0) * 2.0 * (A.g * Theta / A.e * Math.pow(ddt, 0.5 / A.e - 1) + A.t * A.c * Math.pow(ddt, A.c - 1));
+            sum += A.n * (Math.pow(Delta, A.d) * (Phi + dt * dPhi) + dDelta * dt * Phi);
+        }
+
+        const pressure = rho * R_water * T_K * (1.0 + dt * sum);
+        return pressure;
+    }
+
+    // --- UI Update logic ---
+
+    const vHInput = document.getElementById('vessel-h');
+    const h0Input = document.getElementById('initial-h');
+    const tempSlider = document.getElementById('temp-slider');
+    const tempDisplay = document.getElementById('temp-display');
+    const waterLayer = document.getElementById('water-layer');
+    const steamLayer = document.getElementById('steam-layer');
+    const eventBox = document.getElementById('event-box');
+
+    const resPressure = document.getElementById('res-pressure');
+    const resRhoW = document.getElementById('res-rho-w');
+    const resRhoS = document.getElementById('res-rho-s');
+    const resH = document.getElementById('res-h');
+
+    function update() {
+        const H = parseFloat(vHInput.value);
+        const h0 = parseFloat(h0Input.value);
+        const T = parseFloat(tempSlider.value);
+
+        tempDisplay.innerText = `${T} °C`;
+
+        const totalMass = rho0 * h0; // g/cm^2 (normalized by area)
+        const rho_f = totalMass / H; // g/cm^3
+
+        let pressure, rhoW_kg, rhoS_kg, height;
+        let event = "";
+
+        if (T < 374) {
+            const equi = getEquiData(T);
+            rhoW_kg = equi.rho_w * 1000;
+            rhoS_kg = equi.rho_s * 1000;
+            
+            // h = (rho0*h0 - rho_s*H) / (rho_w - rho_s)
+            height = (rho0 * h0 - equi.rho_s * H) / (equi.rho_w - equi.rho_s);
+
+            if (height >= H) {
+                event = "Event: Full Water";
+                height = H;
+                rhoW_kg = rho_f * 1000;
+                rhoS_kg = rho_f * 1000;
+                pressure = getPressurePa(rhoW_kg, T) / 101325;
+            } else if (height <= 0) {
+                event = "Event: Full Steam";
+                height = 0;
+                rhoW_kg = NaN;
+                rhoS_kg = rho_f * 1000;
+                pressure = getPressurePa(rhoS_kg, T) / 101325;
+            } else {
+                pressure = equi.P;
+            }
+        } else {
+            // Supercritical / Gas phase
+            event = "Event: Supercritical / Gas Phase";
+            height = 0;
+            rhoW_kg = NaN;
+            rhoS_kg = rho_f * 1000;
+            pressure = getPressurePa(rhoS_kg, T) / 101325;
+        }
+
+        // Update UI
+        const waterHeightPercent = (height / H) * 100;
+        waterLayer.style.height = `${waterHeightPercent}%`;
+        steamLayer.style.height = `${100 - waterHeightPercent}%`;
+
+        resPressure.innerText = pressure.toFixed(2);
+        resRhoW.innerText = isNaN(rhoW_kg) ? "N/A" : rhoW_kg.toFixed(2);
+        resRhoS.innerText = rhoS_kg.toFixed(2);
+        resH.innerText = height.toFixed(2);
+        eventBox.innerText = event;
+    }
+
+    [vHInput, h0Input, tempSlider].forEach(el => {
+        el.addEventListener('input', update);
+    });
+
+    // Initial update
+    update();
+
+</script>
+
+</body>
+</html>

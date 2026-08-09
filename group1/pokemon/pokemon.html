@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Search</title>
+    <meta name="description"
+        content="Search for a Pokémon to see its English, Japanese, and Korean names along with its image.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Pokémon Search</h1>
+            <p class="subtitle">Discover Pokémon names across languages</p>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Enter Pokémon name or ID (e.g. pikachu)"
+                    autocomplete="off">
+                <button id="searchBtn" aria-label="Search Pokémon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Searching PokéDex...</p>
+            </div>
+
+            <div id="errorMessage" class="error hidden">
+                Pokémon not found. Please check the spelling and try again.
+            </div>
+
+            <div id="resultCard" class="card hidden">
+                <div class="card-image-container">
+                    <img id="pokemonImage" src="" alt="Pokemon" />
+                </div>
+                <div class="card-content">
+                    <div class="id-badge">
+                        <span id="symbolG" class="symbol hidden">G</span>
+                        <span id="symbolM" class="symbol hidden">M</span>
+                        <span id="pokemonId">#000</span>
+                    </div>
+                    <div class="names-grid">
+                        <div class="name-item">
+                            <span class="language-label">English</span>
+                            <h2 id="nameEn" class="pokemon-name"></h2>
+                        </div>
+                        <div class="name-item">
+                            <span class="language-label">Japanese (Romaji)</span>
+                            <h2 id="nameJa" class="pokemon-name"></h2>
+                        </div>
+                        <div class="name-item">
+                            <span class="language-label">Korean</span>
+                            <h2 id="nameKo" class="pokemon-name"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
