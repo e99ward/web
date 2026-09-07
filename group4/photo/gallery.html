@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Style Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">GALLERY</div>
+  </header>
+
+  <!-- Category Tabs -->
+  <div class="category-tabs">
+    <button class="category-btn active" data-category="A">Category A</button>
+    <button class="category-btn" data-category="B">Category B</button>
+    <button class="category-btn" data-category="C">Category C</button>
+  </div>
+
+  <p>&nbsp;</p>
+
+  <!-- Carousel Gallery -->
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <div class="flexcontainer" id="carousel">
+
+        <!-- ── Category A ── -->
+        <div class="item" data-category="A" data-title="Image A-1"
+          data-desc="This is a detailed description for Image A-1. You can copy this text using the button below.">
+          <img
+            src="https://occ-0-1567-1123.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABRvngexxF8H1-OzRWFSj6ddD-aB93tTBP9kMNz3cIVfuIfLEP1E_0saiNAwOtrM6xSOXvoiSCMsihWSkW0dq808-R7_lBnr6WHbjkKBX6I3sD0uCcS8kSPbRjEDdG8CeeVXEAEV6spQ.webp"
+            alt="Image A-1" />
+        </div>
+        <div class="item" data-category="A" data-title="Image A-2"
+          data-desc="This is a detailed description for Image A-2. Feel free to copy and share this description anywhere you like.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABZEK-7pZ1H5FD4cTyUb9qB_KeyJGz5p-kfPhCFv4GU_3mbdm8Xfsy4IBchlG9PFNdGff8cBNPaeMra72VFnot41nt0y3e8RLgaVwwh3UvyM2H2_MkmadWbQUeGuf811K7-cxJJh7gA.jpg"
+            alt="Image A-2" />
+        </div>
+        <div class="item" data-category="A" data-title="Image A-3"
+          data-desc="Description for Image A-3. This image belongs to Category A and features unique visual content.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABTOj1-116yVcgKWMU2dI3GFR4x0fSkiGsqtLLeLUxRR7STaksjAqBTrYlTfrB8nIGnGvXksi0ewXAhVGg6-pLxpFOIfcpjK-pf8D5xehFZo5a6vJbo4L0AGbrzglbyUoq255QBJgRQ.jpg"
+            alt="Image A-3" />
+        </div>
+        <div class="item" data-category="A" data-title="Image A-4"
+          data-desc="Description for Image A-4. A captivating scene that showcases the essence of Category A.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABRr4YxdaABuAuH_3FmSQZn7BCvLp-UUPsXE9MiYpvFP3CSUHV2zOew5oVqKqqdaOd3tbFVS0Uf67uIs7_eZydlCghg4nK0nMatRpPImABwTOhnNzCLCxdKrua7pPIcPCZqBYTeAO5g.jpg"
+            alt="Image A-4" />
+        </div>
+
+        <!-- ── Category B ── -->
+        <div class="item" data-category="B" data-title="Image B-1"
+          data-desc="Description for Image B-1. This belongs to Category B and depicts an incredible visual narrative.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABQCoK53qihwVPLRxPEDX98nyYpGbxgi5cc0ZOM4iHQu7KQvtgNyaNM5PsgI0vy5g3rLPZdjGCFr1EggrCPXpL77p2H08jV0tNEmIfs_e8KUfvBJ6Ay5nM4UM1dl-58xA6t1swmautOM.webp"
+            alt="Image B-1" />
+        </div>
+        <div class="item" data-category="B" data-title="Image B-2"
+          data-desc="Description for Image B-2. Category B content with rich visual storytelling and detail.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABdYtAqj8CyaJTWq5taD8Ro_UgwH3nne9QpFGVps-2J3IG-leqrfqXFii4jzZn48nPYTkrlwKQEV0R7_cEKlYBPRzdKqNODc-Oz26IL3LlLgFboXibIWXwxzeYxzuqn0I9TpARjeByw.jpg"
+            alt="Image B-2" />
+        </div>
+        <div class="item" data-category="B" data-title="Image B-3"
+          data-desc="Description for Image B-3. An expressive shot representing the spirit of Category B.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABVopDZ5Fy9_fk_HO5WxHTXKKjKhtWFupbSjuvPwfLK_vytzon4EwRUdGgYJ34JwPxOTK_NkV3aXfkULMB0Dcct-FyfqzH-X44VXuRMp4QeBHlvKwWeZFpZlGdItPzmmg4scmwhG7SQ.jpg"
+            alt="Image B-3" />
+        </div>
+        <div class="item" data-category="B" data-title="Image B-4"
+          data-desc="Description for Image B-4. Category B's fourth entry with compelling imagery.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABTyWK1MKaw8GcObtz47R2Tj7wkLJ7qQu9tk6TVpcoyxpzD4B-zZ569bQ5vGrREBL-MWFkGilXUwy7tCDaj2XOGkUB4RsbbFAmp9NgSr6lygMpUGNHSlyfrFbUORsRkrxSIoh_ggOvg.jpg"
+            alt="Image B-4" />
+        </div>
+
+        <!-- ── Category C ── -->
+        <div class="item" data-category="C" data-title="Image C-1"
+          data-desc="Description for Image C-1. This is one of the standout images in Category C.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/412e4119fb212e3ca9f1add558e2e7fed42f8fb4/AAAABbcCX42tsqGbBvO2y9CQv5-7QvYbCfoHtXsuc6NPCtZaKa4l4fBX3XWvUwG9F2A3CTsNpHVmulxBbdXKwK8Q6xGjejd9FoadGkZ7CnGrSl601TOQjzSHJ23NuIPC8j0QMGORL4uRIA.jpg"
+            alt="Image C-1" />
+        </div>
+        <div class="item" data-category="C" data-title="Image C-2"
+          data-desc="Description for Image C-2. A stunning Category C image with rich visual depth.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABd3IBDpxbRcHXvRMFCZeKa2aHLU1P4SJtrACMS9om3yhLjqPlvNlmR_fypPxjtbsbnKaC4JZhPSpDG4r_kdxSHHAltWguMcCB-1Y1OShr2zWfUv7Whf_39fNH5ZJ3_0gxQrs0akmQjQz44_LT7jXH5LMZ7iMBAzac5IEj4m7Fn_5OWEGYnVsDsKG-QTommDooULMDF9bEw.jpg"
+            alt="Image C-2" />
+        </div>
+        <div class="item" data-category="C" data-title="Image C-3"
+          data-desc="Description for Image C-3. Category C showcases thought-provoking and evocative imagery.">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABXSd7bhDddcwkq9XpksoQFCHVx29Sxl_h4hb2n3F2GIt32a4XWcOnctQfgnT5qdolv8UML6_xNB5CJ89h56wueb13mYmEBr0sx5e9iLPdtVcOQAOmKXKWHHXwFvJuCUwuNnL3s8eAQwqLXPVMHMEsujM684rUGrZNF2btN2GRy5-RyEslsxZO93V2Q_H2bWs8A8oayt1h5M.webp"
+            alt="Image C-3" />
+        </div>
+        <div class="item" data-category="C" data-title="Image C-4"
+          data-desc="Description for Image C-4. The fourth image of Category C — bold, vivid, and memorable.slender waist, and naturally balanced hips and legs.[FACE] She has a delicate oval face, almond-shaped dark brown eyes, naturally straight nose, slender nose bridge, small and round chin, softly defined eyebrows, pale lips, natural light makeup. [HAIR] She has long straight black hair fall to below her chest, wispy bangs, few loose strands naturally framing her face.[OUTFIT] She is wearing a very pale bluish-white long-sleeved shirt having a collar, sleeves rolled up to near elbows, a thin black tie hangs loosely and long, a black high-waisted pleated miniskirt, and black glossy pointed high-heeled pumps.[POSE BODY POSITION] She is standing, relaxed and natural posture. Her both hands placed at each side of her waist. The pose should feel physically plausible and anatomically natural.[EXPRESSION GAZE] She has a confident expression. Her gaze is directed toward the camera.[ENVIRONMENT BACKGROUND] The scene takes place in an urban park. In the background there is a sports filed.[LIGHTING] Soft natural daylight, Natural shadows, realistic highlights, subtle reflections.[CAMERA COMPOSITION] Portrait, full body shot. Eye-level angle. 3:4 portrait. The subject is positioned center. Realistic depth of field and natural perspective.[DETAIL ">
+          <img
+            src="https://occ-0-243-299.1.nflxso.net/dnm/api/v5/rendition/a76057bcfd003711a76fb3985b1f2cf74beee3b8/AAAABbXWODpAWqVXcmmjMA7K-2mPkQpvwCLfSdeyhVXzR8A3MSpdSEnnjf4HEJJTYC-TnktU6njTUGAxmzWEYCaJbk4v_ZeL-7QGzmkvYBjg_N-evr2XmcX-Fanoyvu_nimFP4iigPe4O3Vr_WcgplhwkDrJwPUJa84wRLrNAx3TufN5V7cWRP4indqu5HQahvgFEqfL9zjp4g.jpg"
+            alt="Image C-4" />
+        </div>
+
+      </div><!-- end flexcontainer -->
+
+      <div id="carouselLeft" class="button-overlay left">&#9664;</div>
+      <div id="carouselRight" class="button-overlay right">&#9654;</div>
+    </div>
+  </section>
+
+  <!-- Description Modal -->
+  <div class="modal-backdrop" id="descModal">
+    <div class="modal-card" id="modalCard">
+      <button class="modal-close" id="modalClose" title="Close">&times;</button>
+      <img class="modal-img" id="modalImg" src="" alt="" />
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <button class="copy-btn" id="copyBtn">&#128203; Copy Description</button>
+    </div>
+  </div>
+
+  <script src="gallery.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+/* ──────────────── Reset & Base ──────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f0f0f;
+  color: #e5e5e5;
+  min-height: 100vh;
+}
+
+/* ──────────────── Header ──────────────── */
+header {
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e50914;
+  letter-spacing: -1px;
+}
+
+/* ──────────────── Category Tabs ──────────────── */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.category-btn {
+  background: transparent;
+  color: #aaa;
+  border: 1.5px solid #555;
+  padding: 0.45rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.category-btn:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.category-btn.active {
+  background: #e50914;
+  color: #fff;
+  border-color: #e50914;
+}
+
+/* ──────────────── Gallery / Carousel ──────────────── */
+.gallery-section {
+  padding: 0 3rem;
+  margin-bottom: 4rem;
+}
+
+.gallery-container {
+  position: relative;
+}
+
+.flexcontainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: hidden;
+  /* hide scrollbar; arrow buttons scroll */
+  scroll-behavior: smooth;
+}
+
+.item {
+  flex: 0 0 200px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: flex-basis 0.3s ease-in-out;
+}
+
+.item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  transition: box-shadow 0.3s ease;
+}
+
+.item:hover {
+  /* Expanding the flex item moves its neighbours instead of overlapping them. */
+  flex-basis: 356px;
+  overflow: visible;
+  z-index: 2;
+}
+
+.item:hover img {
+  /* 356 × 200 matches a 16:9 image, so the full image remains visible. */
+  object-fit: contain;
+  background: #000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+/* Arrow buttons */
+.button-overlay {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 120px;
+  width: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.button-overlay:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.left {
+  left: -50px;
+  border-radius: 0 4px 4px 0;
+}
+
+.right {
+  right: -50px;
+  border-radius: 4px 0 0 4px;
+}
+
+/* ──────────────── Description Modal ──────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1000;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 820px;
+  width: 90%;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.25s ease;
+}
+
+.modal-backdrop.active .modal-card {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #888;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  word-break: break-word;
+  /* clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.copy-btn:hover {
+  background: #b00710;
+}
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+.copy-btn.copied {
+  background: #2ecc71;
+}

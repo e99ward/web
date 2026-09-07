@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="한글 아이디어를 정교한 영어 이미지 생성 프롬프트로 만드는 프롬프트 스튜디오">
+  <title>Museform — AI Prompt Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="prompt.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="prompt.html" aria-label="Museform 홈"><span class="brand-mark" aria-hidden="true">M</span><span>MUSEFORM</span><span class="brand-tag">PROMPT STUDIO</span></a>
+    <div class="header-actions"><span class="autosave"><span class="save-dot"></span> 자동 저장됨</span><button class="icon-btn" id="historyBtn" type="button" aria-label="최근 프롬프트 보기" title="최근 프롬프트">↺</button><button class="ghost-btn" id="resetBtn" type="button">새로 만들기</button></div>
+  </header>
+  <main class="workspace">
+    <section class="builder-panel" aria-labelledby="builderTitle">
+      <div class="panel-heading">
+        <div><p class="eyebrow">01 · BUILD YOUR VISION</p><h1 id="builderTitle">어떤 장면을 만들까요?</h1><p>원하는 항목을 고르거나 한글로 직접 입력하세요.</p></div>
+        <button class="surprise-btn" id="surpriseBtn" type="button"><span>✦</span> 영감 채우기</button>
+      </div>
+      <nav class="step-tabs" id="stepTabs" aria-label="프롬프트 구성 단계"></nav>
+      <div class="step-card" id="stepCard"></div>
+    </section>
+    <aside class="result-panel" aria-labelledby="resultTitle">
+      <div class="result-heading"><div><p class="eyebrow">02 · FINAL PROMPT</p><h2 id="resultTitle">완성된 프롬프트</h2></div><span class="language-badge">KO · EN</span></div>
+      <div class="prompt-output-wrap"><textarea id="promptOutput" aria-label="완성된 프롬프트" spellcheck="false"></textarea><div class="prompt-meta"><span id="wordCount">0 words</span><span id="translationState">입력 내용 그대로 반영</span></div></div>
+      <div class="result-actions"><button class="primary-btn" id="copyBtn" type="button"><span aria-hidden="true">□</span><span>프롬프트 복사</span></button><button class="secondary-btn" id="saveBtn" type="button" aria-label="프롬프트 저장">♡</button></div>
+      <section class="preview-card" aria-labelledby="previewTitle">
+        <div class="preview-top"><div><span class="field-kicker">IMAGE PREVIEW</span><h3 id="previewTitle">생성 결과 미리보기</h3></div><span class="sample-pill">SAMPLE</span></div>
+        <div class="image-stage" id="imageStage"><img src="assets/prompt-studio-sample.png" alt="서울의 루프탑을 배경으로 한 에디토리얼 인물 사진 샘플"><div class="image-shade"></div><div class="image-caption"><span>샘플 이미지</span><strong>Editorial portrait · Seoul blue hour</strong></div></div>
+        <button class="generate-btn" id="generateBtn" type="button"><span>✦</span> 이 프롬프트로 이미지 생성</button><p class="api-note" id="apiNote">이미지 API 연결 전에는 제작 예시가 표시됩니다.</p>
+      </section>
+    </aside>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="historyDialog" class="history-dialog"><div class="dialog-head"><div><span class="field-kicker">HISTORY</span><h2>최근 프롬프트</h2></div><button class="icon-btn" id="closeHistoryBtn" type="button" aria-label="닫기">×</button></div><div id="historyList" class="history-list"></div></dialog>
+  <dialog id="apiDialog" class="api-dialog"><button class="dialog-close" id="closeApiBtn" type="button" aria-label="닫기">×</button><span class="dialog-icon">✦</span><h2>이미지 생성 연결 준비 완료</h2><p>현재는 안전한 프론트엔드 데모입니다. 서버의 <code>/api/generate-image</code> 엔드포인트를 연결하면 완성된 프롬프트가 자동 전달됩니다.</p><div class="dialog-code">POST /api/generate-image<br><span>{ prompt }</span></div><button class="primary-btn" id="copyApiPromptBtn" type="button">우선 프롬프트 복사하기</button></dialog>
+  <script src="prompt.js"></script>
+</body>
+</html>
