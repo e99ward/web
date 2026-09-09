@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제너레이티브 아트 랩 (Generative Art & Particle Studio)</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="artwork1.css">
+</head>
+
+<body class="art-lab-body">
+
+  <!-- Interactive Generative Canvas -->
+  <canvas id="art-canvas"></canvas>
+
+  <!-- Top Navigation & Action Bar -->
+  <header class="art-topbar">
+    <div class="art-nav-left">
+      <a href="../index.html" class="art-back-btn">
+        <span>←</span> 메인 포털
+      </a>
+      <div class="art-title-block">
+        <span class="art-logo-icon">✨</span>
+        <h1 class="art-main-title">Generative Art & Particle Studio</h1>
+        <span class="art-badge">Vol.1 Interactive</span>
+      </div>
+    </div>
+
+    <!-- Mode Selector Pills (Center Floating) -->
+    <div class="art-mode-bar">
+      <button class="mode-pill active" data-mode="flow">
+        <span>🌊</span> 플로우 필드
+      </button>
+      <button class="mode-pill" data-mode="constellation">
+        <span>✨</span> 성좌 플렉서스
+      </button>
+      <button class="mode-pill" data-mode="spirograph">
+        <span>🌀</span> 스피로그라프
+      </button>
+      <button class="mode-pill" data-mode="quantum">
+        <span>🌌</span> 퀀텀 스웜
+      </button>
+    </div>
+
+    <!-- Quick Actions (Right) -->
+    <div class="art-quick-actions">
+      <button class="art-action-btn" id="btn-pause" title="일시정지/재생">
+        ⏸️ 일시정지
+      </button>
+      <button class="art-action-btn" id="btn-clear" title="캔버스 지우기">
+        🔄 리셋
+      </button>
+      <button class="art-action-btn" id="btn-random" title="랜덤 알고리즘 생성">
+        🎲 랜덤
+      </button>
+      <button class="art-action-btn" id="btn-snapshot" title="고화질 PNG 이미지 저장">
+        📸 저장
+      </button>
+    </div>
+  </header>
+
+  <!-- Floating Control Studio Panel -->
+  <aside class="art-controls-panel" id="art-panel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span>⚙️</span> 파라미터 컨트롤러
+      </div>
+      <button class="panel-close-btn" id="btn-close-panel" title="패널 닫기">✕</button>
+    </div>
+
+    <div class="panel-body">
+      <!-- Quick Presets -->
+      <div class="ctrl-section">
+        <div class="section-label">
+          <span>프리셋 테마</span>
+          <span style="font-size: 0.65rem; color: var(--art-text-muted);">1-Click</span>
+        </div>
+        <div class="preset-pills">
+          <button class="preset-pill" data-preset="nebula">💜 네뷸라 드림</button>
+          <button class="preset-pill" data-preset="matrix">💚 사이버 매트릭스</button>
+          <button class="preset-pill" data-preset="plexus">🌐 오로라 플렉서스</button>
+          <button class="preset-pill" data-preset="spiro">🔮 매직 스피로</button>
+          <button class="preset-pill" data-preset="quantum">☀️ 골든 퀀텀</button>
+        </div>
+      </div>
+
+      <!-- Color Palettes -->
+      <div class="ctrl-section">
+        <div class="section-label">컬러 팔레트</div>
+        <div class="palette-grid">
+          <div class="palette-chip active" data-palette="violet">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#8b5cf6"></span>
+              <span class="palette-dot" style="background:#ec4899"></span>
+              <span class="palette-dot" style="background:#c084fc"></span>
+            </div>
+            <span class="palette-name">바이올렛</span>
+          </div>
+
+          <div class="palette-chip" data-palette="sunset">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#f97316"></span>
+              <span class="palette-dot" style="background:#ec4899"></span>
+              <span class="palette-dot" style="background:#fbbf24"></span>
+            </div>
+            <span class="palette-name">선셋</span>
+          </div>
+
+          <div class="palette-chip" data-palette="aurora">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#10b981"></span>
+              <span class="palette-dot" style="background:#06b6d4"></span>
+              <span class="palette-dot" style="background:#38bdf8"></span>
+            </div>
+            <span class="palette-name">오로라</span>
+          </div>
+
+          <div class="palette-chip" data-palette="gold">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#fbbf24"></span>
+              <span class="palette-dot" style="background:#d97706"></span>
+              <span class="palette-dot" style="background:#fff"></span>
+            </div>
+            <span class="palette-name">코스믹 골드</span>
+          </div>
+
+          <div class="palette-chip" data-palette="matrix">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#22c55e"></span>
+              <span class="palette-dot" style="background:#4ade80"></span>
+              <span class="palette-dot" style="background:#86efac"></span>
+            </div>
+            <span class="palette-name">매트릭스</span>
+          </div>
+
+          <div class="palette-chip" data-palette="monochrome">
+            <div class="palette-dots">
+              <span class="palette-dot" style="background:#ffffff"></span>
+              <span class="palette-dot" style="background:#94a3b8"></span>
+              <span class="palette-dot" style="background:#64748b"></span>
+            </div>
+            <span class="palette-name">모노 글로우</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mouse Physics Interaction -->
+      <div class="ctrl-section">
+        <div class="section-label">마우스 물리 반응</div>
+        <div class="interaction-grid">
+          <button class="interaction-btn active" data-interact="vortex">🌀 소용돌이 (Vortex)</button>
+          <button class="interaction-btn" data-interact="attract">🧲 인력 (Attract)</button>
+          <button class="interaction-btn" data-interact="repulse">💥 척력 (Repulse)</button>
+          <button class="interaction-btn" data-interact="none">✨ 기본 유영</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Sliders -->
+      <div class="ctrl-section">
+        <div class="section-label">미세 조정 (Parameters)</div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>파티클 수 (Particles)</span>
+            <span class="ctrl-val" id="val-count">600</span>
+          </div>
+          <input type="range" class="art-slider" id="slider-count" min="100" max="1500" step="50" value="600">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>이동 속도 (Speed)</span>
+            <span class="ctrl-val" id="val-speed">2.0</span>
+          </div>
+          <input type="range" class="art-slider" id="slider-speed" min="0.5" max="6.0" step="0.1" value="2.0">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>잔상 길이 (Trail Effect)</span>
+            <span class="ctrl-val" id="val-trail">75</span>
+          </div>
+          <input type="range" class="art-slider" id="slider-trail" min="10" max="95" step="1" value="75">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>선 / 입자 굵기 (Size)</span>
+            <span class="ctrl-val" id="val-size">2.0</span>
+          </div>
+          <input type="range" class="art-slider" id="slider-size" min="0.5" max="6.0" step="0.5" value="2.0">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>인터랙션 반경 (Radius)</span>
+            <span class="ctrl-val" id="val-radius">140</span>
+          </div>
+          <input type="range" class="art-slider" id="slider-radius" min="50" max="300" step="10" value="140">
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Open Panel Floating Trigger Button (Shown when panel is closed) -->
+  <button class="art-action-btn panel-open-trigger" id="btn-open-panel">
+    ⚙️ 제어창 열기
+  </button>
+
+  <!-- Bottom Stats HUD -->
+  <footer class="art-bottom-hud">
+    <div class="hud-stat">
+      <span class="hud-dot"></span>
+      <span id="hud-fps">60 FPS</span>
+    </div>
+    <div class="hud-stat">
+      <span>Particles:</span>
+      <span class="hud-val" id="hud-particles">600</span>
+    </div>
+    <div class="hud-stat">
+      <span>Engine:</span>
+      <span class="hud-val">HTML5 2D Canvas</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="art-toast" id="art-toast">Notification Message</div>
+
+  <!-- Scripts -->
+  <script src="artwork1.js"></script>
+</body>
+
+</html>

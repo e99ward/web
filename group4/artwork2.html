@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D 키네틱 스컬프처 랩 (3D Kinetic Sculpture & WebGL Studio)</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Three.js & OrbitControls from reliable CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="artwork2.css">
+</head>
+
+<body class="webgl-lab-body">
+
+  <!-- 3D WebGL Canvas Layer -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Top Navigation & Action Bar -->
+  <header class="gl-topbar">
+    <div class="gl-nav-left">
+      <a href="../index.html" class="gl-back-btn">
+        <span>←</span> 메인 포털
+      </a>
+      <div class="gl-title-block">
+        <span class="gl-logo-icon">🔮</span>
+        <h1 class="gl-main-title">3D Kinetic Sculpture & Shader Lab</h1>
+        <span class="gl-badge">Vol.2 WebGL 3D</span>
+      </div>
+    </div>
+
+    <!-- 3D Shape Switcher Bar (Center Floating) -->
+    <div class="gl-shape-bar">
+      <button class="shape-pill active" data-shape="torusKnot">
+        <span>♾️</span> 토러스 매듭
+      </button>
+      <button class="shape-pill" data-shape="geosphere">
+        <span>🌐</span> 지오스피어
+      </button>
+      <button class="shape-pill" data-shape="waveGrid">
+        <span>〰️</span> 3D 웨이브
+      </button>
+      <button class="shape-pill" data-shape="helix">
+        <span>🧬</span> DNA 헬릭스
+      </button>
+      <button class="shape-pill" data-shape="polyhedron">
+        <span>💎</span> 다면체 크리스탈
+      </button>
+    </div>
+
+    <!-- Quick Actions (Right) -->
+    <div class="gl-quick-actions">
+      <button class="gl-action-btn" id="btn-reset-cam" title="카메라 시점 리셋">
+        🎯 뷰 리셋
+      </button>
+      <button class="gl-action-btn" id="btn-pause" title="일시정지/재생">
+        ⏸️ 일시정지
+      </button>
+      <button class="gl-action-btn" id="btn-random" title="랜덤 3D 조형 생성">
+        🎲 랜덤
+      </button>
+      <button class="gl-action-btn" id="btn-snapshot" title="고화질 3D 렌더 이미지 저장">
+        📸 저장
+      </button>
+    </div>
+  </header>
+
+  <!-- Floating 3D Control Studio Panel -->
+  <aside class="gl-controls-panel" id="gl-panel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span>⚙️</span> 3D 셰이더 & 피직스 제어
+      </div>
+      <button class="panel-close-btn" id="btn-close-panel" title="패널 닫기">✕</button>
+    </div>
+
+    <div class="panel-body">
+      <!-- 1-Click Presets -->
+      <div class="ctrl-section">
+        <div class="section-label">
+          <span>시그니처 프리셋</span>
+          <span style="font-size: 0.65rem; color: var(--gl-text-muted);">Quick Load</span>
+        </div>
+        <div class="preset-pills">
+          <button class="preset-pill" data-preset="mobius">💜 뫼비우스 홀로그램</button>
+          <button class="preset-pill" data-preset="quantum">✨ 양자 포인트 클라우드</button>
+          <button class="preset-pill" data-preset="chrome">💎 크롬 다이아몬드</button>
+          <button class="preset-pill" data-preset="wave">💚 에메랄드 네온 웨이브</button>
+          <button class="preset-pill" data-preset="gold">☀️ 리퀴드 골드 나선</button>
+        </div>
+      </div>
+
+      <!-- Shading & Material Modes -->
+      <div class="ctrl-section">
+        <div class="section-label">재질 & 셰이더 (Materials)</div>
+        <div class="material-grid">
+          <button class="material-btn active" data-material="hologram">🌈 홀로그램 글래스</button>
+          <button class="material-btn" data-material="chrome">🪞 리퀴드 크롬</button>
+          <button class="material-btn" data-material="wireframe">🕸️ 네온 와이어</button>
+          <button class="material-btn" data-material="neonGlow">💡 발광 펄스</button>
+          <button class="material-btn" data-material="points" style="grid-column: span 2;">✨ 3D 포인트 클라우드</button>
+        </div>
+      </div>
+
+      <!-- Color & Lighting Themes -->
+      <div class="ctrl-section">
+        <div class="section-label">조명 & 테마 컬러</div>
+        <div class="theme-grid">
+          <div class="theme-chip active" data-theme="cyberpunk">
+            <div class="theme-dots">
+              <span class="theme-dot" style="background:#a855f7"></span>
+              <span class="theme-dot" style="background:#ec4899"></span>
+              <span class="theme-dot" style="background:#38bdf8"></span>
+            </div>
+            <span class="theme-name">사이버펑크</span>
+          </div>
+
+          <div class="theme-chip" data-theme="violet">
+            <div class="theme-dots">
+              <span class="theme-dot" style="background:#8b5cf6"></span>
+              <span class="theme-dot" style="background:#c084fc"></span>
+              <span class="theme-dot" style="background:#6366f1"></span>
+            </div>
+            <span class="theme-name">바이올렛</span>
+          </div>
+
+          <div class="theme-chip" data-theme="gold">
+            <div class="theme-dots">
+              <span class="theme-dot" style="background:#f59e0b"></span>
+              <span class="theme-dot" style="background:#fbbf24"></span>
+              <span class="theme-dot" style="background:#d97706"></span>
+            </div>
+            <span class="theme-name">골드</span>
+          </div>
+
+          <div class="theme-chip" data-theme="emerald">
+            <div class="theme-dots">
+              <span class="theme-dot" style="background:#10b981"></span>
+              <span class="theme-dot" style="background:#06b6d4"></span>
+              <span class="theme-dot" style="background:#34d399"></span>
+            </div>
+            <span class="theme-name">에메랄드</span>
+          </div>
+
+          <div class="theme-chip" data-theme="ice" style="grid-column: span 2;">
+            <div class="theme-dots">
+              <span class="theme-dot" style="background:#38bdf8"></span>
+              <span class="theme-dot" style="background:#93c5fd"></span>
+              <span class="theme-dot" style="background:#e0f2fe"></span>
+            </div>
+            <span class="theme-name">프로즌 크리스탈</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation / Physics Toggles -->
+      <div class="ctrl-section">
+        <div class="section-label">동적 변형 및 효과</div>
+        <div class="toggle-grid">
+          <button class="toggle-btn active" id="toggle-autorot">🔄 자동 회전</button>
+          <button class="toggle-btn active" id="toggle-deform">〰️ 정점 모핑</button>
+          <button class="toggle-btn" id="toggle-wire" style="grid-column: span 2;">📐 와이어프레임 오버레이</button>
+        </div>
+      </div>
+
+      <!-- Fine-tune Sliders -->
+      <div class="ctrl-section">
+        <div class="section-label">정밀 파라미터 (Parameters)</div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>회전 속도 (Rotation)</span>
+            <span class="ctrl-val" id="val-rot">1.0</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-rot" min="0" max="4.0" step="0.1" value="1.0">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>모핑 파동 진폭 (Wave Amp)</span>
+            <span class="ctrl-val" id="val-deform-amp">0.35</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-deform-amp" min="0" max="0.9" step="0.05" value="0.35">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>파동 주파수 (Frequency)</span>
+            <span class="ctrl-val" id="val-deform-freq">2.5</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-deform-freq" min="0.5" max="6.0" step="0.2" value="2.5">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>메탈릭 광택 (Metalness)</span>
+            <span class="ctrl-val" id="val-metal">0.85</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-metal" min="0" max="1.0" step="0.05" value="0.85">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>표면 거칠기 (Roughness)</span>
+            <span class="ctrl-val" id="val-rough">0.15</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-rough" min="0.01" max="1.0" step="0.05" value="0.15">
+        </div>
+
+        <div class="ctrl-row">
+          <div class="ctrl-header">
+            <span>조명 광량 (Light Power)</span>
+            <span class="ctrl-val" id="val-light">1.5</span>
+          </div>
+          <input type="range" class="gl-slider" id="slider-light" min="0.5" max="3.0" step="0.1" value="1.5">
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Open Panel Floating Trigger Button (Shown when panel is collapsed) -->
+  <button class="gl-action-btn panel-open-trigger" id="btn-open-panel">
+    ⚙️ 3D 제어창 열기
+  </button>
+
+  <!-- Interactive Drag Hint -->
+  <div class="gl-drag-hint">
+    <span>🖐️ 마우스 드래그로 360° 회전 / 휠 스크롤로 줌 조작</span>
+  </div>
+
+  <!-- Bottom Stats HUD -->
+  <footer class="gl-bottom-hud">
+    <div class="hud-stat">
+      <span class="hud-dot"></span>
+      <span id="hud-fps">60 FPS</span>
+    </div>
+    <div class="hud-stat">
+      <span>Vertices:</span>
+      <span class="hud-val" id="hud-polys">5,184</span>
+    </div>
+    <div class="hud-stat">
+      <span>Engine:</span>
+      <span class="hud-val">Three.js WebGL</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="gl-toast" id="gl-toast">3D Message</div>
+
+  <!-- Scripts -->
+  <script src="artwork2.js"></script>
+</body>
+
+</html>
