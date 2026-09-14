@@ -4,31 +4,135 @@ document.addEventListener('DOMContentLoaded', runFirst);
 
 let dataBase = [];
 let cnt = 0;
+let currentSort = 'name';
 
 async function runFirst() {
-    // load lotto data for showing and processing
-    await LoadData();
-    console.log(dataBase[0]['agency']);
-    console.log(dataBase[1].disband);
-    console.log(dataBase[2].member[2]);
-    console.log(dataBase[2].member.length);
-    cnt = Object.values(dataBase).length;
-    console.log(cnt);
-    initial();
+  // load database for showing and processing
+  await LoadData();
+  cnt = dataBase.length;
+  console.log(`Loaded ${cnt} groups from saved_db.json`);
+
+  // Attach event listeners to filter checkboxes for dynamic updates
+  ['active', 'members', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5'].forEach(id => {
+    let el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('change', () => applyCurrentSort());
+    }
+  });
+
+  sortName();
 }
 
 async function LoadData() {
-  const URL = './saved_db_T.json';
-  const inletResponse = await fetch(URL);
-  dataBase = await inletResponse.json();
-  console.log(dataBase)
-  // inlet.forEach((item) => {
-  //     groups.push(item);
-  // });
-  // console.log(groups)
+  const URL = './saved_db.json';
+  try {
+    const inletResponse = await fetch(URL);
+    dataBase = await inletResponse.json();
+    console.log(`Successfully fetched data: ${dataBase.length} items`);
+  } catch (err) {
+    console.error('Failed to load saved_db.json:', err);
+  }
 }
 
-/* link */
+/* Data Helper Utilities */
+function getMemberCount(group) {
+  if (group.memberCount !== undefined) return group.memberCount;
+  if (group.mCount !== undefined) return group.mCount;
+  if (group.members && Array.isArray(group.members)) return group.members.length;
+  if (group.member && Array.isArray(group.member)) return group.member.length;
+  return 0;
+}
+
+function getMembers(group) {
+  if (group.members && Array.isArray(group.members)) {
+    return group.members.map(m => {
+      if (typeof m === 'object' && m !== null) {
+        return {
+          name: m.name || '',
+          birth: m.birth || '',
+          img: m.img || ''
+        };
+      }
+      return { name: String(m), birth: '', img: '' };
+    });
+  }
+  if (group.member && Array.isArray(group.member)) {
+    return group.member.map((name, idx) => ({
+      name: name,
+      birth: group.mBirth ? (group.mBirth[idx] || '') : '',
+      img: group.mImg ? (group.mImg[idx] || '') : ''
+    }));
+  }
+  return [];
+}
+
+function getDebut(group) {
+  if (group.timeline && group.timeline.debut) return group.timeline.debut;
+  if (group.debut) return group.debut;
+  return '';
+}
+
+function getDisband(group) {
+  if (group.timeline && group.timeline.disband) return group.timeline.disband;
+  if (group.disband) return group.disband;
+  return '';
+}
+
+function getDormant(group) {
+  if (group.timeline && group.timeline.dormant) return group.timeline.dormant;
+  if (group.dormant) return group.dormant;
+  return '';
+}
+
+function getGen(group) {
+  if (group.gen) return Number(group.gen);
+
+  // Check explicit debut date if available
+  let debut = getDebut(group);
+  if (debut) {
+    let m = debut.match(/(\d{4})/);
+    if (m) {
+      let yr = Number(m[1]);
+      if (yr < 2007) return 1;
+      if (yr <= 2013) return 2;
+      if (yr <= 2017) return 3;
+      if (yr <= 2022) return 4;
+      if (yr >= 2023) return 5;
+    }
+  }
+
+  // Infer from oldest member birth year
+  let members = getMembers(group);
+  let birthYears = [];
+  for (let m of members) {
+    if (m.birth) {
+      let match = m.birth.match(/(\d{4})/);
+      if (match) birthYears.push(Number(match[1]));
+    }
+  }
+  if (birthYears.length > 0) {
+    let minBirth = Math.min(...birthYears);
+    if (minBirth <= 1985) return 1;
+    if (minBirth <= 1994) return 2;
+    if (minBirth <= 1998) return 3;
+    if (minBirth <= 2004) return 4;
+    return 5;
+  }
+
+  return 0; // Unknown generation
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+/* Audio & Video Controls */
 let toggle = true;
 let x = document.createElement("AUDIO");
 
@@ -47,6 +151,7 @@ function playSong(str) {
 
 function playVideo_old(str) {
   let video = document.querySelector('.youtube');
+  if (!video) return;
   video.style.display = "block";
   let filename = "//www.youtube.com/embed/" + str;
   const attr = document.createAttribute("src");
@@ -56,253 +161,181 @@ function playVideo_old(str) {
 
 function playVideo(str) {
   let video = document.querySelector('.youtube');
-  video.style.display = "block";
+  if (video) video.style.display = "block";
   let iframe = '<iframe id="video" width="420" height="315" src="//www.youtube.com/embed/';
   iframe += str;
   iframe += '" frameborder="1" allowfullscreen></iframe>';
   iframe += '<button onclick="closeVideo()">Close</button>';
-  document.getElementById('player').innerHTML = iframe;
+  let player = document.getElementById('player');
+  if (player) player.innerHTML = iframe;
 }
 
-function closeVideo () {
+function closeVideo() {
   let video = document.querySelector('.youtube');
-  video.style.display = "none";
-  document.getElementById('video').removeAttribute("src");
+  if (video) video.style.display = "none";
+  let v = document.getElementById('video');
+  if (v) v.removeAttribute("src");
 }
 
 function showThem(str) {
   let brief = document.querySelector('.brief');
-  document.addEventListener('mousedown', (e) => {
-    brief.style.left = `${e.pageX - 10}px`;
-    brief.style.top = `${e.pageY + 10}px`;
-  });
-  document.getElementById(str).style.display = "block";
+  if (brief) {
+    document.addEventListener('mousedown', (e) => {
+      brief.style.left = `${e.pageX - 10}px`;
+      brief.style.top = `${e.pageY + 10}px`;
+    });
+  }
+  let target = document.getElementById(str);
+  if (target) target.style.display = "block";
 }
 
 function hideThem(str) {
-  document.getElementById(str).style.display = "none";
+  let target = document.getElementById(str);
+  if (target) target.style.display = "none";
 }
 
-/* database */
-let db1 = [
-  {name: 'Spinkl', debut: '2011-03-11', close: '', member: ['na1', 'na2', 'na3'], songs: ['so1', 'so2']},
-  {name: 'IVE', debut: '2021-03-11', close: '', member: ['na1', 'na2', 'na3'], songs: ['so11', 'so12']},
-  {name: 'Crue', debut: '2001-03-11', close: '2009-01-01', member: ['na1', 'na2', 'na3'], songs: ['so11', 'so12']}
-];
-
-function sortXX() {
-  db1.sort(function(a, b) {
-    const A = a.debut;
-    const B = b.debut;
-    return A < B ? -1 : A > B ? 1 : 0;
-  });
-  db1.sort(function(a, b) {
-    const A = a.name.toUpperCase();
-    const B = b.name.toUpperCase();
-    return A < B ? -1 : A > B ? 1 : 0;
-  });
-  writeDB(db1);
-}
-
-// let dbcopy = db1.slice(0);
+/* Filter State */
 let isActive = false;
 let isMembers = false;
-let isSongs = false;
 let is1 = true;
 let is2 = true;
 let is3 = true;
 let is4 = true;
+let is5 = true;
 
 function statusUpdate() {
   let x = document.getElementById("active");
-  isActive = x.checked;
+  if (x) isActive = x.checked;
   let y = document.getElementById("members");
-  isMembers = y.checked;
-  let z = document.getElementById("songs");
-  isSongs = z.checked;
+  if (y) isMembers = y.checked;
   let g1 = document.getElementById("gen1");
-  is1 = g1.checked;
+  if (g1) is1 = g1.checked;
   let g2 = document.getElementById("gen2");
-  is2 = g2.checked;
+  if (g2) is2 = g2.checked;
   let g3 = document.getElementById("gen3");
-  is3 = g3.checked;
+  if (g3) is3 = g3.checked;
   let g4 = document.getElementById("gen4");
-  is4 = g4.checked;
+  if (g4) is4 = g4.checked;
+  let g5 = document.getElementById("gen5");
+  if (g5) is5 = g5.checked;
+}
+
+function applyCurrentSort() {
+  statusUpdate();
+  let db_new = Object.values(dataBase).slice();
+  if (currentSort === 'name') {
+    db_new.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ko'));
+  } else if (currentSort === 'date') {
+    db_new.sort((a, b) => (getDebut(a) || '').localeCompare(getDebut(b) || ''));
+  } else if (currentSort === 'actv') {
+    db_new.sort((a, b) => (getDebut(b) || '').localeCompare(getDebut(a) || ''));
+  } else if (currentSort === 'nums') {
+    db_new.sort((a, b) => getMemberCount(a) - getMemberCount(b));
+  }
+
+  writeDB(db_new);
 }
 
 function sortName() {
-  statusUpdate()
-  if (isSongs == true) {
-    writeDB2(dataBase);
-  } else {
-    writeDB(dataBase);
-  }
+  currentSort = 'name';
+  applyCurrentSort();
 }
 
 function sortDate() {
-  let db_new = Object.values(dataBase);
-  db_new.sort(function(a, b) {
-    const A = a.debut;
-    const B = b.debut;
-    return A < B ? -1 : A > B ? 1 : 0;
-  });
-  // console.log(db_new);
-  statusUpdate()
-  if (isSongs == true) {
-    writeDB2(db_new);
-  } else {
-    writeDB(db_new);
-  }
+  currentSort = 'date';
+  applyCurrentSort();
 }
 
 function sortActv() {
-  let db_new = Object.values(dataBase);
-  db_new.sort(function(a, b) {
-    const A = a.debut;
-    const B = b.debut;
-    return A > B ? -1 : A < B ? 1 : 0;
-  });
-  // console.log(db_new);
-  statusUpdate()
-  if (isSongs == true) {
-    writeDB2(db_new);
-  } else {
-    writeDB(db_new);
-  }
+  currentSort = 'actv';
+  applyCurrentSort();
 }
 
 function sortNums() {
-  let db_new = Object.values(dataBase);
-  db_new.sort(function(a, b) {
-    const A = a.mCount;
-    const B = b.mCount;
-    return A < B ? -1 : A > B ? 1 : 0;
-  });
-  // console.log(db_new);
-  statusUpdate()
-  if (isSongs == true) {
-    writeDB2(db_new);
-  } else {
-    writeDB(db_new);
-  }
+  currentSort = 'nums';
+  applyCurrentSort();
 }
 
-function writeDB(db) { // without songs
-  console.log("in without songs")
+function shouldInclude(item) {
+  let disband = getDisband(item);
+  let isDisbanded = Boolean(disband && disband !== '-' && String(disband).trim() !== '');
+  if (isActive && isDisbanded) {
+    return false;
+  }
+
+  let g = getGen(item);
+  if (g === 1 && !is1) return false;
+  if (g === 2 && !is2) return false;
+  if (g === 3 && !is3) return false;
+  if (g === 4 && !is4) return false;
+  if (g === 5 && !is5) return false;
+  if (g === 0 && !is1 && !is2 && !is3 && !is4 && !is5) return false;
+
+  return true;
+}
+
+function writeDB(db) {
   let line = lineheader;
   if (isMembers == true) {
     line = lineheader1;
   }
-  for (i=0; i<cnt; i++) {
-    if (isActive == true && isNaN(db[i].disband)) {
-      console.log('pass the dismissed');
-    } else if (is1 == false && db[i].gen == 1) {
-      console.log('pass the dismissed');
-    } else if (is2 == false && db[i].gen == 2) {
-      console.log('pass the dismissed');
-    } else if (is3 == false && db[i].gen == 3) {
-      console.log('pass the dismissed');
-    } else if (is4 == false && db[i].gen == 4) {
-      console.log('pass the dismissed');
-    } else {
-      line += '<tr><th>'
-      line += db[i].name;
-      line += '&nbsp;&nbsp;<small>('
-      line += db[i].alias;
-      line += ')</small></th><th>';
-      line += db[i].debut;
-      line += '</th><th>';
-      line += db[i].disband;
-      line += '</th><th>';
-      line += db[i].mCount;
-      line += '</th><th>';
-      if (isMembers == true) {
-        for (let j=0; j < db[i].member.length; j++) {
-          line += '<span class="image"><img src=';
-          line += db[i].mImg[j];
-          line += ' width="75" height="84"><br>';
-          line += db[i].member[j];
-          line += '<br><small>';
-          line += db[i].mBirth[j];
-          line += '</small></span>&nbsp;';
-        }
-        line += '</th><th>';
-      }
-      line += db[i].agency;
-      line += '</th></tr>'
+  for (let i = 0; i < db.length; i++) {
+    let item = db[i];
+    if (!shouldInclude(item)) {
+      continue;
     }
-  };
-  document.getElementById("matrixcontext").innerHTML = line;
-}
 
-function writeDB2(db) { // with songs
-  console.log("in with songs")
-  let line = lineheader2;
-  if (isMembers == true) {
-    line = lineheader3;
-  }
-  for (i=0; i<cnt; i++) {
-    if (isActive == true && isNaN(db[i].disband)) {
-      console.log('pass the dismissed');
-    } else if (is1 == false && db[i].gen == 1) {
-      console.log('pass the dismissed');
-    } else if (is2 == false && db[i].gen == 2) {
-      console.log('pass the dismissed');
-    } else if (is3 == false && db[i].gen == 3) {
-      console.log('pass the dismissed');
-    } else if (is4 == false && db[i].gen == 4) {
-      console.log('pass the dismissed');
-    } else {
-      line += '<tr><th>'
-      line += db[i].name;
-      line += '&nbsp;&nbsp;<small>('
-      line += db[i].alias;
-      line += ')</small></th><th>';
-      let mx = db[i].songs.length;
-      if (mx > 3) { mx = 3; }
-      for (let k=0; k<mx; k++) {
+    let aliasText = item.alias ? `&nbsp;&nbsp;<small>(${escapeHtml(item.alias)})</small>` : '';
+    let debutText = getDebut(item) || '-';
+    let disbandText = getDisband(item) || '-';
+    let mCountText = getMemberCount(item);
+    let agencyText = item.agency || '-';
+
+    line += '<tr><th>';
+    line += escapeHtml(item.name) + aliasText;
+    line += '</th><th>';
+    line += escapeHtml(debutText);
+    line += '</th><th>';
+    line += escapeHtml(disbandText);
+    line += '</th><th>';
+    line += mCountText;
+    line += '</th><th>';
+
+    if (isMembers == true) {
+      let members = getMembers(item);
+      for (let j = 0; j < members.length; j++) {
+        let m = members[j];
         line += '<span class="image">';
-        line += db[i].songs[k];
-        line += '<br><small>';
-        line += db[i].sRelease[k];
-        line += '</small></span>&nbsp;';
+        if (m.img) {
+          line += `<img src="${escapeHtml(m.img)}" width="75" height="84" alt="${escapeHtml(m.name)}"><br>`;
+        }
+        line += escapeHtml(m.name);
+        if (m.birth) {
+          line += `<br><small>${escapeHtml(m.birth)}</small>`;
+        }
+        line += '</span>&nbsp;';
       }
       line += '</th><th>';
-      if (isMembers == true) {
-        for (let j=0; j < db[i].member.length; j++) {
-          line += '<span class="image"><img src=';
-          line += db[i].mImg[j];
-          line += ' width="75" height="84"><br>';
-          line += db[i].member[j];
-          line += '<br><small>';
-          line += db[i].mBirth[j];
-          line += '</small></span>&nbsp;';
-        }
-        line += '</th><th>';
-      }
-      line += db[i].agency;
-      line += '</th></tr>'
     }
-  };
-  document.getElementById("matrixcontext").innerHTML = line;
+
+    line += escapeHtml(agencyText);
+    line += '</th></tr>';
+  }
+
+  let matrixEl = document.getElementById("matrixcontext");
+  if (matrixEl) matrixEl.innerHTML = line;
 }
 
 let lineheader = '<tr class="headline"><th class="null2yr">그룹명 (Group Name)</th> \
-                  <th class="null1yr">데뷔일자</th><th class="null1yr">해체일자</th> \
-                  <th class="null">멤버수</th><th class="null1yr">소속사</th></tr>';
+                  <th class="null">데뷔일자</th><th class="null">해체일자</th> \
+                  <th class="null">멤버수</th><th class="null2yr">소속사</th></tr>';
 let lineheader1 = '<tr class="headline"><th class="null1yr">그룹명 (Group Name)</th> \
-                  <th class="null1yr">데뷔일자</th><th class="null1yr">해체일자</th> \
+                  <th class="null">데뷔일자</th><th class="null">해체일자</th> \
                   <th class="null">멤버수</th><th class="null2yr">멤버이름&nbsp;<small>(생년월일)</small></th> \
                   <th class="null1yr">소속사</th></tr>';
-let lineheader2 = '<tr class="headline"><th class="null1yr">그룹명 (Group Name)</th> \
-                  <th class="null3yr">대표곡&nbsp;<small>(발표일)</small></th><th class="null1yr">소속사</th></tr>';
-let lineheader3 = '<tr class="headline"><th class="null1yr">그룹명 (Group Name)</th> \
-                  <th class="null3yr">대표곡&nbsp;<small>(발표일)</small></th> \
-                  <th class="null2yr">멤버이름&nbsp;<small>(생년월일)</small></th><th class="null1yr">소속사</th></tr>';
-
 
 function initial() {
   let matrix = document.getElementById("matrixcontext");
   let line = lineheader;
-  matrix.innerHTML = line;
+  if (matrix) matrix.innerHTML = line;
 }
