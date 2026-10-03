@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Furnace Lab · PID simulator</title><style>
+500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{color-scheme:light;--bg:#f5f6f2;--panel:#ffffff;--line:#dce1d7;--muted:#66715f;--text:#253022;--orange:#a95119;--green:#52713b;--baseline:#7c62aa;--chart-grid:#dce3d7;--chart-hold:#eff4e9;--chart-cool:#eef4f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px}button,input,select{font:inherit}button{cursor:pointer;transition:background .15s,transform .15s}button:active{transform:translateY(1px)}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--orange);outline-offset:3px}header{height:78px;border-bottom:1px solid var(--line);padding:0 40px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:1.4px;font-size:18px;gap:5px}.brand-icon{display:grid;place-items:center;width:34px;height:34px;background:var(--orange);color:#ffffff;border-radius:8px;font-size:27px;margin-right:10px}.brand-light{font-weight:400;color:var(--muted)}.divider{height:19px;width:1px;background:var(--line);margin:0 17px}.subtitle{font:12px 'DM Sans',sans-serif;letter-spacing:0;color:var(--muted)}.header-right{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:11px}.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green)}.quiet{background:none;border:none;color:var(--muted);padding:10px;margin-left:18px}.quiet:hover,.text-button:hover{color:var(--text)}main{max-width:1550px;margin:auto;padding:36px 40px 20px}.page-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.eyebrow{font-size:10px;color:var(--orange);letter-spacing:2px;margin-bottom:12px}h1{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:500;letter-spacing:-1.1px;margin:0 0 9px}.page-heading p{color:var(--muted);margin:0;font-size:13px}.secondary{color:var(--text);background:#f0f3eb;border:1px solid #cdd6c4;border-radius:6px;padding:11px 16px}.secondary:hover{background:#e6ecde}.workspace{display:grid;grid-template-columns:370px minmax(0,1fr);gap:24px}aside{display:flex;flex-direction:column;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:21px}.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;gap:6px}h2{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;margin:0}.section-number{color:#66735c;font:10px 'DM Sans',sans-serif;border:1px solid #cbd5c2;border-radius:4px;padding:3px 4px;margin-right:10px}select{background:#f4f6f0;border:1px solid #cdd6c4;border-radius:5px;color:#48583e;padding:7px;font-size:10px;max-width:130px}.profile-head,.stage-row{display:grid;grid-template-columns:29px 1fr 1fr 1fr 19px;gap:7px;align-items:center}.profile-head{color:var(--muted);font-size:8px;letter-spacing:.4px;margin-bottom:10px;white-space:nowrap}.stage-row{margin-bottom:9px}.stage-index{font:12px 'Space Grotesk',sans-serif;color:var(--orange)}input[type=number]{min-width:0;width:100%;background:#f7f8f4;border:1px solid #ced6c8;border-radius:5px;padding:9px 8px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:13px;-moz-appearance:textfield}input::-webkit-inner-spin-button{opacity:0}input:hover::-webkit-inner-spin-button{opacity:1}.remove-stage{background:none;color:#68785c;border:0;padding:1px;font-size:16px}.remove-stage:hover{color:var(--orange)}.add-button{background:transparent;color:#4c6a36;border:1px dashed #b9c7ac;border-radius:5px;width:100%;padding:9px;margin:5px 0 15px;font-size:11px}.add-button:hover{background:#edf3e6}.profile-footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:13px;font-size:11px;color:var(--muted)}.profile-footer strong{color:var(--text);font-weight:500}.fine-print{color:#65735b;font-size:10px;line-height:1.6;margin:12px 0 0}.text-button{background:none;border:0;color:var(--muted);font-size:11px;padding:0}.gain{margin-bottom:20px}.gain-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.gain-name{font-size:12px}.gain-symbol{color:var(--orange);font-family:'Space Grotesk',sans-serif;margin-right:8px}.gain-description{color:var(--muted);font-size:10px;margin-top:4px}.gain-top input{width:73px;text-align:right;padding:6px 8px}input[type=range]{width:100%;accent-color:var(--orange);height:4px;cursor:pointer;display:block;margin:10px 0}.range-labels{display:flex;justify-content:space-between;color:#68735f;font-size:9px}.control-note{display:grid;grid-template-columns:15px 1fr;color:#526843;background:#edf3e6;border-radius:5px;font-size:10px;line-height:1.8;padding:11px}.tag{border:1px solid #c4d0b9;color:#567044;font-size:8px;letter-spacing:1px;padding:5px 7px;border-radius:4px}.property-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 12px}.property-grid label{font-size:10px;color:var(--muted)}.unit-input{position:relative;margin-top:7px}.unit-input input{padding-right:46px}.unit-input span{position:absolute;right:9px;top:12px;font-size:9px;color:#64715a}.primary{background:var(--orange);border:0;color:#ffffff;padding:14px;border-radius:7px;font-weight:700;display:flex;justify-content:center;position:relative}.primary:hover{background:#8c4213}.primary span{position:absolute;right:15px;opacity:.6}#validation{color:#b3392e;margin:0;font-size:11px;line-height:1.5}.results{min-width:0;display:flex;flex-direction:column;gap:18px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.metric{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:19px 20px}.metric>span{font-size:9px;letter-spacing:1.1px;color:var(--muted)}.metric>div{margin:12px 0 8px;display:flex;align-items:baseline;gap:7px}.metric strong{font-family:'Space Grotesk',sans-serif;font-size:32px;line-height:1;font-weight:500;letter-spacing:-1px}.metric small{color:var(--muted);font-size:12px}.metric p{margin:0;color:#627257;font-size:10px}.chart-panel{padding:24px 24px 17px}.chart-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.chart-heading h2{font-size:17px}.chart-heading p{font-size:11px;color:var(--muted);margin:7px 0 0}.run-state{font-size:9px;background:#edf4e6;border-radius:5px;color:#4c6837;padding:7px 9px;white-space:nowrap}.run-state .status-dot{margin-right:5px}.legend{display:flex;gap:18px;align-items:center;margin:28px 0 9px;font-size:10px;color:#58674c}.legend span{display:flex;align-items:center;gap:6px}.legend i{width:15px;height:2px;display:inline-block}.legend .setpoint{background:var(--green)}.legend .actual{background:var(--orange)}.legend .baseline{background:var(--baseline)}.legend .legend-unit{margin-left:auto;font-size:8px;letter-spacing:.8px;color:#68765b}.chart-wrap{height:350px;position:relative}canvas{width:100%;height:100%;display:block}.chart-axis-label{text-align:center;font-size:8px;letter-spacing:1.2px;color:#68765b;margin:3px 0 5px}.chart-bottom{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;display:flex;align-items:center;justify-content:space-between;gap:5px}.hint{color:#647557;font-size:10px}.compact{font-size:10px;padding:8px 11px}.comparison{display:flex;gap:12px;align-items:center}.output-panel{padding:22px 24px 16px}.output-wrap{height:151px;margin-top:17px}.playback{border:1px solid var(--line);border-radius:9px;padding:16px;background:#ffffff;display:flex;gap:15px;align-items:center}.play-button{width:36px;height:36px;flex-shrink:0;background:#edf3e6;color:var(--green);border:1px solid #bfd0b1;border-radius:6px;font-size:12px}.playback-body{flex:1;min-width:0}.playback-label{display:flex;justify-content:space-between;font-size:10px;margin-bottom:12px;gap:10px}.playback-label strong{font-weight:500;color:#4e613f}.playback-label span{font-family:'Space Grotesk',sans-serif;color:var(--muted)}.playback select{font-size:10px}.insight{display:flex;gap:11px;color:#59694e;line-height:1.7;font-size:11px;padding:0 7px}.insight-icon{flex-shrink:0;border:1px solid #9aac8b;color:#52713b;border-radius:50%;width:16px;height:16px;display:grid;place-items:center;margin-top:2px;font-size:10px}.insight p{margin:0}footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:32px;padding-top:18px;color:#66745b;font-size:10px}footer .status-dot{background:#5b7e3b;margin-right:6px}.footer-dot{padding:0 7px}.tooltip{position:absolute;pointer-events:none;background:#fffffff5;border:1px solid #bdcdb0;box-shadow:0 4px 20px #26351b20;border-radius:6px;padding:10px 13px;font-size:11px;line-height:1.8;white-space:nowrap;color:#33452a}.tooltip strong{color:var(--orange)}dialog{max-width:620px;width:90%;border:1px solid #becab5;border-radius:12px;background:var(--panel);color:var(--text);padding:28px}dialog::backdrop{background:#25351d55;backdrop-filter:blur(3px)}dialog p{font-size:13px;line-height:1.8;color:#526346}.modal-heading{display:flex;align-items:center;justify-content:space-between}dialog code{display:block;background:#f7f8f4;padding:15px;font-size:12px;border-radius:6px;color:var(--orange)}[hidden]{display:none!important}@media(min-width:1450px){.chart-wrap{height:410px}}@media(max-width:1150px){header{padding:0 24px}main{padding:28px 24px}.workspace{grid-template-columns:340px minmax(0,1fr);gap:16px}.metric{padding:16px 12px}.metric strong{font-size:27px}.metric p{line-height:1.5}.chart-panel,.output-panel{padding:20px 16px}.run-state{display:none}.legend{gap:12px}.legend-unit{display:none!important}}@media(max-width:850px){.workspace{grid-template-columns:1fr}.results{grid-row:1}.chart-wrap{height:300px}aside{display:grid;grid-template-columns:1fr 1fr;align-items:start}.furnace-panel{grid-column:1/-1}.primary{grid-column:1/-1}#validation{grid-column:1/-1}.subtitle,.header-right{display:none}.page-heading{gap:20px}h1{font-size:28px}}@media(max-width:520px){header{height:64px;padding:0 18px}main{padding:26px 16px}.page-heading{align-items:flex-start}.page-heading>.secondary{font-size:10px;padding:8px;white-space:nowrap}h1{font-size:23px}.page-heading p{font-size:11px}.eyebrow{font-size:8px}.metrics{gap:7px}.metric{padding:14px 9px}.metric>span{font-size:7px;letter-spacing:.5px}.metric strong{font-size:24px}.metric small{font-size:9px}.metric p{font-size:8px}.chart-heading p{font-size:10px}.chart-heading h2{font-size:15px}.hint{display:none}.chart-bottom{justify-content:flex-end}.chart-wrap{height:260px}aside{display:flex}.legend{font-size:9px;gap:10px}.playback{gap:9px;padding:12px}.playback-label{font-size:9px}.playback select{max-width:78px;font-size:9px}footer{font-size:8px;gap:10px}}
+
+.controller-options{display:grid;gap:12px;margin-bottom:22px}.controller-options label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted)}.controller-options select{max-width:190px;font-size:11px}.controller-equation{font-family:monospace;font-size:10px;line-height:1.8;padding:12px 9px;border:1px solid var(--line);border-radius:5px;background:#f7f8f4;overflow-wrap:anywhere}.controller-details{font-size:10px;line-height:1.8;color:var(--muted);margin:12px 0}.controller-help{font-size:11px;color:var(--orange);text-decoration:none}.integral-toggle{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--muted);margin:0 0 16px}.integral-toggle input{accent-color:var(--orange)}
+
+</style></head>
+<body>
+<header><div class="brand"><span class="brand-icon">▥</span>FURNACE<span class="brand-light">LAB</span><span class="divider"></span><span class="subtitle">PID control simulator</span></div><div class="header-right"><a href="pid-learn.html" style="color:var(--orange);margin-right:14px;text-decoration:none">Understanding PID ↗</a><span class="status-dot"></span> Offline simulation <button id="model-button" class="quiet">About the model ↗</button></div></header>
+<main>
+  <div class="page-heading"><div><div class="eyebrow">THERMAL PROCESS WORKBENCH</div><h1>A better feel for control.</h1><p>Build a heating profile. Tune the response. See the difference.</p></div><button id="export" class="secondary">↓ &nbsp; Export CSV</button></div>
+  <div class="workspace">
+    <aside>
+      <section class="panel profile-panel"><div class="panel-heading"><h2><span class="section-number">01</span> Heating profile</h2><select id="preset" aria-label="Heating profile preset"><option value="custom">Custom profile</option><option value="sinter">Two-stage firing</option><option value="anneal">Annealing</option><option value="step">Step response</option></select></div><div class="profile-head"><span>STAGE</span><span>TARGET °C</span><span>RATE °C/min</span><span>HOLD min</span><span></span></div><div id="stages"></div><button id="add-stage" class="add-button">+ Add stage</button><div class="profile-footer"><span>Program duration</span><strong id="duration">—</strong></div><p class="fine-print">Ramp rates apply to the setpoint. Actual heating depends on the furnace and controller.</p></section>
+      <section class="panel"><div class="panel-heading"><h2><span class="section-number">02</span> PID tuning</h2><button id="reset-gains" class="text-button">Reset</button></div><div class="controller-options"><label>Controller form<select id="controller-form"><option value="time">Kp, Tn, Tv, Td</option><option value="parallel">Kp, Ki, Kd, Tf</option></select></label><label>Derivative acts on<select id="derivative-source"><option value="error">Error · matches Gc(s)</option><option value="measurement">Temperature · avoids kick</option></select></label></div><div id="gains"></div><label id="integral-toggle" class="integral-toggle"><input type="checkbox" id="integral-enabled" checked> Integral enabled</label><div class="controller-equation" id="controller-equation"></div><p class="controller-details" id="controller-details" aria-live="polite"></p><a href="pid-learn.html#filtered-pid" class="controller-help">How Tn, Tv and Td work ↗</a></section>
+      <section class="panel furnace-panel"><div class="panel-heading"><h2><span class="section-number">03</span> Furnace properties</h2><span class="tag">MODEL</span></div><div class="property-grid">
+        <label>Ambient temperature<div class="unit-input"><input id="ambient" type="number" value="25" min="0" max="100" step="1"><span>°C</span></div></label>
+        <label>Maximum heating<div class="unit-input"><input id="heating" type="number" value="18" min="1" max="100" step="1"><span>°C/min</span></div></label>
+        <label>Heat loss coefficient<div class="unit-input"><input id="loss" type="number" value="0.012" min="0" max="0.2" step="0.001"><span>1/min</span></div></label>
+        <label>Thermal lag<div class="unit-input"><input id="lag" type="number" value="1.5" min="0.05" max="30" step="0.05"><span>min</span></div></label>
+        <label>Heater delay<div class="unit-input"><input id="delay" type="number" value="0.5" min="0" max="20" step="0.1"><span>min</span></div></label>
+        <label>Cool-down observation<div class="unit-input"><input id="cooldown" type="number" value="30" min="0" max="300" step="5"><span>min</span></div></label>
+      </div></section>
+      <button id="run" class="primary">▶ &nbsp; Run simulation <span>↵</span></button><p id="validation" role="alert"></p>
+    </aside>
+    <div class="results">
+      <div class="metrics"><div class="metric"><span>PEAK TEMPERATURE</span><div><strong id="peak">—</strong><small>°C</small></div><p>Maximum process temperature</p></div><div class="metric"><span>MAX. OVERSHOOT</span><div><strong id="overshoot">—</strong><small>°C</small></div><p>Above the programmed setpoint</p></div><div class="metric"><span>HOLD ACCURACY</span><div><strong id="hold-error">—</strong><small>°C</small></div><p>Mean absolute error during holds</p></div></div>
+      <section class="panel chart-panel"><div class="chart-heading"><div><h2>Temperature response</h2><p>Your programmed profile meets the simulated furnace.</p></div><span id="run-state" class="run-state"><span class="status-dot"></span> Simulation complete</span></div><div class="legend"><span><i class="setpoint"></i>Setpoint</span><span><i class="actual"></i>Actual temperature</span><span id="baseline-legend" hidden><i class="baseline"></i>Saved run</span><span class="legend-unit">TEMPERATURE / °C</span></div><div class="chart-wrap"><canvas id="temperature-chart" aria-label="Setpoint and actual furnace temperature over time" role="img"></canvas><div id="tooltip" class="tooltip" hidden></div></div><div class="chart-axis-label">ELAPSED TIME / min</div><div class="chart-bottom"><div class="hint">⌖ &nbsp; Hover to inspect the process</div><div class="comparison"><button id="save-run" class="secondary compact">+ Save for comparison</button><button id="clear-run" class="text-button" hidden>Clear</button></div></div></section>
+      <section class="panel output-panel"><div class="chart-heading"><div><h2>Heater output</h2><p>Controller demand as a percentage of full power.</p></div><span class="tag">0–100%</span></div><div class="output-wrap"><canvas id="output-chart" aria-label="Heater power percentage over time" role="img"></canvas></div><div class="chart-axis-label">ELAPSED TIME / min</div></section>
+      <div class="playback"><button id="play" class="play-button" aria-label="Play simulation">▶</button><div class="playback-body"><div class="playback-label"><strong id="phase">Full simulation</strong><span id="time-readout">—</span></div><input id="scrub" type="range" min="0" max="1000" value="1000" aria-label="Simulation playback position"></div><select id="speed" aria-label="Playback speed"><option value="1">1× speed</option><option value="4" selected>4× speed</option><option value="10">10× speed</option></select></div>
+      <div class="insight"><span class="insight-icon">i</span><p id="insight">Adjust a gain to explore the response.</p></div>
+    </div>
+  </div>
+  <footer><span><span class="status-dot"></span> Runs entirely on your device</span><span>Furnace Lab <span class="footer-dot">·</span> Explore, tune, understand.</span></footer>
+</main>
+<dialog id="model-dialog"><div class="modal-heading"><h2>A furnace you can experiment with</h2><button id="close-model" class="quiet" aria-label="Close model description">✕</button></div><p>This is an educational, lumped thermal model. Temperature rises with heater power and falls through heat loss to ambient. The heater has a first-order thermal lag and transport delay.</p><code>dT/dt = H × heater / 100 − loss × (T − ambient)</code><p><strong>Controller:</strong> Time mode uses Gc(s) = Kp[1 + 1/(Tn·s) + Tv·s/(1 + Td·s)]. Internally Ki = Kp/Tn and Kd = Kp·Tv; Td is the derivative filter time. All times are minutes. With D on error, U(s) = Gc(s)E(s) before saturation and anti-windup. With D on temperature, only the derivative input changes to −T. The filter defaults to 0.25 min and is adjustable; Td = 0 means an unfiltered derivative. Disable Integral enabled to turn I off. Changing Kp in time mode also changes effective Ki and Kd. Gain units are %/°C, %/(°C·min), and %·min/°C. Conditional integration limits windup.</p><p>Each stage ramps the setpoint to its target and then holds it for the specified time. Holds begin on the programmed schedule, even if the actual temperature has not reached the target. During the final cool-down the heater is turned off.</p><p>The simulation uses a 0.05-minute time step. Maximum overshoot excludes final cool-down; hold accuracy includes the entire hold, including its initial transient. CSV exports the complete current run.</p><p>Real furnaces also have temperature-dependent losses, changing material properties and sensor dynamics. Calibrate this model against measured data before using it to inform real equipment settings.</p></dialog>
+<script>
+(() => {
+const defaults = {
+  kp: 2.4, ki: 0.12, kd: 4, derivativeFilter: 0.25, derivativeSource: 'measurement', ambient: 25, heating: 18, loss: 0.012, lag: 1.5, delay: 0.5, cooldown: 30,
+  stages: [{ target: 450, rate: 8, hold: 20 }, { target: 800, rate: 5, hold: 30 }]
+};
+function makeProfile(config) {
+  let time = 0, temperature = config.ambient;
+  const segments = [];
+  for (const [index, stage] of config.stages.entries()) {
+    const duration = Math.abs(stage.target - temperature) / stage.rate;
+    if (duration > 0) segments.push({ start: time, end: time + duration, from: temperature, to: stage.target, name: `Ramp ${index + 1}`, kind: 'ramp' });
+    time += duration;
+    if (stage.hold > 0) segments.push({ start: time, end: time + stage.hold, from: stage.target, to: stage.target, name: `Hold ${index + 1}`, kind: 'hold' });
+    time += stage.hold;
+    temperature = stage.target;
+  }
+  const processEnd = time;
+  if (config.cooldown > 0) segments.push({ start: time, end: time + config.cooldown, from: config.ambient, to: config.ambient, name: 'Cool down', kind: 'cool' });
+  return { segments, duration: time + config.cooldown, processEnd };
+}
+function controllerParameters(config) {
+  if (config.controllerForm !== undefined && !['parallel', 'time'].includes(config.controllerForm)) throw new Error('Invalid controller form.');
+  const source = config.derivativeSource ?? 'measurement';
+  if (!['measurement', 'error'].includes(source)) throw new Error('Invalid derivative source.');
+  if (!Number.isFinite(config.kp) || config.kp < 0) throw new Error('Invalid proportional gain.');
+  if (config.controllerForm === 'time') {
+    if (!Number.isFinite(config.tn) || config.tn <= 0) throw new Error('Tn must be a positive time; use Integral enabled to turn I off.');
+    if (!Number.isFinite(config.tv) || config.tv < 0 || !Number.isFinite(config.td) || config.td < 0) throw new Error('Tv and Td must be nonnegative times.');
+    return { kp: config.kp, ki: config.integralEnabled === false ? 0 : config.kp / config.tn, kd: config.kp * config.tv, filter: config.td, source };
+  }
+  const filter = config.derivativeFilter ?? 0.25;
+  if (!Number.isFinite(filter) || filter < 0 || !Number.isFinite(config.ki) || config.ki < 0 || !Number.isFinite(config.kd) || config.kd < 0) throw new Error('Invalid integral gain, derivative gain or filter time.');
+  return { kp: config.kp, ki: config.ki, kd: config.kd, filter, source };
+}
+function filteredDerivative(previous, slope, dt, filter) {
+  return filter === 0 ? slope : previous + (slope - previous) * (1 - Math.exp(-dt / filter));
+}
+function simulate(config, dt = 0.05) {
+  const controller = controllerParameters(config);
+  for (const key of ['ambient', 'heating', 'loss', 'lag', 'delay', 'cooldown']) {
+    if (!Number.isFinite(config[key]) || (key !== 'ambient' && config[key] < 0)) throw new Error(`Invalid ${key}`);
+  }
+  if (config.heating <= 0 || config.lag < 0.05 || dt <= 0 || !Number.isFinite(dt)) throw new Error('Heating, thermal lag and time step must be positive.');
+  if (!config.stages.length || config.stages.some(s => !Number.isFinite(s.target) || !Number.isFinite(s.rate) || !Number.isFinite(s.hold) || s.rate <= 0 || s.hold < 0)) throw new Error('Every stage needs a temperature, positive ramp rate and nonnegative hold time.');
+  const profile = makeProfile(config);
+  if (profile.duration <= 0 || profile.duration > 3000) throw new Error('Profile must be between 0 and 3,000 minutes. Increase the ramp rate or reduce the hold time.');
+  const steps = Math.ceil(profile.duration / dt);
+  // Integer number of fixed steps, with a final step exactly at the profile end.
+  dt = profile.duration / steps;
+  let temp = config.ambient, heat = 0, integral = 0, derivative = 0, previousSignal = controller.source === 'error' ? 0 : -temp, segmentIndex = 0;
+  const commands = [], points = [];
+  let squaredError = 0, overshoot = 0, holdError = 0, holdCount = 0, energy = 0, peak = temp;
+  for (let i = 0; i <= steps; i++) {
+    const t = i * dt;
+    while (segmentIndex < profile.segments.length - 1 && t >= profile.segments[segmentIndex].end) segmentIndex++;
+    const segment = profile.segments[segmentIndex];
+    const sp = segment.from + (segment.to - segment.from) * Math.min(1, Math.max(0, (t - segment.start) / (segment.end - segment.start)));
+    const error = sp - temp;
+    // The error source implements Gc(s)E(s); measurement avoids setpoint kick.
+    const signal = controller.source === 'error' ? error : -temp;
+    derivative = filteredDerivative(derivative, (signal - previousSignal) / dt, dt, controller.filter);
+    previousSignal = signal;
+    const p = controller.kp * error, d = controller.kd * derivative;
+    const candidate = integral + controller.ki * error * dt;
+    const raw = p + candidate + d;
+    // Conditional integration: do not accumulate error further into saturation.
+    if ((raw >= 0 && raw <= 100) || (raw > 100 && error < 0) || (raw < 0 && error > 0)) integral = candidate;
+    const output = segment.kind === 'cool' ? 0 : Math.max(0, Math.min(100, p + integral + d));
+    commands.push(output);
+    points.push({ t, sp, temp, output, p, integral, d, phase: segment.name });
+    if (t < profile.processEnd) { squaredError += error * error; overshoot = Math.max(overshoot, temp - sp); }
+    if (segment.kind === 'hold') { holdError += Math.abs(error); holdCount++; }
+    peak = Math.max(peak, temp);
+    if (i === steps) break;
+    energy += output / 100 * dt;
+    // Fractional transport delay via linear interpolation of command history.
+    const delayedIndex = i - config.delay / dt;
+    const lo = Math.floor(delayedIndex), fraction = delayedIndex - lo;
+    const delayed = (lo >= 0 ? commands[lo] : 0) * (1 - fraction) + (lo + 1 >= 0 ? commands[lo + 1] ?? 0 : 0) * fraction;
+    const decay = Math.exp(-dt / config.lag);
+    const nextHeat = delayed + (heat - delayed) * decay;
+    const averageHeat = delayed + (heat - delayed) * config.lag * (1 - decay) / dt;
+    heat = nextHeat;
+    // Stable exponential update of the lumped thermal energy balance.
+    const source = config.heating * averageHeat / 100;
+    temp = config.loss > 0 ? config.ambient + (temp - config.ambient) * Math.exp(-config.loss * dt) + source / config.loss * (1 - Math.exp(-config.loss * dt)) : temp + source * dt;
+  }
+  return { config: structuredClone(config), controller, profile, points, metrics: { peak, overshoot, rmse: Math.sqrt(squaredError / Math.max(1, points.filter(p => p.t < profile.processEnd).length)), holdError: holdCount ? holdError / holdCount : null, energy } };
+}
+
+const $ = id => document.getElementById(id);
+let config = { ...structuredClone(defaults), controllerForm: 'time', tn: 20, tv: 4 / 2.4, td: 0.25, integralEnabled: true, derivativeSource: 'error' }, result, baseline = null, cursor = 1, playing = false, frame, lastTime, hover = null, debounce;
+const gainSpecs = [
+  { key: 'kp', symbol: 'P', name: 'Proportional', description: 'Responds to the current temperature error', max: 12, step: 0.1 },
+  { key: 'ki', symbol: 'I', name: 'Integral', description: 'Corrects error that accumulates over time', max: 1, step: 0.01 },
+  { key: 'kd', symbol: 'D', name: 'Derivative', description: 'Dampens the rate of temperature change', max: 30, step: 0.5 }
+];
+const timeSpecs = [
+  { key: 'kp', symbol: 'Kp', name: 'Proportional gain', description: 'Overall gain · %/°C', min: 0, max: 12, step: 0.1 },
+  { key: 'tn', symbol: 'Tn', name: 'Integral time', description: 'Minutes · smaller means stronger I', min: 0.01, max: 200, step: 0.1 },
+  { key: 'tv', symbol: 'Tv', name: 'Derivative action time', description: 'Minutes · larger means stronger D', min: 0, max: 20, step: 0.05 },
+  { key: 'td', symbol: 'Td', name: 'Derivative filter time', description: 'Minutes · larger means more smoothing', min: 0, max: 5, step: 0.01 }
+];
+const activeSpecs = () => config.controllerForm === 'time' ? timeSpecs : [...gainSpecs, { key: 'derivativeFilter', symbol: 'Tf', name: 'Derivative filter time', description: 'Minutes · first-order D filter', min: 0, max: 5, step: 0.01 }];
+function renderStages() {
+  $('stages').replaceChildren();
+  config.stages.forEach((stage, i) => {
+    const row = document.createElement('div'); row.className = 'stage-row';
+    const index = document.createElement('span'); index.className = 'stage-index'; index.textContent = String(i + 1).padStart(2, '0'); row.append(index);
+    for (const key of ['target', 'rate', 'hold']) {
+      const input = document.createElement('input'); input.type = 'number'; input.value = stage[key];
+      input.min = key === 'rate' ? '0.1' : '0'; input.max = key === 'target' ? '2000' : key === 'rate' ? '100' : '1000'; input.step = key === 'rate' ? '0.1' : '1';
+      input.setAttribute('aria-label', `Stage ${i + 1} ${key === 'target' ? 'target temperature in Celsius' : key === 'rate' ? 'ramp rate in Celsius per minute' : 'hold time in minutes'}`);
+      input.addEventListener('input', () => { config.stages[i][key] = input.value === '' ? NaN : Number(input.value); $('preset').value = 'custom'; schedule(); });
+      row.append(input);
+    }
+    const remove = document.createElement('button'); remove.className = 'remove-stage'; remove.textContent = '×'; remove.disabled = config.stages.length === 1; remove.setAttribute('aria-label', `Remove stage ${i + 1}`);
+    remove.onclick = () => { config.stages.splice(i, 1); $('preset').value = 'custom'; renderStages(); run(); }; row.append(remove); $('stages').append(row);
+  });
+  $('add-stage').disabled = config.stages.length >= 8;
+}
+function renderGains() {
+  const specs = activeSpecs();
+  $('gains').innerHTML = specs.map(s => `<div class="gain"><div class="gain-top"><div><div class="gain-name"><span class="gain-symbol">${s.symbol}</span>${s.name}</div><div class="gain-description">${s.description}</div></div><input id="${s.key}" type="number" min="${s.min ?? 0}" max="${Math.max(s.max, config[s.key])}" step="any" value="${config[s.key]}" aria-label="${config.controllerForm === 'time' || s.key === 'derivativeFilter' ? s.name : `${s.name} gain`}"></div><input id="${s.key}-range" type="range" min="${s.min ?? 0}" max="${Math.max(s.max, config[s.key])}" step="any" value="${config[s.key]}" aria-label="${s.name} slider"><div class="range-labels"><span>${s.min ?? 0}</span><span>${Math.max(s.max, config[s.key])}</span></div></div>`).join('');
+  $('integral-toggle').hidden = config.controllerForm !== 'time';
+  $('integral-enabled').checked = config.integralEnabled;
+  $('controller-form').value = config.controllerForm;
+  $('derivative-source').value = config.derivativeSource;
+  for (const s of specs) {
+    $(s.key).oninput = () => { $(`${s.key}-range`).value = $(s.key).value; schedule(); };
+    $(`${s.key}-range`).oninput = () => { $(s.key).value = Number($(`${s.key}-range`).value).toPrecision(6); schedule(); };
+  }
+}
+function schedule() { clearTimeout(debounce); stop(); $('run-state').textContent = 'Updating simulation…'; debounce = setTimeout(run, 180); }
+function readConfig() {
+  const inputs = [...document.querySelectorAll('input[type=number]')];
+  const invalid = inputs.find(input => !input.validity.valid || input.value.trim() === '');
+  if (invalid) throw new Error(`Check ${invalid.getAttribute('aria-label') || invalid.closest('label')?.childNodes[0].textContent || 'the highlighted field'}; enter a value within its limits.`);
+  for (const key of [...activeSpecs().map(s => s.key), 'ambient', 'heating', 'loss', 'lag', 'delay', 'cooldown']) config[key] = Number($(key).value);
+  config.integralEnabled = $('integral-enabled').checked;
+  config.derivativeSource = $('derivative-source').value;
+  return config;
+}
+function run() {
+  clearTimeout(debounce); stop();
+  try {
+    result = simulate(readConfig()); cursor = 1; hover = null; $('tooltip').hidden = true;
+    const c = result.controller;
+    $('controller-equation').textContent = config.controllerForm === 'time' ? `Gc(s) = Kp [1 + ${config.integralEnabled ? '1/(Tn·s)' : '0'} + Tv·s/(1 + Td·s)]` : 'Gc(s) = Kp + Ki/s + Kd·s/(1 + Tf·s)';
+    $('controller-details').textContent = `Ki = ${c.ki.toPrecision(4)}, Kd = ${c.kd.toPrecision(4)} · filter = ${c.filter} min. ${c.source === 'error' ? 'D acts on error: U(s) = Gc(s)E(s) before limiting.' : 'D acts on temperature; the displayed transfer function applies to error-based D.'} Anti-windup · 0–100% output.`;
+    $('validation').textContent = ''; $('run-state').innerHTML = '<span class="status-dot"></span> Simulation complete';
+    for (const id of ['export', 'save-run', 'play', 'scrub']) $(id).disabled = false;
+    $('duration').textContent = `${result.profile.processEnd.toFixed(1)} min + ${config.cooldown} min cool down`;
+    $('peak').textContent = result.metrics.peak.toFixed(1); $('overshoot').textContent = result.metrics.overshoot.toFixed(1); $('hold-error').textContent = result.metrics.holdError === null ? '—' : result.metrics.holdError.toFixed(1);
+    const maxTarget = Math.max(...config.stages.map(s => s.target));
+    const ceiling = config.loss > 0 ? config.ambient + config.heating / config.loss : Infinity;
+    $('insight').textContent = maxTarget >= ceiling ? `This furnace cannot sustain ${maxTarget} °C: its full-power equilibrium is ${ceiling.toFixed(0)} °C. Increase maximum heating or reduce the heat loss coefficient.` : c.kp === 0 && c.ki === 0 && c.kd === 0 ? 'The controller gains are zero. Increase proportional gain to begin heating.' : `Tracking error is ${result.metrics.rmse.toFixed(1)} °C RMS during the heating program. Save this run to compare another setting. ${config.controllerForm === 'time' ? 'Smaller Tn increases I; larger Tv increases D; larger Td smooths and slows D.' : 'Compare gains and filter time across the whole ramp and hold.'}${c.filter === 0 ? ' D is unfiltered; its response is sensitive to the simulation time step.' : c.filter < 0.05 ? ' The filter time is below the nominal simulation step; very fast filter dynamics have limited resolution.' : ''}`;
+    updatePlayback(); draw();
+  } catch (error) {
+    $('validation').textContent = error.message; $('run-state').textContent = 'Check inputs';
+    for (const id of ['export', 'save-run', 'play', 'scrub']) $(id).disabled = true;
+  }
+}
+function stop() { playing = false; cancelAnimationFrame(frame); $('play').textContent = '▶'; $('play').setAttribute('aria-label', 'Play simulation'); lastTime = null; }
+function updatePlayback() {
+  if (!result) return;
+  const point = result.points[Math.min(result.points.length - 1, Math.round(cursor * (result.points.length - 1)))];
+  $('scrub').value = Math.round(cursor * 1000); $('phase').textContent = cursor === 1 ? 'Full simulation' : point.phase;
+  $('time-readout').textContent = `${point.t.toFixed(1)} / ${result.profile.duration.toFixed(1)} min`;
+}
+function animate(now) {
+  if (!playing) return;
+  if (lastTime !== null) cursor = Math.min(1, cursor + (now - lastTime) / 1000 * Number($('speed').value) / result.profile.duration);
+  lastTime = now; updatePlayback(); draw();
+  if (cursor >= 1) stop(); else frame = requestAnimationFrame(animate);
+}
+
+function setupCanvas(id) {
+  const canvas = $(id), rect = canvas.getBoundingClientRect(), ratio = devicePixelRatio || 1;
+  canvas.width = Math.round(rect.width * ratio); canvas.height = Math.round(rect.height * ratio);
+  const ctx = canvas.getContext('2d'); ctx.scale(ratio, ratio);
+  return { canvas, ctx, width: rect.width, height: rect.height };
+}
+function drawChart(id, output = false) {
+  if (!result) return;
+  const { ctx, width, height } = setupCanvas(id);
+  const theme = getComputedStyle(document.documentElement);
+  const color = name => theme.getPropertyValue(name).trim();
+  const colors = { sp: color('--green'), temp: color('--orange'), baseline: color('--baseline'), output: color('--green') };
+  const margin = { left: 43, right: 12, top: output ? 9 : 27, bottom: 25 };
+  const w = width - margin.left - margin.right, h = height - margin.top - margin.bottom;
+  const maxTime = Math.max(result.profile.duration, baseline?.profile.duration || 0);
+  const minY = output ? 0 : Math.min(0, result.config.ambient, ...result.config.stages.map(s => s.target), baseline?.config.ambient ?? 0);
+  let maxY = output ? 100 : Math.max(result.metrics.peak, ...result.config.stages.map(s => s.target), baseline?.metrics.peak || 0);
+  const stepY = output ? 25 : niceStep((maxY - minY) / 5); maxY = output ? 100 : Math.ceil((maxY + stepY * 0.12) / stepY) * stepY;
+  const x = t => margin.left + t / maxTime * w, y = value => margin.top + h - (value - minY) / (maxY - minY) * h;
+  ctx.font = '10px "DM Sans", sans-serif'; ctx.lineWidth = 1;
+  ctx.save(); ctx.beginPath(); ctx.rect(margin.left, margin.top, w, h); ctx.clip();
+  for (const segment of result.profile.segments) {
+    if (segment.kind === 'hold') { ctx.fillStyle = color('--chart-hold'); ctx.fillRect(x(segment.start), margin.top, x(segment.end) - x(segment.start), h); }
+    if (segment.kind === 'cool') { ctx.fillStyle = color('--chart-cool'); ctx.fillRect(x(segment.start), margin.top, x(segment.end) - x(segment.start), h); }
+  }
+  ctx.restore();
+  for (let value = minY; value <= maxY + 0.01; value += stepY) {
+    ctx.strokeStyle = color('--chart-grid'); ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(margin.left, y(value)); ctx.lineTo(width - margin.right, y(value)); ctx.stroke();
+    ctx.fillStyle = color('--muted'); ctx.textAlign = 'right'; ctx.fillText(String(Math.round(value)), margin.left - 10, y(value) + 3);
+  }
+  const stepX = niceStep(maxTime / Math.max(3, Math.floor(w / 90)));
+  for (let t = 0; t <= maxTime; t += stepX) {
+    ctx.strokeStyle = color('--chart-grid'); ctx.beginPath(); ctx.moveTo(x(t), margin.top); ctx.lineTo(x(t), margin.top + h); ctx.stroke();
+    ctx.fillStyle = color('--muted'); ctx.textAlign = 'center'; ctx.fillText(String(t), x(t), height - 6);
+  }
+  ctx.setLineDash([]);
+  if (!output) {
+    ctx.font = '9px "DM Sans", sans-serif'; ctx.fillStyle = color('--muted'); ctx.textAlign = 'center';
+    for (const s of result.profile.segments) if (x(s.end) - x(s.start) > 42) ctx.fillText(s.name.toUpperCase(), (x(s.start) + x(s.end)) / 2, 13);
+  }
+  ctx.save(); ctx.beginPath(); ctx.rect(margin.left, margin.top, w, h); ctx.clip();
+  const visible = result.profile.duration * cursor;
+  function line(points, key, color, dash = [], fill = false, until = Infinity) {
+    const data = points.filter(p => p.t <= until);
+    if (!data.length) return;
+    // One sample per roughly half pixel is sufficient at this chart size.
+    const stride = Math.max(1, Math.floor(data.length / (w * 2)));
+    ctx.beginPath(); ctx.moveTo(x(data[0].t), y(data[0][key]));
+    for (let i = stride; i < data.length; i += stride) ctx.lineTo(x(data[i].t), y(data[i][key]));
+    const end = data[data.length - 1]; ctx.lineTo(x(end.t), y(end[key]));
+    ctx.strokeStyle = color; ctx.lineWidth = 1.8; ctx.setLineDash(dash); ctx.stroke(); ctx.setLineDash([]);
+    if (fill) { ctx.lineTo(x(end.t), y(0)); ctx.lineTo(x(data[0].t), y(0)); ctx.closePath(); const gradient = ctx.createLinearGradient(0, margin.top, 0, margin.top + h); gradient.addColorStop(0, `${color}25`); gradient.addColorStop(1, `${color}02`); ctx.fillStyle = gradient; ctx.fill(); }
+  }
+  if (baseline) line(baseline.points, output ? 'output' : 'temp', colors.baseline, [3, 5]);
+  if (output) line(result.points, 'output', colors.output, [], true, visible);
+  else {
+    // Draw segment endpoints explicitly so step profiles cannot be skipped by downsampling.
+    const profilePoints = [{ t: 0, sp: result.config.ambient }];
+    for (const s of result.profile.segments) profilePoints.push({ t: s.start, sp: s.from }, { t: s.end, sp: s.to });
+    line(profilePoints, 'sp', colors.sp, [5, 5]); line(result.points, 'temp', colors.temp, [], true, visible);
+  }
+  const indicator = hover !== null ? hover : cursor < 1 ? visible : null;
+  if (indicator !== null) {
+    const p = result.points[Math.min(result.points.length - 1, Math.round(indicator / result.profile.duration * (result.points.length - 1)))];
+    ctx.strokeStyle = color('--muted'); ctx.setLineDash([3, 4]); ctx.beginPath(); ctx.moveTo(x(p.t), margin.top); ctx.lineTo(x(p.t), margin.top + h); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = output ? colors.output : colors.temp; ctx.beginPath(); ctx.arc(x(p.t), y(output ? p.output : p.temp), 4, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+function niceStep(value) { const power = 10 ** Math.floor(Math.log10(Math.max(value, 0.0001))); const n = value / power; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * power; }
+function draw() { drawChart('temperature-chart'); drawChart('output-chart', true); }
+$('temperature-chart').addEventListener('pointermove', event => {
+  if (!result) return;
+  const rect = $('temperature-chart').getBoundingClientRect();
+  const t = (event.clientX - rect.left - 43) / (rect.width - 55) * Math.max(result.profile.duration, baseline?.profile.duration || 0);
+  if (t < 0 || t > result.profile.duration) { hover = null; $('tooltip').hidden = true; draw(); return; }
+  const p = result.points[Math.round(t / result.profile.duration * (result.points.length - 1))]; hover = p.t;
+  $('tooltip').innerHTML = `<b>${p.t.toFixed(1)} min · ${p.phase}</b><br>Setpoint &nbsp; ${p.sp.toFixed(1)} °C<br><strong>Actual &nbsp; ${p.temp.toFixed(1)} °C</strong><br>Heater &nbsp; ${p.output.toFixed(1)}%`;
+  $('tooltip').hidden = false; $('tooltip').style.left = `${Math.max(0, Math.min(rect.width - $('tooltip').offsetWidth, event.clientX - rect.left + 14))}px`; $('tooltip').style.top = `${Math.max(0, Math.min(rect.height - $('tooltip').offsetHeight, event.clientY - rect.top - 35))}px`; draw();
+});
+$('temperature-chart').addEventListener('pointerleave', () => { hover = null; $('tooltip').hidden = true; draw(); });
+$('add-stage').onclick = () => { if (config.stages.length >= 8) return; const last = config.stages.at(-1); config.stages.push({ target: Number.isFinite(last.target) ? Math.min(2000, last.target + 200) : 800, rate: 5, hold: 20 }); $('preset').value = 'custom'; renderStages(); run(); };
+$('preset').onchange = () => {
+  const presets = { sinter: [{ target: 450, rate: 8, hold: 20 }, { target: 800, rate: 5, hold: 30 }], anneal: [{ target: 600, rate: 5, hold: 60 }, { target: 200, rate: 3, hold: 15 }], step: [{ target: 500, rate: 100, hold: 60 }] };
+  if (presets[$('preset').value]) { config.stages = structuredClone(presets[$('preset').value]); renderStages(); run(); }
+};
+$('reset-gains').onclick = () => { Object.assign(config, { kp: defaults.kp, ki: defaults.ki, kd: defaults.kd, derivativeFilter: 0.25, tn: 20, tv: 4 / 2.4, td: 0.25, integralEnabled: true }); renderGains(); run(); };
+$('controller-form').onchange = () => {
+  const next = $('controller-form').value;
+  try {
+    readConfig();
+    const c = controllerParameters(config);
+    if (next === 'time') {
+      if (c.kp === 0 && (c.ki > 0 || c.kd > 0)) throw new Error('A controller with Kp = 0 and nonzero I or D cannot be represented by this time form. Set a positive Kp first.');
+      config.tn = c.ki > 0 ? c.kp / c.ki : 20; config.tv = c.kp > 0 ? c.kd / c.kp : 0; config.td = c.filter; config.integralEnabled = c.ki > 0;
+    } else { config.ki = c.ki; config.kd = c.kd; config.derivativeFilter = c.filter; }
+    config.controllerForm = next; renderGains(); run();
+  } catch (error) { $('controller-form').value = config.controllerForm; $('validation').textContent = error.message; }
+};
+$('integral-enabled').onchange = schedule;
+$('derivative-source').onchange = schedule;
+for (const key of ['ambient', 'heating', 'loss', 'lag', 'delay', 'cooldown']) $(key).oninput = schedule;
+$('run').onclick = run;
+document.addEventListener('keydown', event => { if (event.key === 'Enter' && !$('model-dialog').open && event.target.tagName !== 'BUTTON') run(); });
+$('save-run').onclick = () => {
+  baseline = result; $('baseline-legend').hidden = false; $('clear-run').hidden = false; $('save-run').textContent = '↻ Replace saved run';
+  $('baseline-legend').title = `Saved gains: Kp ${baseline.controller.kp}, Ki ${baseline.controller.ki}, Kd ${baseline.controller.kd}; filter ${baseline.controller.filter} min; D on ${baseline.controller.source}`;
+  draw();
+};
+$('clear-run').onclick = () => { baseline = null; $('baseline-legend').hidden = true; $('clear-run').hidden = true; $('save-run').textContent = '+ Save for comparison'; draw(); };
+$('play').onclick = () => { if (playing) stop(); else { if (cursor >= 1) cursor = 0; playing = true; lastTime = null; $('play').textContent = 'Ⅱ'; $('play').setAttribute('aria-label', 'Pause simulation'); frame = requestAnimationFrame(animate); } };
+$('scrub').oninput = () => { stop(); cursor = Number($('scrub').value) / 1000; updatePlayback(); draw(); };
+$('export').onclick = () => {
+  const fields = ['t', 'sp', 'temp', 'output', 'p', 'integral', 'd'];
+  const csv = ['time_min,setpoint_C,temperature_C,heater_percent,P_percent,I_percent,D_percent,phase', ...result.points.map(p => fields.map(f => p[f].toFixed(5)).join(',') + ',' + p.phase)].join('\n');
+  const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })); const a = document.createElement('a'); a.href = url; a.download = 'furnace-simulation.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+$('model-button').onclick = () => $('model-dialog').showModal(); $('close-model').onclick = () => $('model-dialog').close();
+new ResizeObserver(draw).observe($('temperature-chart').parentElement); new ResizeObserver(draw).observe($('output-chart').parentElement);
+renderStages(); renderGains(); run();
+
+})();
+</script>
+</body></html>
