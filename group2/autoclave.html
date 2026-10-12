@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,7 @@
     <!-- Modern Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-page: #f8fafc;
@@ -48,7 +45,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image:
+            background-image: 
                 radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.03) 0px, transparent 50%);
         }
@@ -434,7 +431,7 @@
             background: linear-gradient(180deg, #e2e8f0, #cbd5e1);
             border: 1px solid #94a3b8;
             border-radius: 6px 6px 0 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -455,7 +452,7 @@
             position: relative;
             background: #f8fafc;
             overflow: hidden;
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.04), 0 10px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.04), 0 10px 25px rgba(0,0,0,0.08);
         }
 
         .chamber-water-layer {
@@ -464,7 +461,7 @@
             width: 100%;
             background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
             transition: height 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -500,7 +497,7 @@
             font-family: 'Roboto Mono', monospace;
             letter-spacing: 0.1em;
             color: rgba(255, 255, 255, 0.9);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         /* Clean Level Indicators on Right */
@@ -705,17 +702,13 @@
         }
     </style>
 </head>
-
 <body>
 
     <!-- Header Navigation -->
     <header class="navbar">
         <div class="nav-brand">
             <div class="logo-badge">
-                <svg viewBox="0 0 24 24">
-                    <path
-                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
             </div>
             <div class="brand-titles">
                 <h1>Autoclave Analytics Platform</h1>
@@ -731,15 +724,12 @@
 
     <!-- Main Grid -->
     <main class="workspace">
-
+        
         <!-- Left Column: Vessel Configuration -->
         <section class="card">
             <div class="card-header">
                 <div class="card-title">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                     Chamber Settings
                 </div>
             </div>
@@ -820,7 +810,7 @@
 
         <!-- Center Column: Visual Cutaway Stage -->
         <section class="card stage-card">
-
+            
             <!-- Phase Status Header -->
             <div id="phase-banner" class="stage-banner">
                 <span id="phase-title">Phase: Two-Phase Liquid-Vapor Equilibrium</span>
@@ -829,7 +819,7 @@
 
             <!-- Vessel Visual Model -->
             <div class="cutaway-model">
-
+                
                 <!-- Graduation Ruler -->
                 <div class="height-graduations">
                     <div class="grad-item"><span id="ruler-top">173</span> cm</div>
@@ -899,15 +889,13 @@
         <section class="card">
             <div class="card-header">
                 <div class="card-title">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
                     Thermodynamic KPIs
                 </div>
             </div>
 
             <div class="metrics-stack">
-
+                
                 <!-- Pressure KPI -->
                 <div class="kpi-tile">
                     <div class="kpi-head">
@@ -915,11 +903,10 @@
                         <span class="kpi-tag">P</span>
                     </div>
                     <div class="kpi-main-val">
-                        <span id="res-pressure">0.02</span> <span
-                            style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">atm</span>
+                        <span id="res-pressure">0.02</span> <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">atm</span>
                     </div>
                     <div id="res-pressure-alt" class="kpi-sub-val">
-                        ≈ 0.023 bar / 0.002 MPa
+                        ≈ 0.023 bar / 0.34 psi
                     </div>
                 </div>
 
@@ -930,8 +917,7 @@
                         <span class="kpi-tag">ρ_w</span>
                     </div>
                     <div class="kpi-main-val">
-                        <span id="res-rho-w">998.16</span> <span
-                            style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">kg/m³</span>
+                        <span id="res-rho-w">998.16</span> <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">kg/m³</span>
                     </div>
                 </div>
 
@@ -942,8 +928,7 @@
                         <span class="kpi-tag">ρ_s</span>
                     </div>
                     <div class="kpi-main-val">
-                        <span id="res-rho-s">0.017</span> <span
-                            style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">kg/m³</span>
+                        <span id="res-rho-s">0.017</span> <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">kg/m³</span>
                     </div>
                 </div>
 
@@ -954,8 +939,7 @@
                         <span class="kpi-tag">h</span>
                     </div>
                     <div class="kpi-main-val">
-                        <span id="res-h">86.00</span> <span
-                            style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">cm</span>
+                        <span id="res-h">86.00</span> <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">cm</span>
                     </div>
                 </div>
 
@@ -985,62 +969,62 @@
         // --- Helmholtz EOS Coefficients ---
         const hA = [
             null,
-            { c: null, d: 1, t: -0.5, n: 0.12533547935523e-1, a: null, b: null, g: null, e: null },
-            { c: null, d: 1, t: 0.875, n: 7.8957634722828, a: null, b: null, g: null, e: null },
-            { c: null, d: 1, t: 1, n: -8.7803203303561, a: null, b: null, g: null, e: null },
-            { c: null, d: 2, t: 0.5, n: 0.31802509345418, a: null, b: null, g: null, e: null },
-            { c: null, d: 2, t: 0.75, n: -0.26145533859358, a: null, b: null, g: null, e: null },
-            { c: null, d: 3, t: 0.375, n: -0.78199751687981e-2, a: null, b: null, g: null, e: null },
-            { c: null, d: 4, t: 1, n: 0.88089493102134e-2, a: null, b: null, g: null, e: null },
-            { c: 1, d: 1, t: 4, n: -0.66856572307965, a: null, b: null, g: null, e: null },
-            { c: 1, d: 1, t: 6, n: 0.20433810950965, a: null, b: null, g: null, e: null },
-            { c: 1, d: 1, t: 12, n: -0.66212605039687e-4, a: null, b: null, g: null, e: null },
-            { c: 1, d: 2, t: 1, n: -0.19232721156002, a: null, b: null, g: null, e: null },
-            { c: 1, d: 2, t: 5, n: -0.25709043003438, a: null, b: null, g: null, e: null },
-            { c: 1, d: 3, t: 4, n: 0.16074868486251, a: null, b: null, g: null, e: null },
-            { c: 1, d: 4, t: 2, n: -0.40092828925807e-1, a: null, b: null, g: null, e: null },
-            { c: 1, d: 4, t: 13, n: 0.39343422603254e-6, a: null, b: null, g: null, e: null },
-            { c: 1, d: 5, t: 9, n: -0.75941377088144e-5, a: null, b: null, g: null, e: null },
-            { c: 1, d: 7, t: 3, n: 0.56250979351888e-3, a: null, b: null, g: null, e: null },
-            { c: 1, d: 9, t: 4, n: -0.15608652257135e-4, a: null, b: null, g: null, e: null },
-            { c: 1, d: 10, t: 11, n: 0.11537996422951e-8, a: null, b: null, g: null, e: null },
-            { c: 1, d: 11, t: 4, n: 0.36582165144204e-6, a: null, b: null, g: null, e: null },
-            { c: 1, d: 13, t: 13, n: -0.13251180074668e-11, a: null, b: null, g: null, e: null },
-            { c: 1, d: 15, t: 1, n: -0.62639586912454e-9, a: null, b: null, g: null, e: null },
-            { c: 2, d: 1, t: 7, n: -0.10793600908932, a: null, b: null, g: null, e: null },
-            { c: 2, d: 2, t: 1, n: 0.17611491008752e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 2, t: 9, n: 0.22132295167546, a: null, b: null, g: null, e: null },
-            { c: 2, d: 2, t: 10, n: -0.40247669763528, a: null, b: null, g: null, e: null },
-            { c: 2, d: 3, t: 10, n: 0.58083399985759, a: null, b: null, g: null, e: null },
-            { c: 2, d: 4, t: 3, n: 0.49969146990806e-2, a: null, b: null, g: null, e: null },
-            { c: 2, d: 4, t: 7, n: -0.31358700712549e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 4, t: 10, n: -0.74315929710341, a: null, b: null, g: null, e: null },
-            { c: 2, d: 5, t: 10, n: 0.47807329915480, a: null, b: null, g: null, e: null },
-            { c: 2, d: 6, t: 6, n: 0.20527940895948e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 6, t: 10, n: -0.13636435110343, a: null, b: null, g: null, e: null },
-            { c: 2, d: 7, t: 10, n: 0.14180634400617e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 9, t: 1, n: 0.83326504880713e-2, a: null, b: null, g: null, e: null },
-            { c: 2, d: 9, t: 2, n: -0.29052336009585e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 9, t: 3, n: 0.38615085574206e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 9, t: 4, n: -0.20393486513704e-1, a: null, b: null, g: null, e: null },
-            { c: 2, d: 9, t: 8, n: -0.16554050063734e-2, a: null, b: null, g: null, e: null },
-            { c: 2, d: 10, t: 6, n: 0.19955571979541e-2, a: null, b: null, g: null, e: null },
-            { c: 2, d: 10, t: 9, n: 0.15870308324157e-3, a: null, b: null, g: null, e: null },
-            { c: 2, d: 12, t: 8, n: -0.16388568342530e-4, a: null, b: null, g: null, e: null },
-            { c: 3, d: 3, t: 16, n: 0.43613615723811e-1, a: null, b: null, g: null, e: null },
-            { c: 3, d: 4, t: 22, n: 0.34994005463765e-1, a: null, b: null, g: null, e: null },
-            { c: 3, d: 4, t: 23, n: -0.76788197844621e-1, a: null, b: null, g: null, e: null },
-            { c: 3, d: 5, t: 23, n: 0.22446277332006e-1, a: null, b: null, g: null, e: null },
-            { c: 4, d: 14, t: 10, n: -0.62689710414685e-4, a: null, b: null, g: null, e: null },
-            { c: 6, d: 3, t: 50, n: -0.55711118565645e-9, a: null, b: null, g: null, e: null },
-            { c: 6, d: 6, t: 44, n: -0.19905718354408, a: null, b: null, g: null, e: null },
-            { c: 6, d: 6, t: 46, n: 0.31777497330738, a: null, b: null, g: null, e: null },
-            { c: 6, d: 6, t: 50, n: -0.11841182425981, a: null, b: null, g: null, e: null },
-            { c: null, d: 3, t: 0, n: -0.31306260323435e2, a: 20, b: 150, g: 1.21, e: 1 },
-            { c: null, d: 3, t: 1, n: 0.31546140237781e2, a: 20, b: 150, g: 1.21, e: 1 },
-            { c: null, d: 3, t: 4, n: -0.25213154341695e4, a: 20, b: 250, g: 1.25, e: 1 },
-            { c: 3.5, d: 0.85, t: 0.2, n: -0.14874640856724, a: 28, b: 700, g: 0.32, e: 0.3 },
-            { c: 3.5, d: 0.95, t: 0.2, n: 0.31806110878444, a: 32, b: 800, g: 0.32, e: 0.3 }
+            {c: null, d: 1, t: -0.5, n: 0.12533547935523e-1, a: null, b: null, g: null, e: null},
+            {c: null, d: 1, t: 0.875, n: 7.8957634722828, a: null, b: null, g: null, e: null},
+            {c: null, d: 1, t: 1, n: -8.7803203303561, a: null, b: null, g: null, e: null},
+            {c: null, d: 2, t: 0.5, n: 0.31802509345418, a: null, b: null, g: null, e: null},
+            {c: null, d: 2, t: 0.75, n: -0.26145533859358, a: null, b: null, g: null, e: null},
+            {c: null, d: 3, t: 0.375, n: -0.78199751687981e-2, a: null, b: null, g: null, e: null},
+            {c: null, d: 4, t: 1, n: 0.88089493102134e-2, a: null, b: null, g: null, e: null},
+            {c: 1, d: 1, t: 4, n: -0.66856572307965, a: null, b: null, g: null, e: null},
+            {c: 1, d: 1, t: 6, n: 0.20433810950965, a: null, b: null, g: null, e: null},
+            {c: 1, d: 1, t: 12, n: -0.66212605039687e-4, a: null, b: null, g: null, e: null},
+            {c: 1, d: 2, t: 1, n: -0.19232721156002, a: null, b: null, g: null, e: null},
+            {c: 1, d: 2, t: 5, n: -0.25709043003438, a: null, b: null, g: null, e: null},
+            {c: 1, d: 3, t: 4, n: 0.16074868486251, a: null, b: null, g: null, e: null},
+            {c: 1, d: 4, t: 2, n: -0.40092828925807e-1, a: null, b: null, g: null, e: null},
+            {c: 1, d: 4, t: 13, n: 0.39343422603254e-6, a: null, b: null, g: null, e: null},
+            {c: 1, d: 5, t: 9, n: -0.75941377088144e-5, a: null, b: null, g: null, e: null},
+            {c: 1, d: 7, t: 3, n: 0.56250979351888e-3, a: null, b: null, g: null, e: null},
+            {c: 1, d: 9, t: 4, n: -0.15608652257135e-4, a: null, b: null, g: null, e: null},
+            {c: 1, d: 10, t: 11, n: 0.11537996422951e-8, a: null, b: null, g: null, e: null},
+            {c: 1, d: 11, t: 4, n: 0.36582165144204e-6, a: null, b: null, g: null, e: null},
+            {c: 1, d: 13, t: 13, n: -0.13251180074668e-11, a: null, b: null, g: null, e: null},
+            {c: 1, d: 15, t: 1, n: -0.62639586912454e-9, a: null, b: null, g: null, e: null},
+            {c: 2, d: 1, t: 7, n: -0.10793600908932, a: null, b: null, g: null, e: null},
+            {c: 2, d: 2, t: 1, n: 0.17611491008752e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 2, t: 9, n: 0.22132295167546, a: null, b: null, g: null, e: null},
+            {c: 2, d: 2, t: 10, n: -0.40247669763528, a: null, b: null, g: null, e: null},
+            {c: 2, d: 3, t: 10, n: 0.58083399985759, a: null, b: null, g: null, e: null},
+            {c: 2, d: 4, t: 3, n: 0.49969146990806e-2, a: null, b: null, g: null, e: null},
+            {c: 2, d: 4, t: 7, n: -0.31358700712549e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 4, t: 10, n: -0.74315929710341, a: null, b: null, g: null, e: null},
+            {c: 2, d: 5, t: 10, n: 0.47807329915480, a: null, b: null, g: null, e: null},
+            {c: 2, d: 6, t: 6, n: 0.20527940895948e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 6, t: 10, n: -0.13636435110343, a: null, b: null, g: null, e: null},
+            {c: 2, d: 7, t: 10, n: 0.14180634400617e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 9, t: 1, n: 0.83326504880713e-2, a: null, b: null, g: null, e: null},
+            {c: 2, d: 9, t: 2, n: -0.29052336009585e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 9, t: 3, n: 0.38615085574206e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 9, t: 4, n: -0.20393486513704e-1, a: null, b: null, g: null, e: null},
+            {c: 2, d: 9, t: 8, n: -0.16554050063734e-2, a: null, b: null, g: null, e: null},
+            {c: 2, d: 10, t: 6, n: 0.19955571979541e-2, a: null, b: null, g: null, e: null},
+            {c: 2, d: 10, t: 9, n: 0.15870308324157e-3, a: null, b: null, g: null, e: null},
+            {c: 2, d: 12, t: 8, n: -0.16388568342530e-4, a: null, b: null, g: null, e: null},
+            {c: 3, d: 3, t: 16, n: 0.43613615723811e-1, a: null, b: null, g: null, e: null},
+            {c: 3, d: 4, t: 22, n: 0.34994005463765e-1, a: null, b: null, g: null, e: null},
+            {c: 3, d: 4, t: 23, n: -0.76788197844621e-1, a: null, b: null, g: null, e: null},
+            {c: 3, d: 5, t: 23, n: 0.22446277332006e-1, a: null, b: null, g: null, e: null},
+            {c: 4, d: 14, t: 10, n: -0.62689710414685e-4, a: null, b: null, g: null, e: null},
+            {c: 6, d: 3, t: 50, n: -0.55711118565645e-9, a: null, b: null, g: null, e: null},
+            {c: 6, d: 6, t: 44, n: -0.19905718354408, a: null, b: null, g: null, e: null},
+            {c: 6, d: 6, t: 46, n: 0.31777497330738, a: null, b: null, g: null, e: null},
+            {c: 6, d: 6, t: 50, n: -0.11841182425981, a: null, b: null, g: null, e: null},
+            {c: null, d: 3, t: 0, n: -0.31306260323435e2, a: 20, b: 150, g: 1.21, e: 1},
+            {c: null, d: 3, t: 1, n: 0.31546140237781e2, a: 20, b: 150, g: 1.21, e: 1},
+            {c: null, d: 3, t: 4, n: -0.25213154341695e4, a: 20, b: 250, g: 1.25, e: 1},
+            {c: 3.5, d: 0.85, t: 0.2, n: -0.14874640856724, a: 28, b: 700, g: 0.32, e: 0.3},
+            {c: 3.5, d: 0.95, t: 0.2, n: 0.31806110878444, a: 32, b: 800, g: 0.32, e: 0.3}
         ];
 
         const T_c = 647.096;
@@ -1407,22 +1391,22 @@
 
         const equiTable = equiTableRaw.trim().split('\n').map(line => {
             const parts = line.split(',').map(Number);
-            return { T: parts[0], P: parts[1], rho_w: parts[2], rho_s: parts[3] };
+            return {T: parts[0], P: parts[1], rho_w: parts[2], rho_s: parts[3]};
         });
 
         function getEquiData(T) {
             if (T < equiTable[0].T) return equiTable[0];
             if (T > equiTable[equiTable.length - 1].T) return equiTable[equiTable.length - 1];
-
+            
             for (let i = 0; i < equiTable.length - 1; i++) {
-                if (T >= equiTable[i].T && T <= equiTable[i + 1].T) {
+                if (T >= equiTable[i].T && T <= equiTable[i+1].T) {
                     const t0 = equiTable[i].T;
-                    const t1 = equiTable[i + 1].T;
+                    const t1 = equiTable[i+1].T;
                     const ratio = (T - t0) / (t1 - t0);
                     return {
-                        P: equiTable[i].P + ratio * (equiTable[i + 1].P - equiTable[i].P),
-                        rho_w: equiTable[i].rho_w + ratio * (equiTable[i + 1].rho_w - equiTable[i].rho_w),
-                        rho_s: equiTable[i].rho_s + ratio * (equiTable[i + 1].rho_s - equiTable[i].rho_s)
+                        P: equiTable[i].P + ratio * (equiTable[i+1].P - equiTable[i].P),
+                        rho_w: equiTable[i].rho_w + ratio * (equiTable[i+1].rho_w - equiTable[i].rho_w),
+                        rho_s: equiTable[i].rho_s + ratio * (equiTable[i+1].rho_s - equiTable[i].rho_s)
                     };
                 }
             }
@@ -1470,7 +1454,7 @@
         const tempDisplay = document.getElementById('temp-display');
         const waterLayer = document.getElementById('water-layer');
         const steamLayer = document.getElementById('steam-layer');
-
+        
         const resPressure = document.getElementById('res-pressure');
         const resPressureAlt = document.getElementById('res-pressure-alt');
         const resRhoW = document.getElementById('res-rho-w');
@@ -1524,7 +1508,7 @@
                 const equi = getEquiData(T);
                 rhoW_kg = equi.rho_w * 1000;
                 rhoS_kg = equi.rho_s * 1000;
-
+                
                 height = (rho0 * h0 - equi.rho_s * H) / (equi.rho_w - equi.rho_s);
 
                 if (height >= H) {
@@ -1569,8 +1553,8 @@
 
             resPressure.innerText = pressure >= 100 ? pressure.toFixed(1) : pressure.toFixed(2);
             const pBar = pressure * 1.01325;
-            const pMPa = pBar * 0.1;
-            resPressureAlt.innerText = `≈ ${pBar.toFixed(2)} bar / ${pMPa.toFixed(3)} MPa`;
+            const pPsi = pressure * 14.6959;
+            resPressureAlt.innerText = `≈ ${pBar.toFixed(2)} bar / ${pPsi >= 100 ? pPsi.toFixed(1) : pPsi.toFixed(2)} psi`;
 
             resRhoW.innerText = isNaN(rhoW_kg) ? "—" : rhoW_kg.toFixed(2);
             resRhoS.innerText = rhoS_kg.toFixed(3);
@@ -1584,5 +1568,4 @@
         update();
     </script>
 </body>
-
 </html>
