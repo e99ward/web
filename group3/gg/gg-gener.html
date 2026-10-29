@@ -1,79 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Girl Group Matrix</title>
+    <link rel="stylesheet" href="matrix.css?v=20261029-1">
+    <script src="matrix.js?v=20261029-1" defer></script>
 </head>
-
-<body> <!-- onload="runFirst()"> -->
-
-    <h2 onclick="window.location.href = './gg-chrono.html'">Girl Group Matrix</h2>
-    <!-- <h2 onclick="window.location.replace('./gg-chrono.html')">Girl Group by Generation</h2> -->
-    <nav>
-        정렬:
-        <button onclick="sortName()">그룹명</button>
-        <button onclick="sortDate()">데뷔일자(&dArr;)</button>
-        <button onclick="sortActv()">데뷔일자(&uArr;)</button>
-        <button onclick="sortNums()">멤버수</button>
-        <br>
-        필터:
-        <input type="checkbox" id="active"><label for="active">활동중인 그룹</label>
-        <input type="checkbox" id="members"><label for="members">멤버 정보</label>
-        <br>
-        세대:
-        <input type="checkbox" id="gen1" checked><label for="gen1">1세대</label>
-        <input type="checkbox" id="gen2" checked><label for="gen2">2세대</label>
-        <input type="checkbox" id="gen3" checked><label for="gen3">3세대</label>
-        <input type="checkbox" id="gen4" checked><label for="gen4">4세대</label>
-        <input type="checkbox" id="gen5" checked><label for="gen5">5세대</label>
-    </nav>
-        <!-- <ul class="row">
-            <li class="null"></li>
-            <li class="valid" id="ses" onmousedown="showThem('sesB')" onmouseup="hideThem('sesB')">S.E.S.
-                <span class="brief" id="sesB">I'm Your Girl <img src="./media/ses.jpeg"></span></li>
-            <li class="null1yr"></li>
-            <li class="null"></li>
-            <li class="pinky" id="right-shift">Shift</li>
-        </ul>
-        <ul class="row infos">
-            <li class="null"></li>
-            <li class="info">♫<span class="tooltip" onclick="playSong('ses1')">I'm Your Girl</span></li>
-            <li class="null"></li>
-            <li class="null"></li>
-            <li class="info">♫<span class="tooltip" onclick="playSong('sample')">너를 사랑해</span></li>
-            <li class="null1yr"></li>
-            <li class="null1yr"></li>
-            <li class="null1yr"></li>
-            <li class="info">♫<span class="tooltip">달리기</span></li>
-        </ul> -->
-
-    <table class="matrix" id="matrixcontext">
-        <!-- <tr class="headline">
-            <th class="null2yr">그룹명 (Group Name)</th>
-            <th class="null1yr">데뷔일자</th>
-            <th class="null1yr">해체일자</th>
-            <th class="null">멤버수</th>
-            <th class="null3yr">멤버이름</th>
-            <th class="null1yr">소속사</th>
-        </tr>
-
-        <tr >
-            <th>베이비복스 (Baby VOX)</th>
-            <th>Q</th>
-            <th>1999-09-09</th>
-            <th></th>
-            <th></th>
-            <th>Shift</th>
-        </tr> -->
-    </table>
-
-    <!-- <div id="aa">tbds</div> -->
-
-    <script src="matrix.js"></script>
+<body>
+    <header class="page-header">
+        <h1>Girl Group Matrix</h1>
+        <a href="gg-chrono.html">Group timeline</a>
+    </header>
+    <main>
+        <nav class="matrix-controls" aria-label="그룹 정렬 및 필터">
+            <fieldset>
+                <legend>정렬</legend>
+                <div class="control-options">
+                    <button type="button" data-sort="name" aria-pressed="true" onclick="sortName()">그룹명</button>
+                    <button type="button" data-sort="date" aria-pressed="false" onclick="sortDate()">데뷔일자 ↑</button>
+                    <button type="button" data-sort="actv" aria-pressed="false" onclick="sortActv()">데뷔일자 ↓</button>
+                    <button type="button" data-sort="nums" aria-pressed="false" onclick="sortNums()">멤버수</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>필터</legend>
+                <div class="control-options">
+                    <label class="filter-option"><input type="checkbox" id="active"> 활동중인 그룹</label>
+                    <label class="filter-option"><input type="checkbox" id="members"> 멤버 정보</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>세대</legend>
+                <div class="control-options">
+                    <label class="filter-option"><input type="checkbox" id="gen1" checked> 1세대</label>
+                    <label class="filter-option"><input type="checkbox" id="gen2" checked> 2세대</label>
+                    <label class="filter-option"><input type="checkbox" id="gen3" checked> 3세대</label>
+                    <label class="filter-option"><input type="checkbox" id="gen4" checked> 4세대</label>
+                    <label class="filter-option"><input type="checkbox" id="gen5" checked> 5세대</label>
+                </div>
+            </fieldset>
+        </nav>
+        <p id="matrix-status" role="status">그룹 정보를 불러오는 중…</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="걸그룹 목록">
+            <table class="matrix" id="matrixcontext" aria-label="걸그룹 정보"></table>
+        </div>
+    </main>
 </body>
-
 </html>

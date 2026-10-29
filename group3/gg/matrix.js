@@ -26,11 +26,14 @@ async function runFirst() {
 async function LoadData() {
   const URL = './saved_db.json';
   try {
-    const inletResponse = await fetch(URL);
+    const inletResponse = await fetch(URL, { cache: 'no-store' });
+    if (!inletResponse.ok) throw new Error(`HTTP ${inletResponse.status}`);
     dataBase = await inletResponse.json();
     console.log(`Successfully fetched data: ${dataBase.length} items`);
   } catch (err) {
     console.error('Failed to load saved_db.json:', err);
+    const status = document.getElementById('matrix-status');
+    if (status) { status.dataset.error = 'true'; status.textContent = '그룹 정보를 불러오지 못했습니다. 페이지를 새로고침해 주세요.'; }
   }
 }
 
@@ -222,6 +225,9 @@ function statusUpdate() {
 
 function applyCurrentSort() {
   statusUpdate();
+  document.querySelectorAll('[data-sort]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.sort === currentSort));
+  });
   let db_new = Object.values(dataBase).slice();
   if (currentSort === 'name') {
     db_new.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ko'));
@@ -275,6 +281,7 @@ function shouldInclude(item) {
 }
 
 function writeDB(db) {
+  let visibleCount = 0;
   let line = lineheader;
   if (isMembers == true) {
     line = lineheader1;
@@ -285,6 +292,7 @@ function writeDB(db) {
       continue;
     }
 
+    visibleCount++;
     let aliasText = item.alias ? `&nbsp;&nbsp;<small>(${escapeHtml(item.alias)})</small>` : '';
     let debutText = getDebut(item) || '-';
     let disbandText = getDisband(item) || '-';
@@ -324,6 +332,8 @@ function writeDB(db) {
 
   let matrixEl = document.getElementById("matrixcontext");
   if (matrixEl) matrixEl.innerHTML = line;
+  const status = document.getElementById('matrix-status');
+  if (status && status.dataset.error !== 'true') status.textContent = `${visibleCount} / ${dataBase.length}개 그룹`;
 }
 
 let lineheader = '<tr class="headline"><th class="null2yr">그룹명 (Group Name)</th> \
