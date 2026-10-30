@@ -3743,6 +3743,16 @@
         {
           "groups": [
             {
+              "id": "theark-12-5-0",
+              "name": "디아크",
+              "type": "minor",
+              "start": "2015-04-12",
+              "end": "2016-06-30",
+              "datePrecision": "exact",
+              "color": "#00aa00",
+              "textColor": "#111111"
+            },
+            {
               "id": "stayc-12-5-1",
               "name": "STAYC (스테이씨)",
               "type": "group",
@@ -3755,6 +3765,12 @@
             }
           ],
           "events": [
+            {
+              "icon": "⚲",
+              "title": "한라(이수지) → UNI.T (유니티)",
+              "date": "2016-06-30",
+              "datePrecision": "estimated"
+            },
             {
               "icon": "♫",
               "title": "색안경 (STEREOTYPE)",
@@ -4010,6 +4026,12 @@
               "datePrecision": "exact"
             },
             {
+              "icon": "⚲",
+              "title": "새나·시오·아란 → 어블룸",
+              "date": "2024-01-01",
+              "datePrecision": "estimated"
+            },
+            {
               "icon": "♫",
               "title": "SOS",
               "date": "2024-09-20",
@@ -4244,6 +4266,12 @@
               "title": "난 예술이야",
               "date": "2015-07-22",
               "datePrecision": "released"
+            },
+            {
+              "icon": "⚲",
+              "title": "윤조 → UNI.T (유니티)",
+              "date": "2018-02-11",
+              "datePrecision": "exact"
             },
             {
               "icon": "♫",
@@ -4506,6 +4534,17 @@
               "color": "#f1e1d5",
               "textColor": "#111111",
               "description": "이달의 소녀(LOONA) 출신 멤버 5인(현진·여진·비비·고원·혜주)이 씨티디이엔엠(CTDENM)에서 2023년 새롭게 출범했던 걸그룹. 그룹명은 'LOONA(이달의 소녀)'와'Assemble(모이다)'**을 결합한 합성어로, '대혼란 속에서 우주선 '루셈블'에 피신한 다섯 멤버가 친구들을 찾아 긴 항해를 떠난다'는 독자적인 SF 세계관을 구축했다. 이달의 소녀 멤버들과의 변함없는 끈끈한 유대감과 독자적인 음악적 결을 증명해 온 그룹이다."
+            },
+            {
+              "id": "ablume-13-7-2",
+              "name": "어블룸",
+              "type": "group",
+              "start": "2025-05-09",
+              "end": null,
+              "datePrecision": "exact",
+              "color": "#62aaf4",
+              "textColor": "#ffffff",
+              "description": "피프티 피프티(FIFTY FIFTY)의 전 멤버 3인(새나·시오·아란)이 매시브이엔씨(MASSIVE E&C)와 전속계약을 체결하고 2025년 5월 재데뷔한 걸그룹. 팀명인 '어블룸(ablume)'은 꽃을 의미하는 독일어 '블루메(Blume)'를 활용한 이름으로, '작은 씨앗이 성장해 아름다운 꽃을 피우듯 세 멤버의 고유한 색과 개성을 모아 다채로운 음악을 완성해 나가겠다'는 포부와 성장의 메시지를 담고 있다."
             }
           ],
           "events": [
@@ -5075,8 +5114,8 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-3-7",
-              "name": "어블룸",
+              "id": "madein-13-3-7",
+              "name": "메이딘",
               "type": "minor",
               "start": "2024-06-11",
               "end": "2025-06-11",
@@ -5085,7 +5124,7 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-3-8",
+              "id": "uspeer-13-3-8",
               "name": "유스피어",
               "type": "minor",
               "start": "2025-06-30",
@@ -5210,11 +5249,21 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-4-11",
+              "id": "group-13-4-0",
               "name": "러브어스",
               "type": "minor",
               "start": "2016-01-16",
               "end": "2017-01-16",
+              "datePrecision": "estimated",
+              "color": "#dddddd",
+              "textColor": "#ffffff"
+            },
+            {
+              "id": "group-13-4-11",
+              "name": "애플비",
+              "type": "minor",
+              "start": "2017-03-20",
+              "end": "2018-03-20",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5309,8 +5358,8 @@
               "name": "See U",
               "type": "minor",
               "start": "1999-06-01",
-              "end": "1999-12-31",
-              "datePrecision": "exact",
+              "end": "2000-06-01",
+              "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
             },
@@ -5475,7 +5524,7 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-5-18",
+              "id": "vvup-13-5-1",
               "name": "VVUP",
               "type": "minor",
               "start": "2024-02-05",
@@ -5485,7 +5534,7 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-5-19",
+              "id": "vvs-13-5-2",
               "name": "VVS",
               "type": "minor",
               "start": "2025-02-24",
@@ -5700,7 +5749,7 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-6-19",
+              "id": "babydon-13-6-2",
               "name": "베이비돈크라이",
               "type": "minor",
               "start": "2025-07-17",
@@ -5895,7 +5944,7 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "group-13-7-19",
+              "id": "saymn-13-7-1",
               "name": "세이마이네임",
               "type": "minor",
               "start": "2024-10-16",

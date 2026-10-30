@@ -1,47 +1,95 @@
 [
   {
-    "name": "i-dle",
-    "alias": "(여자)아이들",
-    "agency": "큐브엔터테인먼트",
+    "name": "3YE",
+    "alias": "써드아이",
+    "agency": "GH엔터테인먼트",
     "timeline": {
-      "debut": "2018.05.02.",
+      "debut": "2019.05.21.",
       "dormant": "",
-      "disband": ""
+      "disband": "2024.11.15."
     },
-    "memberCount": 5,
+    "memberCount": 3,
     "members": [
       {
-        "name": "미연",
-        "birth": "1997.01.31.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170505340.jpg"
+        "name": "유지",
+        "birth": "1998.11.25.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F848a4e29-7674-4680-a66b-cd4569c59853.jpg"
       },
       {
-        "name": "민니",
-        "birth": "1997.10.23.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170559456.jpg"
+        "name": "유림",
+        "birth": "1998.04.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F41756a14-2388-41ae-8a8c-7818be4d8615.jpeg"
       },
       {
-        "name": "소연",
-        "birth": "1998.08.26.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170652160.jpg"
+        "name": "하은",
+        "birth": "1999.03.12.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F0df4cb37-a530-432c-9597-c2daabc90eac.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "4L",
+    "alias": "포엘",
+    "agency": "제이드컨텐츠미디어",
+    "timeline": {
+      "debut": "2014.08.04.",
+      "dormant": "",
+      "disband": "2016.12.31."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "자영",
+        "birth": "1988.11.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201705%2F20170512123459435-5987223.jpg"
       },
       {
-        "name": "우기",
-        "birth": "1999.09.23.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170738713.jpg"
+        "name": "제이나",
+        "birth": "1988.09.01.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201705%2F20170512123127328-589858.jpg"
       },
       {
-        "name": "슈화",
-        "birth": "2000.01.06.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170825145.jpg"
+        "name": "차니",
+        "birth": "1990.02.21.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201611%2F20161124160109899.jpg"
       },
       {
-        "name": "수진",
-        "birth": "1989.03.09.",
+        "name": "자영",
+        "birth": "1988.11.03.",
         "img": ""
       }
     ],
-    "updatedAt": "2026-09-10"
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "ablume",
+    "alias": "어블룸",
+    "agency": "매시브이엔씨",
+    "timeline": {
+      "debut": "2025.05.09.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "아란",
+        "birth": "2004.10.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa33ded8b-294e-4098-8c2e-267d235f5121.jpg"
+      },
+      {
+        "name": "새나",
+        "birth": "2004.03.12.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fb03cfb91-d2af-43c4-8b81-065b0ca07bfc.jpg"
+      },
+      {
+        "name": "시오",
+        "birth": "2004.10.06.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F453f6a1a-2626-45c6-9694-08515baeee1b.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "AOA",
@@ -142,6 +190,89 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "AtHeart",
+    "alias": "앳하트",
+    "agency": "타이탄콘텐츠",
+    "timeline": {
+      "debut": "2025.08.13.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 7,
+    "members": [
+      {
+        "name": "미치",
+        "birth": "2007.05.06.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fe57218ed-06ea-4e0f-a204-60dec5ad20cf.png"
+      },
+      {
+        "name": "아린",
+        "birth": "2007.07.01.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F54ae8af0-ebcc-4769-8738-fce4ec4256f2.png"
+      },
+      {
+        "name": "케이틀린",
+        "birth": "2007.07.24.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fdd710ce4-553b-4684-80ac-207de4118c3b.png"
+      },
+      {
+        "name": "봄",
+        "birth": "2007.11.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa6f249c0-9e3b-4247-b787-86d7276d7c68.png"
+      },
+      {
+        "name": "서현",
+        "birth": "2008.09.12.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F55f10f2c-cc0c-4df2-b61f-be9fda267c38.png"
+      },
+      {
+        "name": "아우로라",
+        "birth": "2009.07.04.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fda573ca5-5355-4735-9758-e4a55b49f4ab.png"
+      },
+      {
+        "name": "나현",
+        "birth": "2009.09.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F9f368342-2afc-41e2-aba6-963c90023dbb.png"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "Baby DONT Cry",
+    "alias": "베이비돈크라이",
+    "agency": "피네이션",
+    "timeline": {
+      "debut": "2025.06.23.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 4,
+    "members": [
+      {
+        "name": "이현",
+        "birth": "2006.04.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fca8ee131-fbd1-4ae0-b20e-a001a5b70a0b.jpg"
+      },
+      {
+        "name": "쿠미",
+        "birth": "2007.08.30.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F82d33ff8-2ed6-421f-b88e-d833effd5e5e.jpg"
+      },
+      {
+        "name": "미아",
+        "birth": "2007.09.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4d0be799-219f-4e0a-a232-bd01b07243ef.jpg"
+      },
+      {
+        "name": "베니",
+        "birth": "2008.12.23.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fd8ecc972-07cd-4b3d-a785-611473c29117.jpg"
+      }
+    ],
+    "updatedAt": "2026-09-12"
+  },
+  {
     "name": "BABYMONSTER",
     "alias": "베이비몬스터",
     "agency": "YG 엔터테인먼트",
@@ -191,74 +322,6 @@
     "updatedAt": "2026-09-10"
   },
   {
-    "name": "BLACKPINK",
-    "alias": "블랙핑크",
-    "agency": "YG엔터테인먼트",
-    "timeline": {
-      "debut": "2016.08.08.",
-      "dormant": "",
-      "disband": ""
-    },
-    "memberCount": 4,
-    "members": [
-      {
-        "name": "지수",
-        "birth": "1995.01.03.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133535757.jpg"
-      },
-      {
-        "name": "제니",
-        "birth": "1996.01.16.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133401458.jpg"
-      },
-      {
-        "name": "로제",
-        "birth": "1997.02.11.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133442989.jpg"
-      },
-      {
-        "name": "리사",
-        "birth": "1997.03.27.",
-        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133506551.jpg"
-      }
-    ],
-    "updatedAt": "2026-09-10"
-  },
-  {
-    "name": "Baby DONT Cry",
-    "alias": "베이비돈크라이",
-    "agency": "피네이션",
-    "timeline": {
-      "debut": "2025.06.23.",
-      "dormant": "",
-      "disband": ""
-    },
-    "memberCount": 4,
-    "members": [
-      {
-        "name": "이현",
-        "birth": "2006.04.11.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fca8ee131-fbd1-4ae0-b20e-a001a5b70a0b.jpg"
-      },
-      {
-        "name": "쿠미",
-        "birth": "2007.08.30.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F82d33ff8-2ed6-421f-b88e-d833effd5e5e.jpg"
-      },
-      {
-        "name": "미아",
-        "birth": "2007.09.03.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4d0be799-219f-4e0a-a232-bd01b07243ef.jpg"
-      },
-      {
-        "name": "베니",
-        "birth": "2008.12.23.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fd8ecc972-07cd-4b3d-a785-611473c29117.jpg"
-      }
-    ],
-    "updatedAt": "2026-09-12"
-  },
-  {
     "name": "Billlie",
     "alias": "빌리",
     "agency": "미스틱스토리",
@@ -303,6 +366,40 @@
         "name": "하루나",
         "birth": "2006.01.30.",
         "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202208%2F20220822170054796.jpg"
+      }
+    ],
+    "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "BLACKPINK",
+    "alias": "블랙핑크",
+    "agency": "YG엔터테인먼트",
+    "timeline": {
+      "debut": "2016.08.08.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 4,
+    "members": [
+      {
+        "name": "지수",
+        "birth": "1995.01.03.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133535757.jpg"
+      },
+      {
+        "name": "제니",
+        "birth": "1996.01.16.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133401458.jpg"
+      },
+      {
+        "name": "로제",
+        "birth": "1997.02.11.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133442989.jpg"
+      },
+      {
+        "name": "리사",
+        "birth": "1997.03.27.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220913133506551.jpg"
       }
     ],
     "updatedAt": "2026-09-10"
@@ -528,45 +625,6 @@
     "updatedAt": "2026-09-12"
   },
   {
-    "name": "HINAPIA",
-    "alias": "희나피아",
-    "agency": "OSR엔터테인먼트",
-    "timeline": {
-      "debut": "2019.11.03.",
-      "dormant": "",
-      "disband": "2020.08.21."
-    },
-    "memberCount": 5,
-    "members": [
-      {
-        "name": "민경",
-        "birth": "1997.07.29.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F177%2F20191104202156311.jpg"
-      },
-      {
-        "name": "경원",
-        "birth": "1997.11.05.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202206%2F20220610182504849.jpg"
-      },
-      {
-        "name": "은우",
-        "birth": "1998.07.01.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F185%2F201911042017194751.jpg"
-      },
-      {
-        "name": "예빈",
-        "birth": "1998.10.19.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F175%2F202203071736198031.jpg"
-      },
-      {
-        "name": "바다",
-        "birth": "2002.05.28.",
-        "img": ""
-      }
-    ],
-    "updatedAt": "2026-09-10"
-  },
-  {
     "name": "Hearts2Hearts",
     "alias": "하츠투하츠",
     "agency": "SM엔터테인먼트",
@@ -616,6 +674,89 @@
         "name": "예온",
         "birth": "2010.04.19.",
         "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fb7f90131-1250-431a-bf8a-7f242a1b3c5f.jpg"
+      }
+    ],
+    "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "HINAPIA",
+    "alias": "희나피아",
+    "agency": "OSR엔터테인먼트",
+    "timeline": {
+      "debut": "2019.11.03.",
+      "dormant": "",
+      "disband": "2020.08.21."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "민경",
+        "birth": "1997.07.29.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F177%2F20191104202156311.jpg"
+      },
+      {
+        "name": "경원",
+        "birth": "1997.11.05.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202206%2F20220610182504849.jpg"
+      },
+      {
+        "name": "은우",
+        "birth": "1998.07.01.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F185%2F201911042017194751.jpg"
+      },
+      {
+        "name": "예빈",
+        "birth": "1998.10.19.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F175%2F202203071736198031.jpg"
+      },
+      {
+        "name": "바다",
+        "birth": "2002.05.28.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "i-dle",
+    "alias": "(여자)아이들",
+    "agency": "큐브엔터테인먼트",
+    "timeline": {
+      "debut": "2018.05.02.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "미연",
+        "birth": "1997.01.31.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170505340.jpg"
+      },
+      {
+        "name": "민니",
+        "birth": "1997.10.23.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170559456.jpg"
+      },
+      {
+        "name": "소연",
+        "birth": "1998.08.26.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170652160.jpg"
+      },
+      {
+        "name": "우기",
+        "birth": "1999.09.23.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170738713.jpg"
+      },
+      {
+        "name": "슈화",
+        "birth": "2000.01.06.",
+        "img": "https://search.pstatic.net/common?type=n&size=150x168&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202210%2F20221005170825145.jpg"
+      },
+      {
+        "name": "수진",
+        "birth": "1989.03.09.",
+        "img": ""
       }
     ],
     "updatedAt": "2026-09-10"
@@ -1012,53 +1153,68 @@
     "updatedAt": "2026-09-10"
   },
   {
-    "name": "NMIXX",
-    "alias": "엔믹스",
-    "agency": "JYP엔터테인먼트",
+    "name": "NATURE",
+    "alias": "네이쳐",
+    "agency": "n.CH엔터테인먼트",
     "timeline": {
-      "debut": "2022.02.22.",
+      "debut": "2018.08.03.",
       "dormant": "",
-      "disband": ""
+      "disband": "2024.04.27."
     },
-    "memberCount": 7,
+    "memberCount": 9,
     "members": [
       {
-        "name": "릴리",
-        "birth": "2002.10.17.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203121781.jpg"
+        "name": "소희",
+        "birth": "1995.01.20.",
+        "img": ""
       },
       {
-        "name": "해원",
-        "birth": "2003.02.25.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203237150.jpg"
+        "name": "오로라",
+        "birth": "1997.01.14.",
+        "img": ""
       },
       {
-        "name": "설윤",
-        "birth": "2004.01.26.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203154142.jpg"
+        "name": "새봄",
+        "birth": "1997.01.30.",
+        "img": ""
       },
       {
-        "name": "(지니)",
-        "birth": "2004.04.16.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203207918.jpg"
+        "name": "루",
+        "birth": "1997.12.03.",
+        "img": ""
       },
       {
-        "name": "배이",
-        "birth": "2004.12.28.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203135850.jpg"
+        "name": "채빈",
+        "birth": "1999.07.28.",
+        "img": ""
       },
       {
-        "name": "지우",
-        "birth": "2005.04.13.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F2022091920322235.jpg"
+        "name": "하루",
+        "birth": "2000.02.21.",
+        "img": ""
       },
       {
-        "name": "규진",
-        "birth": "2006.05.26.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203058970.jpg"
+        "name": "로하",
+        "birth": "2001.12.27.",
+        "img": ""
+      },
+      {
+        "name": "유채",
+        "birth": "2002.05.07.",
+        "img": ""
+      },
+      {
+        "name": "선샤인",
+        "birth": "2002.06.20.",
+        "img": ""
+      },
+      {
+        "name": "(가가)",
+        "birth": "1999.09.01.",
+        "img": ""
       }
     ],
-    "updatedAt": "2026-09-10"
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "NiziU",
@@ -1118,6 +1274,55 @@
       }
     ],
     "updatedAt": "2026-09-12"
+  },
+  {
+    "name": "NMIXX",
+    "alias": "엔믹스",
+    "agency": "JYP엔터테인먼트",
+    "timeline": {
+      "debut": "2022.02.22.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 7,
+    "members": [
+      {
+        "name": "릴리",
+        "birth": "2002.10.17.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203121781.jpg"
+      },
+      {
+        "name": "해원",
+        "birth": "2003.02.25.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203237150.jpg"
+      },
+      {
+        "name": "설윤",
+        "birth": "2004.01.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203154142.jpg"
+      },
+      {
+        "name": "(지니)",
+        "birth": "2004.04.16.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203207918.jpg"
+      },
+      {
+        "name": "배이",
+        "birth": "2004.12.28.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203135850.jpg"
+      },
+      {
+        "name": "지우",
+        "birth": "2005.04.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F2022091920322235.jpg"
+      },
+      {
+        "name": "규진",
+        "birth": "2006.05.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220919203058970.jpg"
+      }
+    ],
+    "updatedAt": "2026-09-10"
   },
   {
     "name": "ODD YOUTH",
@@ -1433,6 +1638,35 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "The 빨강",
+    "alias": "더 빨강",
+    "agency": "",
+    "timeline": {
+      "debut": "2005.01.01.",
+      "dormant": "",
+      "disband": "2006.12.31."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "추소영",
+        "birth": "1981.01.25.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F67%2F200912141045219321.jpg"
+      },
+      {
+        "name": "오승은",
+        "birth": "1979.02.08.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F0ae289fe-3c06-4b54-aa57-2a42c36dac6e.jpg"
+      },
+      {
+        "name": "배슬기",
+        "birth": "1986.09.27.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "TUIDE",
     "alias": "튜이드",
     "agency": "ABD",
@@ -1614,6 +1848,182 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "VVS",
+    "alias": "븨븨에스",
+    "agency": "MZMC",
+    "timeline": {
+      "debut": "2025.04.22.",
+      "dormant": "",
+      "disband": "2026.10.10."
+    },
+    "memberCount": 6,
+    "members": [
+      {
+        "name": "브리트니",
+        "birth": "2003.10.28.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F34132da8-64a8-4ef6-8758-0eb475d84e3e.jpg"
+      },
+      {
+        "name": "아일리",
+        "birth": "2005.11.28.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fc14dee94-ed67-4b34-8a5f-76b2af604f42.jpg"
+      },
+      {
+        "name": "라나",
+        "birth": "2006.06.07.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F357c2db3-d37e-4d09-b9a2-2b81d6cebe48.jpg"
+      },
+      {
+        "name": "지우",
+        "birth": "2008.06.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F7d780edf-f5cd-46f2-8b61-f27e3073c2c6.jpg"
+      },
+      {
+        "name": "리원",
+        "birth": "2009.05.27.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa6d03f82-dbbb-4a77-aa41-ced8547f3381.jpg"
+      },
+      {
+        "name": "레나",
+        "birth": "2003.10.28.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fed236d4d-2469-4485-a97d-9e710072b700.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "VVUP",
+    "alias": "비비업",
+    "agency": "egoENT",
+    "timeline": {
+      "debut": "2024.04.01.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 4,
+    "members": [
+      {
+        "name": "킴",
+        "birth": "2006.06.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fae6542b5-cee6-4f0a-a381-66c469089603.jpg"
+      },
+      {
+        "name": "팬",
+        "birth": "2006.06.22.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F16aed4a8-c0f9-4e11-b5e8-b61a66605788.jpg"
+      },
+      {
+        "name": "수연",
+        "birth": "2007.03.31.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F7e32e628-278b-4074-b919-393b5153c83a.jpg"
+      },
+      {
+        "name": "지윤",
+        "birth": "2008.07.15.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F742ee20b-cc89-4bf5-8317-9a6a490b212d.jpg"
+      },
+      {
+        "name": "(현희)",
+        "birth": "2005.07.18.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "WOOAH",
+    "alias": "우아",
+    "agency": "에이치뮤직엔터테인먼트",
+    "timeline": {
+      "debut": "2020.05.13.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "나나",
+        "birth": "2001.03.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F16f1cd1c-0ba6-42fc-859c-17d3e8468094.jpg"
+      },
+      {
+        "name": "우연",
+        "birth": "2003.02.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F01eb5797-a3ae-4e92-9b56-b9aabbecbd82.jpg"
+      },
+      {
+        "name": "소라",
+        "birth": "2003.08.30.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4975f329-f61e-493b-a7c8-3e080398674f.jpg"
+      },
+      {
+        "name": "루시",
+        "birth": "2004.04.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F1155b925-58dc-4cf8-b60f-144be7c58608.jpg"
+      },
+      {
+        "name": "민서",
+        "birth": "2004.08.12.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fb9a49b82-51c4-4106-9517-c2d64fe60cd4.jpg"
+      },
+      {
+        "name": "(송이)",
+        "birth": "2004.09.25.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "X:IN",
+    "alias": "엑신x:in",
+    "agency": "비바이엔터테인먼트",
+    "timeline": {
+      "debut": "2023.04.07.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "이샤",
+        "birth": "1998.12.29.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fb030701a-c530-4b8b-8a44-d1429fcfbee5.jpg"
+      },
+      {
+        "name": "니즈",
+        "birth": "2001.06.07.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Ff239224b-8deb-48f4-92b0-be9fc4a4ec9c.jpg"
+      },
+      {
+        "name": "노바",
+        "birth": "2002.10.10.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa7f2424c-67c8-40bc-8150-e364cf470e2b.jpg"
+      },
+      {
+        "name": "한나",
+        "birth": "2003.01.04.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F37961bbd-36a3-4b92-a5ef-5a86ad22be2d.jpg"
+      },
+      {
+        "name": "아리아",
+        "birth": "2003.03.12.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4f366efc-4c7f-42fc-add7-48fe1a1ddc6a.jpg"
+      },
+      {
+        "name": "(치유)",
+        "birth": "1998.08.16.",
+        "img": ""
+      },
+      {
+        "name": "(로아)",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "YOUNG POSSE",
     "alias": "영파씨",
     "agency": "DSP미디어, 비츠엔터테인먼트",
@@ -1651,6 +2061,104 @@
       }
     ],
     "updatedAt": "2026-09-12"
+  },
+  {
+    "name": "가비앤제이",
+    "alias": "Gavy NJ",
+    "agency": "굿베리엔터테인먼트, DSP미디어",
+    "timeline": {
+      "debut": "2005.11.11.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 4,
+    "members": [
+      {
+        "name": "나예",
+        "birth": "2003.04.02.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F48cd3ba0-41bc-44a0-bb08-d580d0a856b1.jpg"
+      },
+      {
+        "name": "루안",
+        "birth": "2003.04.05.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F517d628d-5929-4dec-9d49-9156f5196e63.jpg"
+      },
+      {
+        "name": "리엘",
+        "birth": "2000.04.18.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F2d7533b3-5989-4be5-ba06-4efb9f3911c4.jpg"
+      },
+      {
+        "name": "예잔",
+        "birth": "1998.03.12.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fb44c96b6-dbe6-44b0-8522-44adc7fceae2.jpg"
+      },
+      {
+        "name": "(정혜민)",
+        "birth": "",
+        "img": ""
+      },
+      {
+        "name": "(장희연)",
+        "birth": "1985.03.28.",
+        "img": ""
+      },
+      {
+        "name": "(노시현)",
+        "birth": "1988.04.08.",
+        "img": ""
+      },
+      {
+        "name": "(미스티)",
+        "birth": "1982.10.01.",
+        "img": ""
+      },
+      {
+        "name": "(제니)",
+        "birth": "1988.08.14.",
+        "img": ""
+      },
+      {
+        "name": "(건지)",
+        "birth": "1992.02.28.",
+        "img": ""
+      },
+      {
+        "name": "(서린)",
+        "birth": "1988.07.09.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "가비퀸즈",
+    "alias": "gavy queens",
+    "agency": "굿베리엔터테인먼트",
+    "timeline": {
+      "debut": "2007.11.30.",
+      "dormant": "",
+      "disband": "2009.06.30."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "유미소",
+        "birth": "1987.05.15.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201304%2F20130420014440607.png"
+      },
+      {
+        "name": "한다연",
+        "birth": "",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F183%2F200903181022486691.jpg"
+      },
+      {
+        "name": "판사라",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "걸스데이",
@@ -1700,6 +2208,55 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "공원소녀",
+    "alias": "GWSN",
+    "agency": "아센디오",
+    "timeline": {
+      "debut": "2018.09.05.",
+      "dormant": "",
+      "disband": "2023.01.23."
+    },
+    "memberCount": 7,
+    "members": [
+      {
+        "name": "서령",
+        "birth": "2000.01.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fdecec4ce-4f83-40d1-992c-ba287f2ecef0.jpg"
+      },
+      {
+        "name": "서경",
+        "birth": "1999.04.16.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202105%2F2021052414412641.jpg"
+      },
+      {
+        "name": "미야",
+        "birth": "1993.05.26.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202105%2F20210524144049600.jpg"
+      },
+      {
+        "name": "레나",
+        "birth": "2002.04.17.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F8a74dc76-6521-4262-8b4c-c03521d45d4b.jpeg"
+      },
+      {
+        "name": "민주",
+        "birth": "2001.03.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202105%2F2021052414410991.jpg"
+      },
+      {
+        "name": "소소",
+        "birth": "2001.03.14.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202105%2F20210524144159118.jpg"
+      },
+      {
+        "name": "앤",
+        "birth": "2000.10.17.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "구구단",
@@ -2177,6 +2734,45 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "디아크",
+    "alias": "The Ark",
+    "agency": "뮤직K엔터테인먼트",
+    "timeline": {
+      "debut": "2015.04.12.",
+      "dormant": "",
+      "disband": "2016.06.30."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "전민주",
+        "birth": "1994.09.08.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201805%2F20180516142449804.jpg"
+      },
+      {
+        "name": "한라(이수지)",
+        "birth": "1998.03.20.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F904f8750-1607-41bc-b148-b271780c9bc0.jpeg"
+      },
+      {
+        "name": "정유진",
+        "birth": "1996.09.06.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Ft%2Feb80208a-fc1a-4ff4-a463-04e947bcfa14.jpg"
+      },
+      {
+        "name": "천재인",
+        "birth": "1999.11.23.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F914fc204-9922-4c79-ac96-a1e94a7c1403.jpeg"
+      },
+      {
+        "name": "유나킴",
+        "birth": "1994.10.27.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-31"
+  },
+  {
     "name": "라니아 [1기]",
     "alias": "RANIA",
     "agency": "BM뮤직",
@@ -2374,6 +2970,35 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "라임라잇",
+    "alias": "LIMELIGHT",
+    "agency": "143엔터테인먼트",
+    "timeline": {
+      "debut": "2023.02.14.",
+      "dormant": "",
+      "disband": "2024.07.15."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "미유",
+        "birth": "2003.01.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F166d5551-0165-44da-80e2-fa8aa573ea21.jpg"
+      },
+      {
+        "name": "수혜",
+        "birth": "2004.12.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F6824d9d3-d376-4ad1-864c-e44848ca6053.png"
+      },
+      {
+        "name": "가은",
+        "birth": "2005.11.08.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "러블리즈",
     "alias": "Lovelyz",
     "agency": "울림엔터테인먼트",
@@ -2467,6 +3092,45 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "레이디스코드",
+    "alias": "Ladies' Code",
+    "agency": "폴라리스엔터테인먼트",
+    "timeline": {
+      "debut": "2013.03.07.",
+      "dormant": "",
+      "disband": "2020.02.01."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "애슐리",
+        "birth": "1991.11.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201910%2F20191007105849307.jpg"
+      },
+      {
+        "name": "소정",
+        "birth": "1993.09.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F112%2F202208261202464121.jpg"
+      },
+      {
+        "name": "주니",
+        "birth": "",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F56%2F202305231543193411.gif"
+      },
+      {
+        "name": "리세",
+        "birth": "1991.08.16.",
+        "img": ""
+      },
+      {
+        "name": "은비",
+        "birth": "1992.11.23.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "레인보우",
     "alias": "RAINBOW",
     "agency": "DSP미디어",
@@ -2558,6 +3222,45 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "루셈블",
+    "alias": "Loossemble",
+    "agency": "CTDENM",
+    "timeline": {
+      "debut": "2023.09.15.",
+      "dormant": "",
+      "disband": "2024.11.29."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "현진",
+        "birth": "2000.11.15.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fe83c02e3-fd22-4eb0-a454-d27597fbe2ba.jpeg"
+      },
+      {
+        "name": "여진",
+        "birth": "2002.11.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4fea5869-9ada-4c8f-886d-964685082261.png"
+      },
+      {
+        "name": "비비",
+        "birth": "1993.12.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F5163c7d3-b23f-4ae7-b26d-05c1ad540297.jpg"
+      },
+      {
+        "name": "고원",
+        "birth": "2000.11.19.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Feeaa3775-e31d-46c4-8f6e-1e16fef5c403.png"
+      },
+      {
+        "name": "혜주",
+        "birth": "2001.11.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F604d7edd-93bf-4451-a2f3-3bb9d79ec37c.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-29"
   },
   {
     "name": "르세라핌",
@@ -2677,6 +3380,89 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "마카마카",
+    "alias": "MAKA MAKA",
+    "agency": "블루문엔터테인먼트",
+    "timeline": {
+      "debut": "2020.08.04.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "희수",
+        "birth": "1998.03.24.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220915202143141.jpg"
+      },
+      {
+        "name": "디아",
+        "birth": "1999.09.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220915202102753.jpg"
+      },
+      {
+        "name": "다슬",
+        "birth": "2000.09.14.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220915202040581.jpg"
+      },
+      {
+        "name": "은비",
+        "birth": "2000.09.17.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202209%2F20220915202122602.jpg"
+      },
+      {
+        "name": "채원",
+        "birth": "2000.03.18.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202108%2F20210810170158260.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
+    "name": "메이딘",
+    "alias": "MADEIN",
+    "agency": "143엔터테인먼트",
+    "timeline": {
+      "debut": "2024.09.03.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 6,
+    "members": [
+      {
+        "name": "마시로",
+        "birth": "1999.12.16.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F72f5ca1d-8e00-4edd-b9c2-a97ede2b3a60.jpg"
+      },
+      {
+        "name": "미유",
+        "birth": "2003.01.09.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F166d5551-0165-44da-80e2-fa8aa573ea21.jpg"
+      },
+      {
+        "name": "세리나",
+        "birth": "2006.05.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fcf7ecc71-8226-44e5-9d9f-e27dc7704714.jpg"
+      },
+      {
+        "name": "나고미",
+        "birth": "2007.07.02.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F9c62d2d7-19c1-4b27-a8d0-a77dd82c00be.jpg"
+      },
+      {
+        "name": "수혜",
+        "birth": "2004.12.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F6824d9d3-d376-4ad1-864c-e44848ca6053.png"
+      },
+      {
+        "name": "예서",
+        "birth": "2005.08.22.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F19107cf2-5216-4e97-916a-e10f5dd6dd2f.png"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "멜로디데이",
     "alias": "MelodyDay",
     "agency": "크래커엔터테인먼트",
@@ -2768,6 +3554,40 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "미스에스",
+    "alias": "MISS $",
+    "agency": "브랜뉴뮤직",
+    "timeline": {
+      "debut": "2008.11.19.",
+      "dormant": "",
+      "disband": "2023.11.30."
+    },
+    "memberCount": 2,
+    "members": [
+      {
+        "name": "강민희",
+        "birth": "1991.12.29.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F40%2F201603041835275781.jpg"
+      },
+      {
+        "name": "제이스",
+        "birth": "",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fc9501bc2-26ef-4c2f-992d-d7c3506b0ef8.jpeg"
+      },
+      {
+        "name": "(태혜영)",
+        "birth": "",
+        "img": ""
+      },
+      {
+        "name": "(오유미)",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "미쓰에이",
@@ -3097,6 +3917,35 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "브랜뉴데이",
+    "alias": "Brand New Day",
+    "agency": "",
+    "timeline": {
+      "debut": "2009.01.01.",
+      "dormant": "",
+      "disband": "2011.12.31."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "수지",
+        "birth": "1988.02.23.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Ft%2F33447e02-e279-4c02-bbfa-a8fd49d24922.jpg"
+      },
+      {
+        "name": "김수진",
+        "birth": "1988.08.23.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F74%2F202010201748456061.jpg"
+      },
+      {
+        "name": "수아",
+        "birth": "1989.01.31.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201112%2F20111212151550824.jpg"
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "브레이브걸스 [1기]",
     "alias": "BraveGirls",
     "agency": "브레이브엔터테인먼트",
@@ -3173,6 +4022,40 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "브브걸",
+    "alias": "BBGIRLS",
+    "agency": "그랜드라인그룹",
+    "timeline": {
+      "debut": "2023.08.03.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "민영",
+        "birth": "1990.09.12.",
+        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F25946b4c-bb3b-48bf-aa47-49b2d717edd8.jpg"
+      },
+      {
+        "name": "은지",
+        "birth": "1992.07.19.",
+        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F3fccbe55-7cf7-42e4-9bd1-f667badba2d3.jpg"
+      },
+      {
+        "name": "유나",
+        "birth": "1993.04.06.",
+        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F1cf136a5-9402-4a4f-8b35-bd36bc0423ea.jpg"
+      },
+      {
+        "name": "(유정)",
+        "birth": "1991.05.02.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-25"
   },
   {
     "name": "블랙스완",
@@ -3376,6 +4259,50 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "소녀주의보",
+    "alias": "GirlS Alert",
+    "agency": "뿌리엔터테인먼트",
+    "timeline": {
+      "debut": "2017.05.25.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "지성",
+        "birth": "1999.08.06.",
+        "img": ""
+      },
+      {
+        "name": "슬비",
+        "birth": "1999.10.28.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F91f945f7-21b0-422b-8fcf-072eca28c5d3.jpg"
+      },
+      {
+        "name": "구슬",
+        "birth": "2001.08.18.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa69eb79e-417d-4d1b-9f4a-d306be67a00d.jpeg"
+      },
+      {
+        "name": "샛별",
+        "birth": "2001.02.27.",
+        "img": ""
+      },
+      {
+        "name": "나린",
+        "birth": "2004.10.28.",
+        "img": ""
+      },
+      {
+        "name": "(한겨울)",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "슈가",
     "alias": "Sugar",
     "agency": "스타월드",
@@ -3413,6 +4340,35 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "스위티",
+    "alias": "SWi.T",
+    "agency": "YG엔터테인먼트",
+    "timeline": {
+      "debut": "2002.04.25.",
+      "dormant": "",
+      "disband": "2003.12.31."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "안내영",
+        "birth": "",
+        "img": ""
+      },
+      {
+        "name": "이은주",
+        "birth": "1981.03.09.",
+        "img": ""
+      },
+      {
+        "name": "성미현",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-24"
   },
   {
     "name": "스텔라",
@@ -3467,35 +4423,6 @@
       }
     ],
     "updatedAt": "2026-09-10"
-  },
-  {
-    "name": "스위티",
-    "alias": "SWi.T",
-    "agency": "YG엔터테인먼트",
-    "timeline": {
-      "debut": "2002.04.25.",
-      "dormant": "",
-      "disband": "2003.12.31."
-    },
-    "memberCount": 5,
-    "members": [
-      {
-        "name": "안내영",
-        "birth": "",
-        "img": ""
-      },
-      {
-        "name": "이은주",
-        "birth": "1981.03.09.",
-        "img": ""
-      },
-      {
-        "name": "성미현",
-        "birth": "",
-        "img": ""
-      }
-    ],
-    "updatedAt": "2026-10-24"
   },
   {
     "name": "스피카",
@@ -4002,6 +4929,45 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "애플비",
+    "alias": "Apple.B",
+    "agency": "GH엔터테인먼트",
+    "timeline": {
+      "debut": "2017.08.01.",
+      "dormant": "",
+      "disband": "2019.05.21."
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "유림",
+        "birth": "1998.04.13.",
+        "img": ""
+      },
+      {
+        "name": "샌디",
+        "birth": "1998.05.03.",
+        "img": ""
+      },
+      {
+        "name": "유지",
+        "birth": "1998.11.25.",
+        "img": ""
+      },
+      {
+        "name": "하은",
+        "birth": "1999.03.12.",
+        "img": ""
+      },
+      {
+        "name": "현민",
+        "birth": "2001.10.14.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "에스파",
     "alias": "aespa",
     "agency": "SM엔터테인먼트",
@@ -4274,6 +5240,45 @@
       }
     ],
     "updatedAt": "2026-09-10"
+  },
+  {
+    "name": "오소녀",
+    "alias": "",
+    "agency": "",
+    "timeline": {
+      "debut": "",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 5,
+    "members": [
+      {
+        "name": "최지나",
+        "birth": "1987.09.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F193%2F2014051213473145262.jpg"
+      },
+      {
+        "name": "지원",
+        "birth": "",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fc075f086-e171-4b0b-8ad7-b7230bd3e673.jpg"
+      },
+      {
+        "name": "김유진",
+        "birth": "",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201910%2F20191007155023847.jpg"
+      },
+      {
+        "name": "유빈",
+        "birth": "1988.10.04.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202101%2F2021011301473448.jpg"
+      },
+      {
+        "name": "전효성",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-26"
   },
   {
     "name": "오투포",
@@ -4819,6 +5824,35 @@
       }
     ],
     "updatedAt": "2026-09-12"
+  },
+  {
+    "name": "제이하트",
+    "alias": "J'HEART",
+    "agency": "엠플랜엔터테인먼트",
+    "timeline": {
+      "debut": "2004.09.01.",
+      "dormant": "",
+      "disband": "2006.09.01."
+    },
+    "memberCount": 3,
+    "members": [
+      {
+        "name": "송재윤",
+        "birth": "1981.10.19.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F001829b9-7f6c-4070-90e8-d85aff5014dd.jpg"
+      },
+      {
+        "name": "장서린",
+        "birth": "1981.07.20.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F168%2F20070209152815197107622.jpg"
+      },
+      {
+        "name": "이은영",
+        "birth": "",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
   },
   {
     "name": "쥬얼리 [1기]",
@@ -5993,6 +7027,50 @@
     "updatedAt": "2026-09-10"
   },
   {
+    "name": "플로리아",
+    "alias": "Floria",
+    "agency": "DK엔터테인먼트",
+    "timeline": {
+      "debut": "2020.08.11.",
+      "dormant": "",
+      "disband": "2024.04.18."
+    },
+    "memberCount": 4,
+    "members": [
+      {
+        "name": "수미",
+        "birth": "2000.08.06.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F6fb36515-f75d-455d-811f-a51ba6db4777.jpeg"
+      },
+      {
+        "name": "예슬",
+        "birth": "2000.11.11.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202207%2F20220711224329943.jpg"
+      },
+      {
+        "name": "조아라",
+        "birth": "2001.04.03.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202207%2F20220711224404770.jpg"
+      },
+      {
+        "name": "한나",
+        "birth": "2000.11.13.",
+        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Ft%2F54baed30-f34f-4ef8-b7a2-351f79eb0acd.png"
+      },
+      {
+        "name": "(하연)",
+        "birth": "2002.04.10.",
+        "img": ""
+      },
+      {
+        "name": "(소나)",
+        "birth": "2005.02.21.",
+        "img": ""
+      }
+    ],
+    "updatedAt": "2026-10-30"
+  },
+  {
     "name": "피에스타",
     "alias": "FIESTAR",
     "agency": "로엔엔터테인먼트",
@@ -6162,117 +7240,5 @@
       }
     ],
     "updatedAt": "2026-09-10"
-  },
-  {
-    "name": "브브걸",
-    "alias": "BBGIRLS",
-    "agency": "그랜드라인그룹",
-    "timeline": {
-      "debut": "2023.08.03.",
-      "dormant": "",
-      "disband": ""
-    },
-    "memberCount": 3,
-    "members": [
-      {
-        "name": "민영",
-        "birth": "1990.09.12.",
-        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F25946b4c-bb3b-48bf-aa47-49b2d717edd8.jpg"
-      },
-      {
-        "name": "은지",
-        "birth": "1992.07.19.",
-        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F3fccbe55-7cf7-42e4-9bd1-f667badba2d3.jpg"
-      },
-      {
-        "name": "유나",
-        "birth": "1993.04.06.",
-        "img": "https://search.pstatic.net/common?type=a&size=264&expire=1&refresh=true&direct=true&quality=100&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F1cf136a5-9402-4a4f-8b35-bd36bc0423ea.jpg"
-      },
-      {
-        "name": "(유정)",
-        "birth": "1991.05.02.",
-        "img": ""
-      }
-    ],
-    "updatedAt": "2026-10-25"
-  },
-  {
-    "name": "오소녀",
-    "alias": "",
-    "agency": "",
-    "timeline": {
-      "debut": "",
-      "dormant": "",
-      "disband": ""
-    },
-    "memberCount": 5,
-    "members": [
-      {
-        "name": "최지나",
-        "birth": "1987.09.13.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F193%2F2014051213473145262.jpg"
-      },
-      {
-        "name": "지원",
-        "birth": "",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fc075f086-e171-4b0b-8ad7-b7230bd3e673.jpg"
-      },
-      {
-        "name": "김유진",
-        "birth": "",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201910%2F20191007155023847.jpg"
-      },
-      {
-        "name": "유빈",
-        "birth": "1988.10.04.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202101%2F2021011301473448.jpg"
-      },
-      {
-        "name": "전효성",
-        "birth": "",
-        "img": ""
-      }
-    ],
-    "updatedAt": "2026-10-26"
-  },
-  {
-    "name": "루셈블",
-    "alias": "",
-    "agency": "CTDENM과의 계약이 종료되었다.새 창 열림",
-    "timeline": {
-      "debut": "2024.12.02.",
-      "dormant": "",
-      "disband": ""
-    },
-    "memberCount": 5,
-    "members": [
-      {
-        "name": "현진",
-        "birth": "2000.11.15.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fe83c02e3-fd22-4eb0-a454-d27597fbe2ba.jpeg"
-      },
-      {
-        "name": "여진",
-        "birth": "2002.11.11.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F4fea5869-9ada-4c8f-886d-964685082261.png"
-      },
-      {
-        "name": "비비",
-        "birth": "1993.12.09.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F5163c7d3-b23f-4ae7-b26d-05c1ad540297.jpg"
-      },
-      {
-        "name": "고원",
-        "birth": "2000.11.19.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Feeaa3775-e31d-46c4-8f6e-1e16fef5c403.png"
-      },
-      {
-        "name": "혜주",
-        "birth": "2001.11.13.",
-        "img": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F604d7edd-93bf-4451-a2f3-3bb9d79ec37c.jpg"
-      }
-    ],
-    "updatedAt": "2026-10-29"
   }
 ]

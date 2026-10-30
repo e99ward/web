@@ -186,7 +186,8 @@ async function initChrono() {
   document.getElementById('close-details').addEventListener('click', () => document.getElementById('group-details').close());
   try {
     const data = validateData(await readJson('./chrono_data.json')); renderTimeline(data);
-    status.textContent = 'Edit chrono_data.json and reload to update this timeline.';
+    status.textContent = '';
+    status.hidden = true;
     // Member enrichment is optional and never overrides manually entered geometry.
     readJson('./saved_db.json').then(db => { if (Array.isArray(db)) detailDatabase = db; }).catch(() => {});
   } catch (error) { status.dataset.error = 'true'; status.textContent = `Could not load timeline: ${error.message}. Serve this folder over HTTP and check chrono_data.json.`; }
