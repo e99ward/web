@@ -63,6 +63,65 @@
     "updatedAt": "2026-10-30"
   },
   {
+    "name": "A2O LITE",
+    "alias": "에이투오 라이트",
+    "agency": "A2O엔터테인먼트",
+    "timeline": {
+      "debut": "2026.10.13.",
+      "dormant": "",
+      "disband": ""
+    },
+    "memberCount": 9,
+    "members": [
+      {
+        "name": "영",
+        "birth": "2008.10.27.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa189f66a-3e49-4492-bdbb-c72edb89f62c.png"
+      },
+      {
+        "name": "오아",
+        "birth": "2013.02.08.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F7cc52e17-4613-442e-9b06-de735428f73c.png"
+      },
+      {
+        "name": "아윤",
+        "birth": "2013.01.29.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F89d3b61e-a85b-4818-b80e-3018688c9203.png"
+      },
+      {
+        "name": "아이찡",
+        "birth": "2013.04.24.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Ff45001a5-3df3-4138-9e1a-c6e8b21457a7.png"
+      },
+      {
+        "name": "히메키",
+        "birth": "2009.10.05.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F903fcaa8-e586-49bc-9e67-40cd0d7595bc.png"
+      },
+      {
+        "name": "라다",
+        "birth": "2011.04.11.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fa9066a02-917b-4150-a087-5714326f7ded.png"
+      },
+      {
+        "name": "시리",
+        "birth": "2010.11.06.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F2b1fe1c6-d033-4e18-99e1-aa4ef1b3bde6.png"
+      },
+      {
+        "name": "보라",
+        "birth": "2010.02.10.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F2c318216-2d02-43ae-bb69-9490db61e736.png"
+      },
+      {
+        "name": "메르시",
+        "birth": "2011.05.31.",
+        "img": "https://search.pstatic.net/common?type=f&size=284x284&direct=true&quality=100&expire=1&refresh=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F537c9de4-0abf-4491-93f7-ea56bfcbfdd7.png"
+      }
+    ],
+    "updatedAt": "2026-10-31"
+  },
+  {
     "name": "ablume",
     "alias": "어블룸",
     "agency": "매시브이엔씨",
@@ -1976,7 +2035,7 @@
   },
   {
     "name": "X:IN",
-    "alias": "엑신x:in",
+    "alias": "엑신",
     "agency": "비바이엔터테인먼트",
     "timeline": {
       "debut": "2023.04.07.",

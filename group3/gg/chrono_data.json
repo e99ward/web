@@ -4730,6 +4730,17 @@
               "color": "#bb1f2d",
               "textColor": "#ffffff",
               "description": "2019년 1월 데뷔하여 2024년까지 활동했던 FNC엔터테인먼트 소속의 7인조 다국적 걸그룹. 팀명은 사랑스러운 '체리(Cherry)'와 역동적인 '총알(Bullet)'이라는 대조적인 이미지를 결합해 '체리처럼 사랑스러우면서도 에너제틱한 매력으로 대중의 마음을 저격하겠다'는 의미를 담고 있다. 데뷔 초기 가상 운영체제(OS)와 게임 퀘스트라는 독특한 세계관을 바탕으로 상큼발랄한 데뷔곡 〈Q&A〉와 〈네가 참 좋아 (Really Really)〉를 선보였으며, 이후 베토벤의 '엘리제를 위하여'를 샘플링한 트랩 힙합 넘버 〈무릎을 탁 치고 (Hands Up)〉와 서머송 〈알로하오에 (Aloha Oe)〉를 통해 파워풀하고 당당한 걸크러시로 스펙트럼을 넓혔다. 특히 레트로 신스팝 넘버인 미니 1집 타이틀곡 〈Love So Sweet〉이 대중과 K-POP 팬들 사이에서 명곡으로 큰 호평을 받았다."
+            },
+            {
+              "id": "a2o-23-2-2",
+              "name": "A2O Lite",
+              "type": "group",
+              "start": "2026-10-13",
+              "end": null,
+              "datePrecision": "exact",
+              "color": "#afe67d",
+              "textColor": "#111111",
+              "description": "2026년 10월 A2O엔터테인먼트에서 데뷔한 9인조 걸그룹. 팀명인 'A2O LITE'는 서로 다른 색과 개성을 지닌 소녀들이 만나 세상에 없던 새로운 빛(LITE)을 만들어간다는 의미를 담고 있다. Z세대와 알파 세대를 아우르는 독자적 음악 장르인 '잘파 팝(Zalpha Pop)'을 표방하며, 고난도의 스트릿 댄스·풋워크 퍼포먼스를 한 치의 오차 없이 구현해 내며 '기본기와 기개가 살아있는 완성형 퍼포먼스'라는 극찬을 받고 있다."
             }
           ],
           "events": [
@@ -4872,8 +4883,8 @@
               "id": "group-13-2-1",
               "name": "앨리스",
               "type": "minor",
-              "start": "2018-02-14",
-              "end": "2019-02-14",
+              "start": "2017-12-26",
+              "end": "2018-12-26",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4882,8 +4893,8 @@
               "id": "group-13-2-2",
               "name": "새러데이",
               "type": "minor",
-              "start": "2019-03-05",
-              "end": "2020-03-05",
+              "start": "2019-01-14",
+              "end": "2020-01-15",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4892,8 +4903,8 @@
               "id": "group-13-2-3",
               "name": "woo!ah!",
               "type": "minor",
-              "start": "2020-03-25",
-              "end": "2021-03-25",
+              "start": "2020-02-04",
+              "end": "2021-02-03",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4902,8 +4913,8 @@
               "id": "group-13-2-4",
               "name": "마카마카",
               "type": "minor",
-              "start": "2021-04-13",
-              "end": "2022-04-13",
+              "start": "2021-02-22",
+              "end": "2022-02-22",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4912,8 +4923,8 @@
               "id": "group-13-2-5",
               "name": "스카이리",
               "type": "minor",
-              "start": "2022-05-03",
-              "end": "2023-05-03",
+              "start": "2022-03-14",
+              "end": "2023-03-14",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4922,8 +4933,8 @@
               "id": "group-13-2-6",
               "name": "에이디야",
               "type": "minor",
-              "start": "2023-05-22",
-              "end": "2024-05-22",
+              "start": "2023-04-02",
+              "end": "2024-04-02",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4932,8 +4943,8 @@
               "id": "group-13-2-7",
               "name": "베이비빌런",
               "type": "minor",
-              "start": "2024-06-12",
-              "end": "2025-06-12",
+              "start": "2024-04-23",
+              "end": "2025-04-23",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -4942,8 +4953,8 @@
               "id": "group-13-2-8",
               "name": "토마토맛",
               "type": "minor",
-              "start": "2025-06-30",
-              "end": "2026-06-30",
+              "start": "2025-05-11",
+              "end": "2026-05-11",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5212,8 +5223,8 @@
               "id": "group-13-4-8",
               "name": "VNT",
               "type": "minor",
-              "start": "2010-01-02",
-              "end": "2011-01-02",
+              "start": "2010-03-08",
+              "end": "2011-03-08",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5222,8 +5233,8 @@
               "id": "group-13-4-9",
               "name": "쇼콜라",
               "type": "minor",
-              "start": "2011-01-21",
-              "end": "2012-01-21",
+              "start": "2011-03-27",
+              "end": "2012-03-26",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5232,8 +5243,18 @@
               "id": "group-13-4-10",
               "name": "식스밤",
               "type": "minor",
-              "start": "2012-02-10",
-              "end": "2013-02-09",
+              "start": "2012-04-15",
+              "end": "2013-04-15",
+              "datePrecision": "estimated",
+              "color": "#dddddd",
+              "textColor": "#ffffff"
+            },
+            {
+              "id": "group-13-4-01",
+              "name": "키스&크라이",
+              "type": "minor",
+              "start": "2013-05-03",
+              "end": "2014-05-03",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5632,8 +5653,8 @@
               "id": "group-13-6-7",
               "name": "블레이디",
               "type": "minor",
-              "start": "2011-11-19",
-              "end": "2012-11-18",
+              "start": "2011-09-30",
+              "end": "2012-09-29",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5642,8 +5663,8 @@
               "id": "group-13-6-8",
               "name": "Tiny-G",
               "type": "minor",
-              "start": "2012-12-08",
-              "end": "2013-12-08",
+              "start": "2012-10-19",
+              "end": "2013-10-19",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5652,8 +5673,8 @@
               "id": "group-13-6-9",
               "name": "투아이즈",
               "type": "minor",
-              "start": "2013-12-27",
-              "end": "2014-12-27",
+              "start": "2013-11-07",
+              "end": "2014-11-07",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5662,8 +5683,8 @@
               "id": "group-13-6-11",
               "name": "트위티",
               "type": "minor",
-              "start": "2015-01-16",
-              "end": "2016-01-16",
+              "start": "2014-11-27",
+              "end": "2015-11-27",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5672,8 +5693,8 @@
               "id": "group-13-8-3",
               "name": "마이비",
               "type": "minor",
-              "start": "2016-02-05",
-              "end": "2017-02-04",
+              "start": "2015-12-17",
+              "end": "2016-12-16",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
@@ -5949,6 +5970,16 @@
               "type": "minor",
               "start": "2024-10-16",
               "end": "2025-10-16",
+              "datePrecision": "estimated",
+              "color": "#dddddd",
+              "textColor": "#ffffff"
+            },
+            {
+              "id": "group-13-7-20",
+              "name": "힛지스",
+              "type": "minor",
+              "start": "2025-11-05",
+              "end": "2026-11-05",
               "datePrecision": "estimated",
               "color": "#dddddd",
               "textColor": "#ffffff"
