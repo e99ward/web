@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Music Archive | AI 음악 컬렉션</title>
+  <meta name="description" content="AI 음악 생성 프로그램으로 제작된 오리지널 곡 아카이브">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-card-hover: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --border-color: rgba(226, 232, 240, 0.9);
+      --border-focus: #6366f1;
+
+      --primary: #4f46e5;
+      --primary-light: #eef2ff;
+      --primary-glow: rgba(79, 70, 229, 0.18);
+      --accent-purple: #7c3aed;
+      --accent-pink: #ec4899;
+      --accent-cyan: #06b6d4;
+
+      --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 0 1px rgba(15, 23, 42, 0.1);
+      --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 1px rgba(15, 23, 42, 0.15);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+
+      --font-heading: 'Outfit', 'Noto Sans KR', sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Background Ambient Glow Orbs */
+    .bg-glow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+    }
+
+    .glow-orb-1 {
+      top: -10%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(236, 72, 153, 0.1) 70%, transparent 100%);
+    }
+
+    .glow-orb-2 {
+      bottom: 5%;
+      left: 5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(99, 102, 241, 0.08) 70%, transparent 100%);
+    }
+
+    /* Top Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .nav-logo-badge {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .nav-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 6px;
+      margin-left: 6px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateX(-2px);
+    }
+
+    /* Main Container Layout */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      width: 100%;
+    }
+
+    /* Hero Header */
+    .hero-header {
+      margin-bottom: 36px;
+      text-align: left;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 720px;
+    }
+
+    /* 2-Column Split: Songs Grid (Left) & Lyrics Viewer (Right) */
+    .app-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Left: Song Grid */
+    .songs-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .song-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #e2e8f0;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .songs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    /* Song Card */
+    .song-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .song-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .song-card:active {
+      transform: translateY(-2px);
+    }
+
+    .song-card.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary), var(--shadow-md);
+      background: #ffffff;
+    }
+
+    /* Album Art Image (1:1 Ratio) */
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #1e293b;
+    }
+
+    .card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .song-card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .tag-genre {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .tag-engine {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(79, 70, 229, 0.85);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    /* Card Details */
+    .card-content {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .song-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .song-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .song-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* Right: Sticky Lyrics Panel */
+    .lyrics-panel-wrap {
+      position: sticky;
+      top: 86px;
+    }
+
+    .lyrics-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 120px);
+      max-height: 780px;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    #lyricsContent {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Empty state */
+    .lyrics-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .empty-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--text-muted);
+    }
+
+    .empty-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Loaded Lyrics Header */
+    .lyrics-header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .lyrics-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lyrics-header-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lyrics-song-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+
+    .lyrics-song-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lyrics-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .lyrics-listen-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #fff;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .lyrics-listen-direct:hover {
+      background: var(--primary);
+    }
+
+    .lyrics-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 8px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lyrics-copy-btn:hover {
+      background: #e0e7ff;
+    }
+
+    /* Lyrics Body (Scrollable) */
+    .lyrics-body {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 20px 14px 24px 0;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #334155;
+      white-space: pre-line;
+      font-family: 'Noto Sans KR', sans-serif;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+
+    .lyrics-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .lyrics-body::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 4px;
+    }
+
+    .lyrics-body::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .lyrics-body::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 960px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .lyrics-panel-wrap {
+        position: static;
+        order: -1;
+      }
+
+      .lyrics-panel {
+        height: 520px;
+        max-height: 520px;
+        min-height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Dynamic Ambient Glow Background -->
+  <div class="bg-glow-container">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="nav-logo-badge">🎵</div>
+      <div>
+        <span class="nav-title">AI Music Studio</span>
+        <span class="nav-tag">GROUP 3</span>
+      </div>
+    </a>
+    <a href="../index.html" class="back-btn">
+      <span>←</span> 홈으로 돌아가기
+    </a>
+  </header>
+
+  <!-- Main Showcase Content -->
+  <main class="container">
+    <!-- Hero Header -->
+    <section class="hero-header">
+      <h1 class="hero-title">AI 음악 생성 <span>컬렉션 & 아카이브</span></h1>
+      <p class="hero-subtitle">
+        각 곡의 가사를 확인하고, 외부 음원 플랫폼 링크를 통해 전체 트랙을 직접 감상할 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 2-Column App Layout -->
+    <div class="app-layout">
+      <!-- Left Column: Song Card Grid -->
+      <section class="songs-section">
+        <div class="section-bar">
+          <h2 class="section-title">
+            <span>수록곡 목록</span>
+            <span class="song-count" id="songCount">6곡</span>
+          </h2>
+        </div>
+
+        <div class="songs-grid" id="songsGrid">
+          <!-- 노래 카드가 JavaScript에 의해 동적으로 렌더링됩니다 -->
+        </div>
+      </section>
+
+      <!-- Right Column: Interactive Lyrics Panel -->
+      <aside class="lyrics-panel-wrap">
+        <div class="lyrics-panel" id="lyricsPanel">
+          <div class="lyrics-empty" id="lyricsEmptyState">
+            <div class="empty-icon">📖</div>
+            <h3 style="color: var(--text-main); font-size: 1.1rem; font-weight: 600;">노래를 선택해 주세요</h3>
+            <p class="empty-text">
+              왼쪽의 <strong>노래 카드를 클릭</strong>하면<br>
+              이곳에 노래 가사와 곡 정보가 표시됩니다.
+            </p>
+          </div>
+
+          <div id="lyricsContent" style="display: none;">
+            <div class="lyrics-header">
+              <img src="" alt="Album Cover" class="lyrics-thumb" id="lyricsCover">
+              <div class="lyrics-header-info">
+                <h3 class="lyrics-song-title" id="lyricsTitle">노래 제목</h3>
+                <div class="lyrics-song-meta">
+                  <span id="lyricsDate">📅 2026.00.00</span>
+                  <span>•</span>
+                  <span id="lyricsGenre">장르</span>
+                </div>
+                <div class="lyrics-controls">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="lyrics-listen-direct"
+                    id="lyricsListenLink">
+                    <span>외부에서 듣기</span> ↗
+                  </a>
+                  <button class="lyrics-copy-btn" id="lyricsCopyBtn" onclick="copyLyrics()">
+                    <span>가사 복사</span> 📋
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="lyrics-body" id="lyricsText">
+              <!-- 가사 텍스트가 표시됩니다 -->
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 AI Music Studio Showcase. Generated with AI Music Creator. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript: Song Data & Interactive Actions -->
+  <script>
+    // 노래 목록 데이터 (필요 시 새로운 곡을 자유롭게 추가하거나 편집할 수 있습니다)
+    const songsData = [
+      {
+        id: "song-1",
+        title: "멀리서 바라볼 뿐",
+        releaseDate: "2026.10.31.",
+        genre: "락 발라드",
+        engine: "flowmusic",
+        description: "깊어지는 좋아하는 감정을 숨기고 결국 상대의 행복을 빌어줄 수 밖에 없는 애절함을 담은 곡",
+        image: "./song-01.png",
+        audioUrl: "https://youtube.com/shorts/2FooNRJc3TU", // 외부 노래 보관 사이트 URL
+        lyrics: `
+[Verse 1]
+온통 너로 가득한 하루  
+헤어날 수 없는 내 마음  
+넌 알고 있을까  
+너에게 난 어떤 사람일까  
+
+[Verse 2]
+다가서면 멀어지는 너  
+처음부터 난 아니었나 봐  
+네 곁에 설 사람이 내가 아님을  
+알기에 난 멈춰 서 있어  
+
+[Chorus]
+그저 멀리서 바라볼 뿐  
+네 곁의 그 사람이 부러워  
+한 번쯤 내가 되고 싶지만  
+끝내 바라는 건 하나  
+그저 네가 행복하기를  
+
+[Verse 3]
+사소한 너의 이야기에도  
+다시 깊어지는 그리움  
+놓을 수 없는 이 마음  
+네 행복을 빌어볼 뿐  
+
+[Chorus]
+그저 멀리서 바라볼 뿐  
+네 곁의 그 사람이 부러워  
+한 번쯤 내가 되고 싶지만  
+끝내 바라는 건 하나  
+그저 네가 행복하기를  
+
+[Bridge]
+스쳐 간 짧은 순간  
+나를 향한 너의 미소  
+그것만으로 충분하다고  
+애써 웃어 보지만  
+
+[Outro]
+텅 빈 가슴에 눈물이 흘러  
+아파도 괜찮아  
+네가 웃을 수 있다면  
+그래, 너만 행복하다면
+`
+      },
+      {
+        id: "song-1-1",
+        title: "멀리서 바라볼 뿐 (feat. 阿女)",
+        releaseDate: "2026.10.31.",
+        genre: "락 발라드",
+        engine: "flowmusic",
+        description: "깊어지는 좋아하는 감정을 숨기고 결국 상대의 행복을 빌어줄 수 밖에 없는 애절함을 담은 곡 (여성 보컬 편곡)",
+        image: "./song-01.png",
+        audioUrl: "https://youtube.com/shorts/wX9Man59HrU", // 외부 노래 보관 사이트 URL
+        lyrics: `
+[Verse 1]
+온통 너로 가득한 하루  
+헤어날 수 없는 내 마음  
+넌 알고 있을까  
+너에게 난 어떤 사람일까  
+
+[Verse 2]
+다가서면 멀어지는 너  
+처음부터 난 아니었나 봐  
+네 곁에 설 사람이 내가 아님을  
+알기에 난 멈춰 서 있어  
+
+[Chorus]
+그저 멀리서 바라볼 뿐  
+네 곁의 그 사람이 부러워  
+한 번쯤 내가 되고 싶지만  
+끝내 바라는 건 하나  
+그저 네가 행복하기를  
+
+[Verse 3]
+사소한 너의 이야기에도  
+다시 깊어지는 그리움  
+놓을 수 없는 이 마음  
+네 행복을 빌어볼 뿐  
+
+[Chorus]
+그저 멀리서 바라볼 뿐  
+네 곁의 그 사람이 부러워  
+한 번쯤 내가 되고 싶지만  
+끝내 바라는 건 하나  
+그저 네가 행복하기를  
+
+[Bridge]
+스쳐 간 짧은 순간  
+나를 향한 너의 미소  
+그것만으로 충분하다고  
+애써 웃어 보지만  
+
+[Outro]
+텅 빈 가슴에 눈물이 흘러  
+아파도 괜찮아  
+네가 웃을 수 있다면  
+그래, 너만 행복하다면
+`
+      },
+      {
+        id: "song-2",
+        title: "君の名前を呼ぶ夜に",
+        releaseDate: "2026.11.21.",
+        genre: "J-pop, 락 발라드",
+        engine: "Suno v6-mini",
+        description: "「아직도 나는 당신을 기다리고 있어요.」 잊지 못한 추억, 텅 빈 방, 밤마다 떠오르는 이름. 정적이고 쓸쓸한 감정을 노래한 곡",
+        image: "./song-02.png",
+        audioUrl: "https://suno.com/album/030337df-71b7-451e-a078-ebcccfd7bde7",
+        lyrics: `
+[Verse 1]
+灯りの消えた部屋で
+君の影を探してる
+あの日のままのアルバム
+そっと指でなぞりながら
+
+[Pre-Chorus]
+街のざわめきが遠くて
+胸の奥だけが騒いでる
+「もう平気だよ」なんて
+誰に言い訳してるんだろう
+
+[Chorus]
+会いたいよ
+君の名前を呼ぶ夜に
+風が運んでくる
+あの頃のぬくもりが
+まだ消えないまま
+心のどこかで
+君を待っている
+
+[Chorus]
+会いたいよ
+君の名前を呼ぶ夜に
+風が運んでくる
+あの頃のぬくもりが
+まだ消えないまま
+心のどこかで
+君を待っている
+
+[Outro]
+君を待っている
+`
+      },
+      {
+        id: "song-3",
+        title: "忘れられないままで",
+        releaseDate: "2026.11.21.",
+        genre: "J-pop, 락 발라드",
+        engine: "Suno v6-mini",
+        description: "「잊으려고 해도, 여전히 당신을 사랑해요.」 변해 가는 계절, 멈춰 있는 마음, 다시 만날 수 있다는 작은 희망을 이야기하는 곡",
+        image: "./song-03.png",
+        audioUrl: "https://suno.com/album/030337df-71b7-451e-a078-ebcccfd7bde7",
+        lyrics: `
+[Verse 1]
+季節がまた変わって
+新しい靴を買ったけど
+歩き出す勇気だけ
+まだ置き去りのままで
+
+[Pre-Chorus]
+君の声が聞こえた気がして
+振り返る癖も直らない
+「忘れたい」よりもずっと
+「忘れられない」が近くにある
+
+[Chorus]
+恋しいよ
+君の笑顔を思うたび
+夜空の星たちが
+少し滲んで見える
+戻れない日々を
+抱きしめているけど
+君を想ってしまう
+
+[Bridge]
+もしもう一度だけ
+君に逢えるなら
+何も言わずに
+そっと手を握るよ
+
+[Chorus]
+恋しいよ
+君の笑顔を思うたび
+夜空の星たちが
+少し滲んで見える
+戻れない日々を
+抱きしめているけど
+君を想ってしまう
+
+[Outro]
+この胸の痛みが
+君への道しるべなら
+迷わず歩いていく
+`
+      },
+      {
+        id: "song-31",
+        title: "[Dummy] 사이버네틱 드림 (Cybernetic Dream)",
+        releaseDate: "2026.08.12",
+        genre: "퓨처 베이스 / 일렉트로",
+        engine: "Suno AI v3.5",
+        description: "강렬한 드롭과 몽환적인 보컬 찹, 미래 지향적인 신스 사운드가 질주하는 사이버펑크 댄스 트랙.",
+        image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=700&auto=format&fit=crop&q=80",
+        audioUrl: "https://suno.com",
+        lyrics: `[Intro - Glitch FX & Heavy Bass]
+0 and 1, code running through my veins
+Welcome to the simulated paradise.
+
+[Verse 1]
+디지털 신경망 사이를 유영하는 생각들
+코드와 데이터로 지어진 가상의 빌딩숲
+현실보다 더 선명한 홀로그램의 빛
+이곳에선 무엇이든 상상하는 대로 피어나
+
+[Build-Up]
+가속되는 CPU, 끓어오르는 비트
+심장 박동수 140 BPM Overdrive
+현실의 한계를 넘어선 차원으로
+Three, Two, One — Break the system!
+
+[Drop]
+(폭발적인 신스 리드와 미래지향적 보컬 찹 드롭)
+Cybernetic Dream!
+가상과 현실의 경계가 무너져!
+
+[Verse 2]
+네트워크에 접속해 전 세계를 가로질러
+동기화되는 우리의 감각과 숨결
+한계를 모르는 디지털 영혼의 항해
+영원히 끝나지 않을 가상 현실 속 축제
+
+[Bridge]
+Disconnect from reality, reconnect to my heart.
+우리가 꿈꾸던 미래는 바로 지금이야.
+
+[Drop & Outro]
+(에너제틱한 비트와 글리치 사운드로 페이드아웃)`
+      },
+      {
+        id: "song-41",
+        title: "[Dummy] 비 내리는 오후의 커피 (Rainy Afternoon Coffee)",
+        releaseDate: "2026.07.05",
+        genre: "재즈 힙합 / 칠홉",
+        engine: "Udio v1.5",
+        description: "창가를 두드리는 빗소리와 은은한 커피 향기를 닮은 포근하고 빈티지한 재즈 힙합 비트.",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80",
+        audioUrl: "https://soundcloud.com",
+        lyrics: `[Intro]
+(LP 노이즈, 빗소리 샘플링과 부드러운 일렉트릭 피아노 코드)
+
+[Verse 1]
+유리창을 톡톡 두드리는 빗방울 소리
+드리퍼 위로 천천히 떨어지는 짙은 원두의 향
+바쁜 하루를 잠시 내려놓고
+좋아하는 낡은 책 한 권을 펼쳐 들어
+
+[Chorus]
+Rainy afternoon, a warm cup of coffee
+복잡한 생각은 잠시 빗물에 씻어내고
+흘러나오는 피아노 건반 멜로디에
+기분 좋은 나른함을 맡겨보는 시간
+
+[Verse 2]
+창밖엔 형형색색 우산을 쓴 사람들
+저마다 바쁜 발걸음으로 지나가지만
+이 작은 카페 안 우리만의 작은 우주엔
+느긋한 재즈 선율만이 채워져 있네
+
+[Bridge]
+비가 그치고 나면 맑은 하늘이 오겠지만
+가끔은 이런 축축하고 다정한 오후가
+마음을 더 포근하게 감싸주곤 해
+
+[Outro]
+따뜻한 한 모금, 그리고 잔잔한 미소
+Rain keeps falling, coffee keeps brewing...`
+      },
+      {
+        id: "song-51",
+        title: "[Dummy] 스타라이트 오디세이 (Starlight Odyssey)",
+        releaseDate: "2026.06.20",
+        genre: "시네마틱 / 오케스트라 팝",
+        engine: "Suno AI v3.5",
+        description: "웅장한 오케스트라 스트링과 현대적 드럼 비트가 조화를 이루며 끝없는 우주를 항해하는 듯한 서사.",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&auto=format&fit=crop&q=80",
+        audioUrl: "https://suno.com",
+        lyrics: `[Intro]
+(신비로운 패드 사운드와 서서히 고조되는 첼로 선율)
+
+[Verse 1]
+미지의 심연을 뚫고 떠나는 작은 우주선
+성운 사이로 반짝이는 수억 개의 별무리
+두려움을 넘어선 호기심의 날갯짓
+우리는 새로운 지평선을 향해 날아가
+
+[Pre-Chorus]
+중력을 벗어나 마주한 광활한 침묵
+그 속에서 울려 퍼지는 작은 심장 박동
+저 멀리 빛나는 푸른 별 지구를 뒤로하고
+더 넓은 은하계로 나아가는 여정
+
+[Chorus]
+Starlight Odyssey, 영원을 향한 항해
+우리가 찾던 기적은 저 별빛 속에 있어
+빛보다 빠르게 어둠을 가르고
+찬란한 내일을 향해 끝없이 날아올라!
+
+[Orchestral Interlude]
+(웅장한 브라스와 풀 오케스트라 현악기의 협주)
+
+[Chorus]
+Starlight Odyssey, 우주의 끝에서
+새로운 희망의 노래를 울려 퍼뜨려
+We will find a way, in the sea of stars!
+
+[Outro]
+별빛을 따라... 끝없는 항해는 계속된다.`
+      },
+      {
+        id: "song-61",
+        title: "[Dummy] 바람이 불어오는 곳으로 (Where the Wind Whispers)",
+        releaseDate: "2026.05.14",
+        genre: "K-인디 / 포크 록",
+        engine: "Udio v1.5",
+        description: "맑은 보컬과 청량한 기타 스트로크로 청춘의 자유로움과 여행의 설렘을 노래한 인디 포크 곡.",
+        image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80",
+        audioUrl: "https://audiomack.com",
+        lyrics: `[Intro]
+(경쾌한 어쿠스틱 기타 스트로크와 하모니카)
+
+[Verse 1]
+가벼운 배낭 하나 둘러메고 집을 나서면
+아침 공기 가득 실려 오는 싱그러운 풀 내음
+가야 할 목적지가 정해져 있지 않아도
+발길 닿는 대로 걸어보는 오늘의 발걸음
+
+[Pre-Chorus]
+복잡한 도시는 저 멀리 남겨두고
+파란 하늘 높이 날아가는 새들을 보며
+깊은 숨을 들이쉬어 봐
+
+[Chorus]
+바람이 불어오는 곳으로 난 걸어가네
+자유로운 햇살 품에 안고서
+어떤 내일이 우릴 기다릴지 몰라도
+지금 이 순간의 바람을 느낄 수 있다면
+충분히 행복해, 이 길 위에서
+
+[Verse 2]
+길가에 피어난 이름 모를 들꽃 하나
+내게 반갑게 인사를 건네오는 것 같아
+지친 어깨를 토닥이는 봄바람과 함께
+노래를 흥얼거리며 걸어가는 길
+
+[Chorus]
+바람이 불어오는 곳으로 난 걸어가네
+자유로운 햇살 품에 안고서
+어떤 내일이 우릴 기다릴지 몰라도
+지금 이 순간의 바람을 느낄 수 있다면
+충분히 행복해
+
+[Outro]
+라라라 라라라 바람을 따라...
+언제까지나 자유롭게 걸어갈래.`
+      }
+    ];
+
+    let currentActiveSongId = null;
+
+    // 노래 카드 그리드 생성 함수
+    function renderSongs() {
+      const grid = document.getElementById("songsGrid");
+      document.getElementById("songCount").textContent = `${songsData.length}곡`;
+
+      grid.innerHTML = songsData.map(song => `
+        <article class="song-card" id="card-${song.id}" onclick="showLyrics('${song.id}')" tabindex="0" role="button" aria-label="${song.title} 가사 보기" onkeydown="if(event.key==='Enter'||event.key===' '){showLyrics('${song.id}');event.preventDefault();}">
+          <div class="card-img-wrap">
+            <img src="${song.image}" alt="${song.title}" class="card-img" loading="lazy">
+            <span class="tag-genre">${song.genre}</span>
+            <span class="tag-engine">${song.engine}</span>
+          </div>
+
+          <div class="card-content">
+            <h3 class="song-title">${song.title}</h3>
+            
+            <div class="song-meta-row">
+              <span class="meta-item">📅 <strong>발표일:</strong> ${song.releaseDate}</span>
+            </div>
+
+            <p class="song-desc">${song.description}</p>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // 가사 보기 함수: 클릭 시 우측 패널에 가사 표시
+    function showLyrics(songId) {
+      const song = songsData.find(s => s.id === songId);
+      if (!song) return;
+
+      currentActiveSongId = songId;
+
+      // 카드 활성 상태 업데이트
+      document.querySelectorAll(".song-card").forEach(card => {
+        card.classList.remove("active");
+      });
+      const activeCard = document.getElementById(`card-${songId}`);
+      if (activeCard) {
+        activeCard.classList.add("active");
+      }
+
+      // 우측 패널 업데이트
+      const emptyState = document.getElementById("lyricsEmptyState");
+      const content = document.getElementById("lyricsContent");
+
+      emptyState.style.display = "none";
+      content.style.display = "flex";
+
+      document.getElementById("lyricsCover").src = song.image;
+      document.getElementById("lyricsCover").alt = song.title;
+      document.getElementById("lyricsTitle").textContent = song.title;
+      document.getElementById("lyricsDate").textContent = `📅 ${song.releaseDate}`;
+      document.getElementById("lyricsGenre").textContent = song.genre;
+      document.getElementById("lyricsListenLink").href = song.audioUrl;
+      document.getElementById("lyricsText").textContent = song.lyrics;
+
+      // 가사 창 맨 위로 스크롤
+      document.getElementById("lyricsText").scrollTop = 0;
+
+      // 모바일 환경일 경우 우측 가사 패널로 부드럽게 스크롤 이동
+      if (window.innerWidth <= 960) {
+        document.getElementById("lyricsPanel").scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 가사 클립보드 복사 함수
+    function copyLyrics() {
+      const song = songsData.find(s => s.id === currentActiveSongId);
+      if (!song) return;
+
+      navigator.clipboard.writeText(song.lyrics).then(() => {
+        const btn = document.getElementById("lyricsCopyBtn");
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = `<span>복사 완료!</span> ✅`;
+        btn.style.background = "#dcfce7";
+        btn.style.color = "#15803d";
+        btn.style.borderColor = "#86efac";
+
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.style.background = "";
+          btn.style.color = "";
+          btn.style.borderColor = "";
+        }, 2000);
+      }).catch(err => {
+        alert("가사 복사에 실패했습니다. 권한을 확인해주세요.");
+      });
+    }
+
+    // 초기 실행
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSongs();
+      // 첫 번째 곡 가사를 기본으로 열어둘 수도 있도록 설정
+      if (songsData.length > 0) {
+        showLyrics(songsData[0].id);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -2762,6 +2762,17 @@
               "color": "#015f61",
               "textColor": "#ffffff",
               "description": "2015년 3월 데뷔하여 2022년까지 활동한 큐브엔터테인먼트 소속의 걸그룹. '수정처럼 맑고 투명하다'는 뜻의 'CrystaL Clear'에서 유래한 팀명 아래, 데뷔 초 발랄하고 펑키한 레트로 댄스곡 〈PEPE〉와 〈궁금해〉, 〈아니야 (No Oh Oh)〉로 상큼한 매력을 선보였다. 이후 〈도깨비 (Hobgoblin)〉를 기점으로 강렬한 걸크러시로 완벽히 노선을 전환, 시크하고 절도 있는 칼군무가 돋보인 〈BLACK DRESS〉, 첫 음악 방송 1위를 안겨준 뭄바톤 댄스곡 〈No〉, 당당한 에너지를 담은 〈ME(美)〉와 〈HELICOPTER〉를 연이어 히트시켰다."
+            },
+            {
+              "id": "babydon-13-6-2",
+              "name": "베이비돈크라이",
+              "type": "group",
+              "start": "2025-06-23",
+              "end": null,
+              "datePrecision": "exact",
+              "color": "#e2b3c1",
+              "textColor": "#111111",
+              "description": "2025년 6월 피네이션(P NATION)에서 데뷔한 4인조 걸그룹. 팀명은 아기처럼 순수하고 맑은 영혼(Baby)을 지녔지만, 어떤 역경과 고난 앞에서도 울지 않고(DONT Cry) 당당히 헤쳐 나간다는 강인한 메시지를 품고 있다. 틴에이지 감성과 거친 록 사운드를 결합한 독창적인 '베이비 록(Baby Rock)' 장르를 전면에 내세우고 있다."
             }
           ],
           "events": [
@@ -2794,6 +2805,24 @@
               "title": "최유진 → 걸스플래닛999 참가 → Kep1er",
               "date": "2021-08-06",
               "datePrecision": "exact"
+            },
+            {
+              "icon": "⚲",
+              "title": "아이들 소연 프로듀싱",
+              "date": "2021-06-01",
+              "datePrecision": "estimated"
+            },
+            {
+              "icon": "♫",
+              "title": "I DONT CARE",
+              "date": "2025-11-19",
+              "datePrecision": "released"
+            },
+            {
+              "icon": "♫",
+              "title": "Bittersweet",
+              "date": "2026-03-24",
+              "datePrecision": "released"
             }
           ]
         },
@@ -4284,6 +4313,12 @@
               "title": "건물 사이에 피어난 장미 (Rose Blossom)",
               "date": "2023-01-05",
               "datePrecision": "released"
+            },
+            {
+              "icon": "♫",
+              "title": "Thinkin' About You",
+              "date": "2024-01-19",
+              "datePrecision": "released"
             }
           ]
         },
@@ -5770,8 +5805,8 @@
               "textColor": "#ffffff"
             },
             {
-              "id": "babydon-13-6-2",
-              "name": "베이비돈크라이",
+              "id": "group-13-6-20",
+              "name": "이프아이",
               "type": "minor",
               "start": "2025-07-17",
               "end": "2026-07-17",
